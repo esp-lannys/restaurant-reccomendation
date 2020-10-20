@@ -1,5 +1,6 @@
 package spm.project.restaurantrecommendation.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Role implements Serializable {
     private Long id;
     private String roleName;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;

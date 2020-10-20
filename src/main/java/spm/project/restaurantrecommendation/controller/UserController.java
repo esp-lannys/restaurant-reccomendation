@@ -1,8 +1,9 @@
 package spm.project.restaurantrecommendation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.repository.RoleRepository;
@@ -10,12 +11,17 @@ import spm.project.restaurantrecommendation.repository.UserRepository;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     @Autowired
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
+
+    public UserController(UserRepository userRepository, RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
 
 
 
