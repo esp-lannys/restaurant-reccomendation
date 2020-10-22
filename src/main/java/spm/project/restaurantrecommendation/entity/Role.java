@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
@@ -18,7 +19,7 @@ public class Role implements Serializable {
     private Long id;
     private String roleName;
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;

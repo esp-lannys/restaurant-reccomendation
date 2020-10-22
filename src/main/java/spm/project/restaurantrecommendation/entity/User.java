@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-
+import javax.persistence.Table;
 @Entity
 @Data
 @Table(name = "users")
@@ -22,7 +22,13 @@ public class User implements Serializable {
     private String email;
     private String username;
     private String password;
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user")
     private Set<Role> roles;
+
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Rating> ratings;
+
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Reservation> reservations;
 }
