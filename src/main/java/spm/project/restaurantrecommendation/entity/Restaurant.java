@@ -16,6 +16,7 @@ public class Restaurant {
     private String phone;
     private Long longitude;
     private Long latitude;
+    private String img;
 
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")
     private Set<TableForReservation> tableForReservations;
