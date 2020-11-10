@@ -16,7 +16,7 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String getLoginPage(Model model) {
-        return "login-test";
+    public String getLoginPage() {
+        return "login";
     }
 }
