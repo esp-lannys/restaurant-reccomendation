@@ -34,4 +34,7 @@ public class LoginController {
     public String getRegistrationTestPage() {
         return "registration-test";
     }
+
+    @GetMapping("/403")
+    public String get403Page() {  return "403"; }
 }

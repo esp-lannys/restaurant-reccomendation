@@ -1,9 +1,11 @@
 package spm.project.restaurantrecommendation.service;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import spm.project.restaurantrecommendation.entity.User;
 
-import java.util.List;
 
-public interface UserService {
-    List<User> findAll();
+public interface UserService extends UserDetailsService {
+    User findByEmail(String email);
+    User findByUsername(String username);
+
 }
