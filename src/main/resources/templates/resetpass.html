@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Reset Password</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="static/util.css">
-	<link rel="stylesheet" type="text/css" href="static/main.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -37,13 +37,13 @@
 					</div>
 
 					<div class="text-center p-t-136"> 
-						<a class="txt2" href="Signup.html">
+						<a class="txt2" th:href="@{/registration}">
 							Sign Up
 						</a>
 						<a class="txt2">
 							/
 						</a>
-						<a class="txt2" href="Login.html">
+						<a class="txt2" th:href="@{/login}">
 							Login
 						</a>
 					</div>

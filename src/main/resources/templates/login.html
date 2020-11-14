@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="static/util.css">
-	<link rel="stylesheet" type="text/css" href="static/main.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/main.css}">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -17,7 +17,7 @@
 			<div class="wrap-login100">
 				
 
-				<form class="login100-form validate-form">
+				<form th:action="@{/login}" class="login100-form validate-form">
 					<span class="login100-form-title">
 						Login
 					</span>
@@ -45,7 +45,7 @@
 					</div>
 
 					<div class="text-center p-t-12">
-						<a class="txt2" href="Resetpass.html">
+						<a class="txt2" th:href="@{/resetpassword}">
 							Forgot your password? 
 						</a>
 					</div>
@@ -54,7 +54,7 @@
 						<span class="txt1">
 							Don't have an account?
 						</span>
-						<a class="txt2" href="Signup.html">
+						<a class="txt2" th:href="@{/registration}">
 							Sign Up
 						</a>
 					</div>

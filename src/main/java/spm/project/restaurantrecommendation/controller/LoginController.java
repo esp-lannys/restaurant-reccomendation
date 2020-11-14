@@ -9,18 +9,29 @@ public class LoginController {
 
 
 
-    @GetMapping("/home")
+    @GetMapping({ "/" })
     public String getIndexPage() {
         return "index-test";
     }
 
     @GetMapping("/login")
+    public String login(){ return "login"; }
+
+    @GetMapping("/login-test")
     public String getLoginPage() {
         return "login-test";
     }
 
     @GetMapping("/registration")
     public String getRegistrationPage() {
+        return "registration";
+    }
+
+    @GetMapping("/resetpassword")
+    public String getResetPasswordPage() { return "resetpass"; }
+
+    @GetMapping("/registration-test")
+    public String getRegistrationTestPage() {
         return "registration-test";
     }
 }
