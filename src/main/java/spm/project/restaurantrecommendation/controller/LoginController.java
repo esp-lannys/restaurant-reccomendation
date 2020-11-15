@@ -35,6 +35,12 @@ public class LoginController {
         return "registration-test";
     }
 
+    @GetMapping("/admin/index")
+    public String getAdminPage() {
+        return "admin/index";
+    }
+
     @GetMapping("/403")
     public String get403Page() {  return "403"; }
+
 }
