@@ -1,5 +1,11 @@
 package spm.project.restaurantrecommendation.dto;
 
+import spm.project.restaurantrecommendation.constraint.FieldMatch;
+
+@FieldMatch.List({
+        @FieldMatch(first = "password",
+                second = "confirmPassword",
+                message = "The password fields must match")})
 public class UserDto {
 
     private String username;
@@ -7,6 +13,20 @@ public class UserDto {
     private String phone;
     private String firstName;
     private String lastName;
+    private String email;
+    private String confirmPassword;
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 
     public String getUsername() {
         return username;

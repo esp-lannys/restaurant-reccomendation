@@ -22,11 +22,6 @@ public class LoginController {
         return "login-test";
     }
 
-    @GetMapping("/registration")
-    public String getRegistrationPage() {
-        return "registration";
-    }
-
     @GetMapping("/resetpassword")
     public String getResetPasswordPage() { return "resetpass"; }
 
