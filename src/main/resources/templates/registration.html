@@ -14,15 +14,20 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
+
 			<div class="wrap-login100">
-				
-				<form class="login100-form validate-form" th:action="@{/registration}" method="post">
+				<div th:if="${param.success}">
+					<script type="text/javascript">
+						window.location.href = "/login";
+					</script>
+				</div>
+				<form class="login100-form validate-form" th:action="@{/registration}" method="post" th:object="${user}">
 					<span class="login100-form-title">
 						Sign Up
 					</span>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="fname" placeholder="First name" required>
+						<input class="input100" type="text" name="fname" placeholder="First name" required th:field="*{firstName}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -30,7 +35,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="lname" placeholder="Last name" required>
+						<input class="input100" type="text" name="lname" placeholder="Last name" required th:field="*{lastName}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -38,7 +43,7 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="tel" name="phone" placeholder="Phone" pattern="[0-9]{9}" required>
+						<input class="input100" type="tel" name="phone" placeholder="Phone" pattern="[0-9]{9}" required th:field="*{phone}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -46,7 +51,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="email" name="email" placeholder="Email" required>
+						<input class="input100" type="email" name="email" placeholder="Email" required th:field="*{email}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -54,7 +59,7 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="username" placeholder="Username" required>
+						<input class="input100" type="text" name="username" placeholder="Username" required th:field="*{username}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -62,7 +67,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="password" name="pass" placeholder="Password" required>
+						<input class="input100" type="password" name="pass" placeholder="Password" required th:field="*{password}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -70,8 +75,8 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="password" name="cfpass" placeholder="Confirm password" required>
-						<span class="focus-input100"></span>
+						<input class="input100" type="password" name="cfpass" placeholder="Confirm password" required th:field="*{confirmPassword}">
+						<span class="focus-input100"> </span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
