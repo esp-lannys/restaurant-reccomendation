@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Sign Up</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+
+			<div class="wrap-login100">
+				<div th:if="${param.success}">
+					<script>
+						window.location.href = "/login";
+						alert("Successfully registration !!")
+					</script>
+				</div>
+				<form class="login100-form validate-form" th:action="@{/registration}" method="post" th:object="${user}">
+					<span class="login100-form-title">
+						Sign Up
+					</span>
+					<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+					   th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
+						error</p>
+					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+						<label for="firstName"></label>
+						<input class="input100" type="text" name="firstName" placeholder="First Name" th:field="*{firstName}"/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+						<label for="lastName"></label>
+						<input class="input100" type="text" name="lname" placeholder="Last name" required th:field="*{lastName}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('phone')}? 'has-error':''">
+						<label for="phone"></label>
+						<input class="input100" type="tel" name="phone" placeholder="Phone" th:field="*{phone}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+						<label for="email"></label>
+						<input class="input100" type="email" name="email" placeholder="Email" required th:field="*{email}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+						<label for="username"></label>
+						<input class="input100" type="text" name="username" placeholder="Username" required th:field="*{username}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+						<label for="password"></label>
+						<input class="input100" type="password" name="pass" placeholder="Password" required th:field="*{password}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+						<label for="confirmPassword"></label>
+						<input class="input100" type="password" name="cfpass" placeholder="Confirm password" required th:field="*{confirmPassword}">
+						<span class="focus-input100"> </span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Sign Up
+						</button>
+					</div>
+						</form>
+					<div class="text-center p-t-136"> 
+						<span class="txt1">
+							Already have an account?
+						</span>
+						<a class="txt2" th:href="@{/login}">
+							Login
+						</a>
+					</div>
+					
+
+			</div>
+		</div>
+	</div>
+	
+
+</body>
+</html>

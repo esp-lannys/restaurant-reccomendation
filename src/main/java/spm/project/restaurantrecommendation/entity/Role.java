@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Data
@@ -20,7 +21,6 @@ public class Role implements Serializable {
     private String roleName;
 
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE} , mappedBy = "roles")
+    private Set<User> user;
 }

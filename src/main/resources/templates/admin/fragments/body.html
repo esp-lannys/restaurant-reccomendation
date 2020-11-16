@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Navbar Fragment</title>
+</head>
+<body>
+    <div th:fragment="body" class="container mt-5">
+        <div>
+            <p class="display-4">ADMIN MANAGEMENT SYSTEM</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 float-left d-flex">
+
+                <button type="button" class="ml-3 col-sm-3 btn btn-sm btn-outline-success">Restaurants</button>
+                <button type="button" class="ml-3 col-sm-3 btn btn-sm btn-outline-success">Accounts</button>
+            </div>
+            <div class="col-sm-6">
+                <form class="col-sm-6 float-right form-inline d-flex md-form form-sm">
+                    <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                           aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</body>
+</html>
