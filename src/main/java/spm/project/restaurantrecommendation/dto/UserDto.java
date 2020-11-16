@@ -1,19 +1,29 @@
 package spm.project.restaurantrecommendation.dto;
 
 import spm.project.restaurantrecommendation.constraint.FieldMatch;
+import spm.project.restaurantrecommendation.constraint.ValidPassword;
+
+import javax.validation.constraints.NotEmpty;
 
 @FieldMatch.List({
         @FieldMatch(first = "password",
                 second = "confirmPassword",
                 message = "The password fields must match")})
 public class UserDto {
-
+    @NotEmpty
     private String username;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String phone;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @NotEmpty
     private String email;
+    @NotEmpty
+    @ValidPassword
     private String confirmPassword;
 
     public String getConfirmPassword() {
