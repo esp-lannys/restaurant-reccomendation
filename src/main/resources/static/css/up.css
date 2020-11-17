@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+body {
+	font-family: Montserrat;
+	font-size: 15px;
+}
+
+.padding {
+	padding: 70px 0;
+	background: #9053c7;
+	background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+	background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+	background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+	background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+.user-card-full {
+	overflow: hidden
+}
+
+.card {
+	width: 35%;
+	border-radius: 15px;
+	-webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+	box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+	border: none;
+	margin-bottom: 30px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.m-r-0 {
+	margin-right: 0px
+}
+
+.m-l-0 {
+	margin-left: 0px
+}
+
+.user-card-full .user-profile {
+	border-radius: 5px 0 0 5px
+}
+
+.bg-c-lite-green {
+	background: #57b846;
+}
+
+.user-profile {
+	padding: 20px 0
+}
+
+.card-block {
+	text-align: center;
+	padding: 1.25rem;
+}
+
+.card-block1 {
+	text-align: center;
+	padding: 1.25rem;
+	background: white;
+}
+
+.m-b-25 {
+	margin-bottom: 25px
+}
+
+.img-radius {
+	border-radius: 5px
+}
+
+h6 {
+	font-size: 20px;
+	font-family: Montserrat;
+	color: white;
+}
+
+.txt2 {
+	font-family: Montserrat;
+	font-size: 12px;
+	line-height: 1.5;
+	color: white;
+}
+
+.card .card-block p {
+	line-height: 25px
+}
+
+@media screen and (max-width: 10px) {
+	p {
+		font-size: 14px
+	}
+	user-card-full {
+		width: 135%
+	}
+}
+
+.card-block {
+	padding: 1.25rem
+}
+
+.b-b-default {
+	border-bottom: 1px solid #e0e0e0
+}
+
+.m-b-20 {
+	margin-bottom: 20px
+}
+
+.p-b-5 {
+	padding-bottom: 5px !important
+}
+
+.card .card-block p {
+	line-height: 25px
+}
+
+.m-b-10 {
+	margin-bottom: 10px
+}
+
+.text-muted {
+	font-size: 15px;
+	color: #919aa3 !important
+}
+
+.b-b-default {
+	border-bottom: 1px solid #e0e0e0
+}
+
+.f-w-600 {
+	font-weight: 600
+}
+
+.m-b-20 {
+	margin-bottom: 20px
+}
+
+.m-t-40 {
+	margin-top: 20px
+}
+
+.p-b-5 {
+	padding-bottom: 5px !important
+}
+
+.m-b-10 {
+	margin-bottom: 10px
+}
+
+.m-t-40 {
+	margin-top: 20px
+}
