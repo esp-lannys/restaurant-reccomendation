@@ -15,7 +15,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				
+
 
 				<form th:action="@{/login}" class="login100-form validate-form" method="post">
 					<span class="login100-form-title">
@@ -29,8 +29,7 @@
 						<div class="alert alert-info">You have been logged out.</div>
 					</div>
 					<div class="wrap-input100 validate-input">
-						<lable for="username"></lable>
-						<input class="input100" type="text" name="username" placeholder="Username" required autofocus="autofocus">
+						<lable>Username<input class="input100" type="text" name="username" required autofocus="autofocus"/> </lable>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -38,8 +37,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<label for="password"></label>
-						<input class="input100" type="password" name="password" placeholder="Password" required>
+						<label>Password: <input class="input100" type="password" name="password" required /></label>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
