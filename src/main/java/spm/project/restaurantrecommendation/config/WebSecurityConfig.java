@@ -29,11 +29,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
 
     @Autowired
-    CustomSuccessHandler successHandler;
+    private CustomSuccessHandler successHandler;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
     }
 
     @Autowired
@@ -47,7 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/webjars/**"
                         ,"/assets/**","/css/**","/images/**"
-                        ,"/**","/registration**","/resetpassword**").permitAll()
+                        ,"/**","/registration**","/resetpass**").permitAll()
+                .antMatchers("/index**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
@@ -62,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/?logout").permitAll()
+                .logoutSuccessUrl("/login?logout").permitAll()
                 .deleteCookies("JSESSIONID")
                 .and().exceptionHandling()
                 .accessDeniedPage("/403");

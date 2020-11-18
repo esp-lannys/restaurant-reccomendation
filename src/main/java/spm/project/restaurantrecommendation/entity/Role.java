@@ -1,7 +1,9 @@
 package spm.project.restaurantrecommendation.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.persistence.Table;
@@ -9,7 +11,8 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "role")
 public class Role implements Serializable {
 
@@ -21,6 +24,12 @@ public class Role implements Serializable {
     private String roleName;
 
 
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE} , mappedBy = "roles")
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "roles")
     private Set<User> user;
+
+    public Role(){}
+
+    public Role(String roleName){
+        this.roleName = roleName;
+    }
 }

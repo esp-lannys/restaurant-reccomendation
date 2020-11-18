@@ -1,18 +1,16 @@
 package spm.project.restaurantrecommendation.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
-import spm.project.restaurantrecommendation.exception.EmailNotFoundException;
 import spm.project.restaurantrecommendation.repository.PasswordResetTokenRepository;
 import spm.project.restaurantrecommendation.repository.RoleRepository;
 import spm.project.restaurantrecommendation.repository.UserRepository;
@@ -20,11 +18,10 @@ import spm.project.restaurantrecommendation.repository.UserRepository;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("userService")
-@Transactional
 public class UserServiceImpl implements UserService {
-
     @Autowired
     private UserRepository userRepository;
 
@@ -32,24 +29,23 @@ public class UserServiceImpl implements UserService {
     private PasswordResetTokenRepository tokenRepository;
 
     @Autowired
-    @Qualifier("roleRepository")
     private RoleRepository roleRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public User findByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new EmailNotFoundException(email));
+        return userRepository.findByEmail(email);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Usernname " + username + " not found !!!"));
+        return userRepository.findByUsername(username);
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
 
@@ -58,21 +54,20 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Invalid username or password ?"));
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Invalid username or password");
+        }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                getAuthorities(user));
+                grantedAuthorities(user.getRoles()));
     }
 
-    private static Collection<? extends GrantedAuthority> getAuthorities(User user) {
-
-        String[] userRoles = user.getRoles().stream().map((role) -> role.getRoleName()).toArray(String[]::new);
-
-        Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
-
-        return authorities;
+    private Collection<? extends GrantedAuthority> grantedAuthorities(Collection<Role> roles){
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRoleName())).collect(Collectors.toList());
     }
 
     @Override
