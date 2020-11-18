@@ -49,20 +49,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User save(UserDto userDto) {
-        User user = new User();
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setEmail(userDto.getEmail());
-        user.setUsername(userDto.getUsername());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        HashSet<Role> roles = new HashSet<>();
-        roles.add(roleRepository.findByRoleName("USER"));
-        user.setRoles(roles);
-        return userRepository.save(user);
-    }
-
-    @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
@@ -75,7 +61,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Username " + username + " not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Invalid username or password ?"));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 getAuthorities(user));
     }
@@ -89,5 +75,18 @@ public class UserServiceImpl implements UserService {
         return authorities;
     }
 
-
+    @Override
+    public User save(UserDto userDto) {
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setEmail(userDto.getEmail());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setPhone(userDto.getPhone());
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByRoleName("USER"));
+        user.setRoles(roles);
+        return userRepository.save(user);
+    }
 }
