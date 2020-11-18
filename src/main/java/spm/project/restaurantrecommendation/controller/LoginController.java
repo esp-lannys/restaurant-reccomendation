@@ -4,6 +4,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -42,7 +43,8 @@ public class LoginController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/index")
-    public String getAdminPage() {
+    public String getAdminPage(Model model) {
+        model.addAttribute("listRestaurants","listRestaurants");
         return "admin/index";
     }
 
