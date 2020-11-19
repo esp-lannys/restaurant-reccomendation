@@ -9,11 +9,27 @@ $(document).ready(function(){
                $("button").removeClass("active");
                $(this).addClass("active");
 
-               if($(this).val() == 'Restaurants') {
-                list.html("<p>This is list of Restaurant</p>");
+               if ($(this).val() == 'Restaurants') {
+                   $.ajax({
+                           type: "GET",
+                           url: "/fragments/listRestaurants",
+                           data: { },
+                           success: function(data){
+                               console.log(data);
+                               list.html(data);
+                           }
+                       });
                } else {
-                 list.html("<p>This is list of Accounts</p>");
+                   $.ajax({
+                           type: "GET",
+                           url: "/fragments/listAccounts",
+                           data: { },
+                           success: function(data){
+                               console.log(data);
+                               list.html(data);
+                           }
+                       });
                }
        }
-   }); 
+   });
 });

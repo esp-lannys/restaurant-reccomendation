@@ -20,9 +20,9 @@ public class LoginController {
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
     @GetMapping({ "/" })
     public String getIndexPage() {
-
         return "index-test";
     }
+
 
     @GetMapping("/user")
     public String userPage() {
@@ -43,9 +43,20 @@ public class LoginController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/index")
-    public String getAdminPage(Model model) {
-        model.addAttribute("listRestaurants","listRestaurants");
+    public String getAdminPage() {
         return "admin/index";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/fragments/listRestaurants")
+    public String getListRestaurants() {
+        return "admin/fragments/listRestaurants";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/fragments/listAccounts")
+    public String getlistAccounts() {
+        return "admin/fragments/listAccounts";
     }
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
