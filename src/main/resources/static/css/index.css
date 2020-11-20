@@ -160,26 +160,11 @@ h1 {
   border-radius: 2px;
   filter: brightness(50%);
 }
-.col-sm-food {
-  position: relative;
-  height: 32%;
-  width: 19%;
-  border-radius: 1px;
-  margin-right: 10px;
-  transition: 0.4s;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(223, 223, 223, 0.19);
-}
-.col-sm-food:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(27, 12, 233, 0.19);
-  transform: scale(1.1);
-}
+
 .joinUs {
   padding-top: 2%;
   padding-bottom: 2%;
-  padding-left: 7%;
-  padding-right: 7%;
+
   position: relative;
 }
 .imgjoin {
@@ -204,4 +189,8 @@ footer {
   padding: 10%;
   color: white;
   background-color: #203850;
+}
+.row {
+  width: 100%;
+  margin: 0px;
 }
