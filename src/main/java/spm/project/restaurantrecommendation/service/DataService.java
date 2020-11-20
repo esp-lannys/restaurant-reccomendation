@@ -38,13 +38,13 @@ public class DataService implements ApplicationListener<ContextRefreshedEvent> {
             User admin = new User();
             admin.setId((long) 1);
             admin.setFirstName("ADMIN");
-            admin.setLastName("");
+            admin.setLastName("TEST");
             admin.setPhone("0886282283");
             admin.setUsername("admin");
             admin.setEmail("nphoangtu@gmail.com");
             admin.setPassword(passwordEncoder.encode("admin"));
-            Date date = new Date();
-            long time = date.getTime();
+            Date date1 = new Date();
+            long time = date1.getTime();
             Timestamp ts = new Timestamp(time);
             admin.setCreatedAt(ts);
             admin.setUpdatedAt(ts);
@@ -52,6 +52,26 @@ public class DataService implements ApplicationListener<ContextRefreshedEvent> {
             roles.add(roleRepository.findByRoleName("ADMIN"));
             admin.setRoles(roles);
             userRepository.save(admin);
+        }
+
+        if (userRepository.findByUsername("user") == null) {
+            User user = new User();
+            user.setId((long) 1);
+            user.setFirstName("USER");
+            user.setLastName("TEST");
+            user.setPhone("0886282283");
+            user.setUsername("user");
+            user.setEmail("user@user.com");
+            user.setPassword(passwordEncoder.encode("user"));
+            Date date = new Date();
+            long time1 = date.getTime();
+            Timestamp ts = new Timestamp(time1);
+            user.setCreatedAt(ts);
+            user.setUpdatedAt(ts);
+            HashSet<Role> roles = new HashSet<>();
+            roles.add(roleRepository.findByRoleName("USER"));
+            user.setRoles(roles);
+            userRepository.save(user);
         }
     }
 }

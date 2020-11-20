@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-<!--<div sec:authentication="principal.authorities"></div>-->
+<div sec:authentication="name"></div>
+<a th:href="@{/user-profile}"></a>
 <li style="align-items: center" sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
 
 

@@ -31,7 +31,7 @@ public class LoginController {
 
     @GetMapping("/admin")
     public String adminPage() {
-        return "redirect:/";
+        return "redirect:/admin/index";
     }
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
