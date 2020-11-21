@@ -1,20 +1,21 @@
 package spm.project.restaurantrecommendation.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import spm.project.restaurantrecommendation.service.UserService;
 
 // :::::::::::::::::::::::::::::::::::::::::
 // :::::::::: author : @nphoangtu ::::::::::
 // :::::::::::::::::::::::::::::::::::::::::
 
 @Controller
-public class UserUpdateProfileController {
+public class UserController {
+    @Autowired
+    private UserService userService;
 
-    @GetMapping("/user-profile")
-    public String showProfilePage() {
-        return "user-profile";
+    @GetMapping("/user")
+    public String userPage() {
+        return "redirect:/";
     }
-
-    @GetMapping("/user-update-profile")
-    public String showUpdatePage() {return "user-update-profile";}
 }

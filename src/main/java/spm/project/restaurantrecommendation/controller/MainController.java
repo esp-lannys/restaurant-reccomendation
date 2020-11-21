@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 @Controller
 public class MainController {
 
@@ -15,4 +19,10 @@ public class MainController {
     public String root(Principal principal, Authentication auth){
         return "index";
     }
+
+
+    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+    @GetMapping("/403")
+    public String get403Page() {  return "403"; }
+
 }

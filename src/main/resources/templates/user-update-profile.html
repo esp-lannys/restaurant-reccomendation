@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="up.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}">
 
 <title>User Profile</title>
 </head>
@@ -24,7 +24,7 @@
 									</div>
 
 									<input class="input100" type="text" name="Name"
-										placeholder="Name" /> <a class="txt2" href="Userprofile.html">Done</a>
+										placeholder="Name" /> <a class="txt2" th:href="@{/user-update-profile}">Done</a>
 
 								</div>
 							</div>

@@ -11,6 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
     @Override
     public void initialize(ValidPassword validPassword) {
