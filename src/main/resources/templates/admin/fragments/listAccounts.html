@@ -1,5 +1,12 @@
 <div xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
+    <th:block th:if="${#lists.isEmpty(users)}">
+        <div class="table">
+            <h1>No User Available</h1>
+        </div>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(users)}">
     <table th:fragment="listAccounts" class="table" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -27,4 +34,5 @@
         </tr>
         </tbody>
     </table>
+    </th:block>
 </div>

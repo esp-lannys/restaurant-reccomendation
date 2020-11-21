@@ -48,7 +48,7 @@ public class AdminController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/fragments/listAccounts")
-    public String getlistAccounts(Model model) {
+    public String getListAccounts(Model model) {
         model.addAttribute("users", userService.findAll());
         return "admin/fragments/listAccounts";
     }

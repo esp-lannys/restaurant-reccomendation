@@ -20,66 +20,19 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-
-<<<<<<< HEAD
     @Autowired
     private UserService userService;
 
-    @GetMapping("/admin/home")
-    public String getIndexPage() {
-        return "admin/index";
-    }
-
-        @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-        @GetMapping({"/"})
-        public String getIndexPage (Principal principal, Authentication authentication){
-            return "index-test";
-
-        }
-        @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-        @GetMapping("/login")
-        public String login () {
+    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+    @GetMapping("/login")
+    public String login () {
             return "login";
         }
 
-        @GetMapping("/login-test")
-        public String getLoginPage () {
-            return "login-test";
-        }
-
-        @GetMapping("/resetpassword")
-        public String getResetPasswordPage () {
+    @GetMapping("/resetpassword")
+    public String getResetPasswordPage () {
             return "resetpass";
         }
 
-        @GetMapping("/registration-test")
-        public String getRegistrationTestPage () {
-            return "registration-test";
-        }
-
-
-//    @GetMapping("/users")
-//    public List<User> getAllUser() { return userService.findAll(); }
-
-        @GetMapping("/admin/index")
-        public String getAdminPage () {
-            return "admin/index";
-        }
-
-        @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-        @GetMapping("/403")
-        public String get403Page () {
-            return "403";
-        }
-
-=======
-    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-    @GetMapping("/login")
-    public String login(){ return "login"; }
-
-    @GetMapping("/resetpassword")
-    public String getResetPasswordPage() { return "resetpass"; }
-
->>>>>>> staging
 
 }
