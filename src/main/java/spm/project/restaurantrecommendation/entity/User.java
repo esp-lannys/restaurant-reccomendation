@@ -1,9 +1,7 @@
 package spm.project.restaurantrecommendation.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
@@ -13,9 +11,8 @@ import java.util.Set;
 import javax.persistence.Table;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "users")
 public class User implements Serializable {
 
@@ -25,25 +22,33 @@ public class User implements Serializable {
     private Long id;
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "phone")
     private String phone;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "username")
     private String username;
+
     @Column(name = "password")
     private String password;
+
     @CreationTimestamp
     private Timestamp createdAt;
+
     @UpdateTimestamp
     private Timestamp updatedAt;
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST} , fetch = FetchType.LAZY)
+
+    @ManyToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
     @JoinTable(
             name="user_role",
-            joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
-            inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
+            joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="role_id"))
     private Set<Role> roles;
 
     @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "user")

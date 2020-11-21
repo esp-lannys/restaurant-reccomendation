@@ -14,8 +14,6 @@ public class Restaurant {
     private String name;
     private String address;
     private String phone;
-    private Long longitude;
-    private Long latitude;
     private String img;
 
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")

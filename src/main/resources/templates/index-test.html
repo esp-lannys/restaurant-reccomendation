@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>RESTAURANT RECOMMENDATION</title>
 </head>
 <body>
-<p>Hello <span sec:authentication="principal.name"> User</span></p>
-<div sec:authentication="principal.authorities"></div>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<div sec:authentication="name"></div>
+<a th:href="@{/user-profile}"></a>
 <li style="align-items: center" sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+
 
 </body>
 </html>
