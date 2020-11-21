@@ -18,7 +18,7 @@ public class LoginController {
 
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-    @GetMapping({ "/" })
+    @GetMapping({ "/home" })
     public String getIndexPage() {
         return "index-test";
     }
