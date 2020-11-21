@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 @Controller
 public class MainController {
 
