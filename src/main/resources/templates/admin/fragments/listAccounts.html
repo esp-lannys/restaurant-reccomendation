@@ -1,33 +1,29 @@
-<div xmlns:th="http://www.thymeleaf.org">
+<div xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
     <table th:fragment="listAccounts" class="table" cellspacing="0" width="100%">
         <thead>
         <tr>
-            <th class="th-sm">Id
+            <th class="th-sm">First Name
+            </th>
+            <th class="th-sm">Last Name
+            </th>
+            <th class="th-sm">Email
             </th>
             <th class="th-sm">Username
             </th>
-            <th class="th-sm">Password
-            </th>
             <th class="th-sm">Phone Number
-            </th>
-            <th class="th-sm">Address
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>Tucubu</td>
-            <td>anhyeuem</td>
-            <td>077525539</td>
-            <td>Go Vap</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Luancunho</td>
-            <td>emyeuanh</td>
-            <td>0252885417</td>
-            <td>Tan Binh</td>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.firstName}">First Name</td>
+            <td th:text="${user.lastName}">Last Name</td>
+            <td th:text="${user.email}">Email</td>
+            <td th:text="${user.username}">Username</td>
+            <td th:text="${user.phone}">Phone Number</td>
+            <td><a href="#" class="btn btn-info">EDIT</a></td>
+            <td><a href="#" class="btn btn-danger">DELETE</a></td>
         </tr>
         </tbody>
     </table>
