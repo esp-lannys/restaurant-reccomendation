@@ -34,15 +34,15 @@ hr {
 }
 
 .header-search {
-  background-image: url(../images/banner.jpg);
-  position: relative;
-  background-blend-mode: lighten;
-  width: auto;
-  height: 31.3875%;
-  padding-left: 2.25%;
-  padding-right: 2.25%;
-  padding-top: 6%;
-  padding-bottom: 6%;
+	background-image: url(../images/banner.jpg);
+	background-size: 100%;
+	position: relative;
+	background-blend-mode: lighten;
+	width: auto;
+	height: 31.3875%;
+	padding-left: 2.25%;
+	padding-right: 2.25%;
+	padding-top: 6%;
 }
 
 .btn {
@@ -102,6 +102,7 @@ h1 {
   padding-left: 2%;
   border-bottom: 1px solid;
 }
+
 #getLoc {
   padding: 0.7875%;
   color: white;
@@ -200,6 +201,7 @@ h1 {
   padding-bottom: 2%;
   padding-left: 0;
   padding-right: 0;
+  overflow: hidden;
   position: relative;
 }
 .imgjoin {
@@ -221,7 +223,7 @@ h1 {
   border: none;
 }
 footer {
-  padding: 10%;
+  padding: 5% 10%;
   color: white;
   background-color: #203850;
 }
@@ -231,141 +233,45 @@ footer {
   padding-top: 3%;
 }
 
-form {
-  width: 100%;
-  max-width: 1290px;
+.search-sec{
+    padding: 2rem;
 }
-
-form legend {
-  font-size: 72px;
-  line-height: 1;
-  color: #fff;
-  margin-bottom: 60px;
-}
-
-form .inner-form {
-  padding: 50px 47px;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-form .inner-form .input-field {
-  margin-right: 30px;
-  height: 68px;
-}
-
-form .inner-form .input-field input {
-  height: 100%;
-  background: #fff;
-  border-radius: 0.5px;
-  border: 0;
-  display: block;
-  width: 100%;
-  padding: 10px 32px;
-  font-size: 20px;
-}
-
-form .inner-form .input-field input.placeholder {
-  color: #9a9a9a;
-  font-size: 20px;
-}
-
-form .inner-form .input-field input:-moz-placeholder {
-  color: #9a9a9a;
-  font-size: 20px;
-}
-
-form .inner-form .input-field input::-webkit-input-placeholder {
-  color: #9a9a9a;
-  font-size: 20px;
-}
-
-form .inner-form .input-field input:hover,
-form .inner-form .input-field input:focus {
-  box-shadow: none;
-  outline: 0;
-}
-
-form .inner-form .input-field.first-wrap {
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-form .inner-form .input-field.second-wrap {
-  width: 32.77%;
-  min-width: 180px;
-}
-
-form .inner-form .input-field.third-wrap {
-  width: 180px;
-  margin-right: 0;
-}
-
-form .inner-form .input-field.third-wrap .btn-search {
-  height: 100%;
-  width: 100%;
-  background: #4272d7;
-  white-space: nowrap;
-  border-radius: 0.5px;
-  font-size: 20px;
-  color: #fff;
-  transition: all 0.2s ease-out, color 0.2s ease-out;
-  border: 0;
-  cursor: pointer;
-}
-
-form .inner-form .input-field.third-wrap .btn-search:hover {
-  background: #2d62d3;
-}
-
-@media screen and (max-width: 992px) {
-  form legend {
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  form .inner-form {
-    padding: 30px 35px;
-  }
-  form .inner-form .input-field {
-    height: 50px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  form legend {
-    font-size: 40px;
-    margin-bottom: 40px;
-  }
-  form .inner-form {
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 20px;
-  }
-  form .inner-form .input-field {
-    margin-right: 0;
-  }
-  form .inner-form .input-field input {
-    padding: 5px 15px;
-    font-size: 16px;
-  }
-  form .inner-form .input-field.first-wrap {
+.search-slt{
+    display: block;
     width: 100%;
-    margin-bottom: 20px;
-  }
-  form .inner-form .input-field.second-wrap {
-    width: calc(50% - 10px);
-    min-width: auto;
-  }
-  form .inner-form .input-field.third-wrap {
-    width: calc(50% - 10px);
-  }
-  form .inner-form .input-field.third-wrap .btn-search {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
     font-size: 16px;
-  }
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+@media (min-width: 992px){
+    .search-sec{
+        position: relative;
+        top: -100px;
+    }
+}
+
+@media (min-width: 770px){
+    .search-sec{
+        position: relative;
+        top: -80px;
+    }
+}
+
+@media screen and (max-width: 860px)
+{
+    #restaurateur-heading { display: none; }
+    #restaurateur-subheading { display: none; }
 }

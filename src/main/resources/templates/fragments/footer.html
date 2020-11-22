@@ -8,12 +8,29 @@
 <div class="container-fluid" th:fragment="footer">
     <footer id="footer">
         <div class="container">
-            <h1>Become an insider</h1>
-            <br>
-            <h4>Register to be a part of us and receive up-to-date information about cuisines around you</h4>
-            <br>
-            <button type="button" class="btn btn-light">Sign up</button>
-            <br>
+
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3 mxs-3">
+                    <h3>Become an insider</h3>
+                    <br>
+                    <h4>Register to be a part of us and receive up-to-date information about cuisines around you</h4>
+                    <br>
+                    <button type="button" class="btn btn-light">Sign up</button>
+                    <br>
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <a class="text-white" th:href="@{/}">
+                        <h3>About Us</h3>
+                    </a>
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <a class="text-white" th:href="@{/}">
+                        <h3>Contact</h3>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 </div>
