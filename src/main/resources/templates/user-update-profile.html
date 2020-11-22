@@ -1,52 +1,97 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}">
-
-<title>User Profile</title>
+    <meta charset="utf-8">
+    <title>Update profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/user-profile.css">
+ 
 </head>
 <body>
-	<div class="page-content page-container" id="page-content">
-		<div class="padding">
-			<div class="row container d-flex justify-content-center">
-				<div class="col-xl-6 col-md-12">
-					<div class="card user-card-full">
-						<div class="row m-l-0 m-r-0">
-							<div class="col-sm-4 bg-c-lite-green user-profile">
-								<div class="card-block text-center text-white">
-									<div class="m-b-25">
-										<img src="https://img.icons8.com/bubbles/100/000000/user.png"
-											class="img-radius" alt="User-Profile-Image">
-									</div>
+<div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                        <ul class="meta list list-unstyled">
+                            <li class="name" style='font-size: 20px'>Rebecca Sanders
+                            </li>
+                        </ul>
+                    </div>
+            		<nav class="side-menu">
+        				<ul class="nav">
+        					<li><a href="user-profile.html"><span class="fa fa-user"></span> Profile</a></li>
+        					<li class="active"><a href="#"><span class="fa fa-cog"></span>Edit Profile</a></li>
+							<li><a href="#"><span class="fa fa-cog"></span> Change Password</a></li>
+							</ul>
+        			</nav>
+                </div>
+                <div class="content-panel">
+                    <h2 class="title">Edit Profile</h2>
+                    <form class="form-horizontal">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Personal Info</h3>
+                            <div class="form-group avatar">
+                                <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                    <img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                </figure>
+                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+                                    <input type="file" class="file-uploader pull-left">
+                                    <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="Rebecca">
+                                </div>
+                            </div>
+        
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="Rebecca">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="Sanders">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Contact Info</h3>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="email" class="form-control" value="Rebecca@website.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="0123456789">
+                                </div>
+                            </div>
 
-									<input class="input100" type="text" name="Name"
-										placeholder="Name" /> <a class="txt2" th:href="@{/user-update-profile}">Done</a>
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                <input class="btn btn-primary" type="submit" value="Update Profile">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 
-								</div>
-							</div>
-							<div class="col-sm-8">
-								<div class="card-block1">
-									<div class="row">
-										<div class="col-sm-6">
-											<p class="m-b-10 f-w-600">Email</p>
-											<input class="input100" type="email" name="email" />
-										</div>
-										<div class="col-sm-6">
-											<p class="m-b-10 f-w-600">Phone</p>
-											<input class="input100" type="tel" name="phone" />
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </body>
 </html>
