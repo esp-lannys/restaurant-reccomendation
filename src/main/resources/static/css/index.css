@@ -1,11 +1,12 @@
 body {
   background-color: #eff1f3;
+  font-size: larger;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-#body{
-	margin: 0 auto;
+#body {
+  margin: 0 auto;
 }
 
 a {
@@ -15,6 +16,7 @@ a1:hover {
   color: white;
 }
 header {
+  font-size: larger;
   background-color: white;
 }
 section {
@@ -32,30 +34,29 @@ hr {
 }
 
 .header-search {
-	background-image: url(../images/banner.jpg);
-	position: relative;
-	background-blend-mode: lighten;
-	width: auto;
-	height: 31.3875%;
-	padding-left: 2.25%;
-	padding-right: 2.25%;
-	padding-top: 6%;
-	padding-bottom: 6%;
+  background-image: url(../images/banner.jpg);
+  position: relative;
+  background-blend-mode: lighten;
+  width: auto;
+  height: 31.3875%;
+  padding-left: 2.25%;
+  padding-right: 2.25%;
+  padding-top: 6%;
+  padding-bottom: 6%;
 }
-
 
 .btn {
-	margin-right: 10px;
-	border-color: black;
-	border: none;
+  margin-right: 10px;
+  border-color: black;
+  border: none;
 }
 nav {
-	background-color: #203850;
+  background-color: #203850;
 }
 .navbar-brand {
-	font-size: 2rem;
-	font-weight: 500;
-	transition: 0.5s;
+  font-size: 3rem;
+  font-weight: 500;
+  transition: 0.5s;
 }
 .navbar-brand:hover {
   transform: scale(1.1);
@@ -95,8 +96,10 @@ h1 {
 }
 
 #checkLocation {
+  font-size: larger;
   padding-top: 2%;
   padding-bottom: 2%;
+  padding-left: 2%;
   border-bottom: 1px solid;
 }
 #getLoc {
@@ -111,7 +114,6 @@ h1 {
   transform: scale(1.1);
 }
 .listrtr {
-  padding-top: 2%;
   padding-bottom: 3%;
   padding-left: 0;
   padding-right: 0;
@@ -120,9 +122,10 @@ h1 {
   border-bottom: 1px solid;
 }
 .container {
+  max-width: 1800px;
   padding-top: 1.125%;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .imgrtr {
   height: 70%;
@@ -130,11 +133,13 @@ h1 {
   border-radius: 2px;
 }
 .name {
+  font-size: larger;
   font-weight: bolder;
   color: darkred;
   padding: 5px;
 }
 .rating {
+  color: orange;
   padding: 0.5625%;
 }
 .location {
@@ -144,6 +149,15 @@ h1 {
 #title {
   font-size: larger;
   font-weight: bold;
+}
+.title.mb-2 {
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  pointer-events: none;
+}
+.title:hover {
+  text-emphasis: none;
 }
 .col-sm {
   height: 100%;
@@ -214,7 +228,7 @@ footer {
 .row {
   width: 100%;
   margin: 0px;
-  padding: 0px;
+  padding-top: 3%;
 }
 
 form {
@@ -235,9 +249,9 @@ form .inner-form {
   display: flex;
   width: 100%;
   -ms-flex-pack: justify;
-      justify-content: space-between;
+  justify-content: space-between;
   -ms-flex-align: center;
-      align-items: center;
+  align-items: center;
 }
 
 form .inner-form .input-field {
@@ -248,7 +262,7 @@ form .inner-form .input-field {
 form .inner-form .input-field input {
   height: 100%;
   background: #fff;
-  border-radius: .5px;
+  border-radius: 0.5px;
   border: 0;
   display: block;
   width: 100%;
@@ -271,14 +285,15 @@ form .inner-form .input-field input::-webkit-input-placeholder {
   font-size: 20px;
 }
 
-form .inner-form .input-field input:hover, form .inner-form .input-field input:focus {
+form .inner-form .input-field input:hover,
+form .inner-form .input-field input:focus {
   box-shadow: none;
   outline: 0;
 }
 
 form .inner-form .input-field.first-wrap {
   -ms-flex-positive: 1;
-      flex-grow: 1;
+  flex-grow: 1;
 }
 
 form .inner-form .input-field.second-wrap {
@@ -296,10 +311,10 @@ form .inner-form .input-field.third-wrap .btn-search {
   width: 100%;
   background: #4272d7;
   white-space: nowrap;
-  border-radius: .5px;
+  border-radius: 0.5px;
   font-size: 20px;
   color: #fff;
-  transition: all .2s ease-out, color .2s ease-out;
+  transition: all 0.2s ease-out, color 0.2s ease-out;
   border: 0;
   cursor: pointer;
 }
@@ -329,7 +344,7 @@ form .inner-form .input-field.third-wrap .btn-search:hover {
   }
   form .inner-form {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     padding: 20px;
   }
   form .inner-form .input-field {
@@ -354,4 +369,3 @@ form .inner-form .input-field.third-wrap .btn-search:hover {
     font-size: 16px;
   }
 }
-
