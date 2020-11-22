@@ -55,8 +55,14 @@ hr {
 #btn-header {
   font-size: 1.25rem;
 }
+.bg-light {
+  background-color: white !important;
+}
 nav {
   background-color: #203850;
+}
+.navbar-light .navbar-brand {
+  color: black;
 }
 .navbar-brand {
   margin-left: 2%;
@@ -69,6 +75,9 @@ nav {
 }
 .navbar-collapse {
   height: 120%;
+}
+#logo {
+  width: 17%;
 }
 input {
   outline: none;
@@ -245,6 +254,9 @@ h1 {
   color: white;
   background-color: #28a745;
   border: none;
+}
+#btn-footer:hover {
+  background-color: #359474;
 }
 footer {
   padding: 5% 10%;

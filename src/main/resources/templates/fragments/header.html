@@ -6,71 +6,10 @@
 </head>
 <body>
     <header th:fragment="header">
-        <!--NAVBAR SECTION-->
-        <!--
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" th:href="@{/}">GOURMETTE</a>
-                <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"
-                            >Home <span class="sr-only"></span
-                            ></a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a
-                                    class="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                            >
-                                Area
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Quận 1</a>
-                                <a class="dropdown-item" href="#">Quận 2</a>
-                                <a class="dropdown-item" href="#">Quận 3</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                    class="nav-link"
-                                    href="#footer"
-                                    tabindex="-1"
-
-                            >Contact Us</a
-                            >
-                        </li>
-                    </ul>
-
-                    <button type="button" class="btn btn-light">Sign in</button>
-                    <button type="button" class="btn btn-dark">Sign up</button>
-
-                </div>
-            </div>
-        </nav>
-        -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container" id="container-header">
-                <a class="navbar-brand" th:href="@{/}">GOURMETTE</a>
+                
+                <a class="navbar-brand" th:href="@{/}"> <img id="logo" th:src="@{/images/logo.png}" alt=""> GOURMETTE</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -91,69 +30,6 @@
         <div class="header-search align-self-center justify-content-center">
             <div class="container-fluid text-center">
                 <h1 id="headtitle">FIND YOUR TABLE FOR ANY LOCATION</h1>
-                <!--
-                <form class="search-bar">
-                    <span class="search-bar-opt">
-                      <span class="search-bar dropdown">
-                        <button
-                                class="btn btn-blue"
-                                href="#"
-                                role="button"
-                                data-toggle="dropdown"
-                        >
-                          Location
-                          <svg
-                                  width="1em"
-                                  height="1em"
-                                  viewBox="0 0 16 16"
-                                  class="bi bi-arrow-down-short"
-                                  fill="currentColor"
-                                  xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                                    fill-rule="evenodd"
-                                    d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
-                            />
-                          </svg>
-                        </button>
-
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Quận 1</a>
-                          <a class="dropdown-item" href="#">Quận 2</a>
-                          <a class="dropdown-item" href="#">Quận 3</a>
-                        </div>
-                      </span>
-                    </span>
-                    <span class="search-bar-opt">
-                      <span class="search-bar box">
-                        <svg
-                                width="1em"
-                                height="1em"
-                                viewBox="0 0 16 16"
-                                class="bi bi-search"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                                  fill-rule="evenodd"
-                                  d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
-                          />
-                          <path
-                                  fill-rule="evenodd"
-                                  d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
-                          />
-                        </svg>
-                        <input
-                                type="text"
-                                placeholder="Location, Restaurant, etc "
-                        />
-                      </span>
-                    </span>
-                    <span class="search-bar-opt">
-                      <button type="button" class="btn btn-red">Let's go</button>
-                    </span>
-                </form>
-                -->
                 <div class="search-sec">
                     <div class="container">
                         <form action="#" method="post" novalidate="novalidate">
