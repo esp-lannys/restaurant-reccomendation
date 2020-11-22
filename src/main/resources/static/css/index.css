@@ -32,17 +32,19 @@ hr {
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
 }
-
+#headtitle {
+  font-size: 3.5rem;
+}
 .header-search {
-	background-image: url(../images/banner.jpg);
-	background-size: 100%;
-	position: relative;
-	background-blend-mode: lighten;
-	width: auto;
-	height: 31.3875%;
-	padding-left: 2.25%;
-	padding-right: 2.25%;
-	padding-top: 6%;
+  background-image: url(../images/banner.jpg);
+  background-size: 100%;
+  position: relative;
+  background-blend-mode: lighten;
+  width: auto;
+  height: 31.3875%;
+  padding-left: 2.25%;
+  padding-right: 2.25%;
+  padding-top: 6%;
 }
 
 .btn {
@@ -50,10 +52,14 @@ hr {
   border-color: black;
   border: none;
 }
+#btn-header {
+  font-size: 1.25rem;
+}
 nav {
   background-color: #203850;
 }
 .navbar-brand {
+  margin-left: 2%;
   font-size: 3rem;
   font-weight: 500;
   transition: 0.5s;
@@ -61,18 +67,20 @@ nav {
 .navbar-brand:hover {
   transform: scale(1.1);
 }
+.navbar-collapse {
+  height: 120%;
+}
 input {
   outline: none;
   border: none;
 }
-.search-bar {
+.btn-light {
   color: black;
-  margin: 0 auto;
-  padding: 7px;
-  border-radius: 4px;
-  background-color: white;
-  width: 60%;
-  height: 20%;
+  background-color: #bfc5c5c5;
+}
+.btn-light:hover {
+  color: white;
+  background-color: #1d4b3c;
 }
 .btn-red {
   color: white;
@@ -109,7 +117,7 @@ h1 {
 #getLoc {
   padding: 0.7875%;
   color: white;
-  background-color: #203850;
+  background-color: #205042;
   margin-right: 0.5625%;
   margin-left: 0.5625%;
   border-style: none;
@@ -118,6 +126,7 @@ h1 {
 }
 #getLoc:hover {
   transform: scale(1.1);
+  background-color: #379c79;
 }
 .listrtr {
   padding-bottom: 3%;
@@ -132,6 +141,9 @@ h1 {
   padding-top: 1.125%;
   padding-left: 10px;
   padding-right: 10px;
+}
+#container-header {
+  padding-top: 0px;
 }
 .imgrtr {
   height: 70%;
@@ -207,12 +219,12 @@ h1 {
   padding-bottom: 2%;
   padding-left: 0;
   padding-right: 0;
-<<<<<<< HEAD
+
   overflow: hidden;
-=======
+
   margin-right: 3%;
   margin-left: 3%;
->>>>>>> 08fb5d841a53f6c66a64c58dcfc0bf4114eea662
+
   position: relative;
 }
 .imgjoin {
@@ -222,6 +234,7 @@ h1 {
   border-radius: 5px;
   filter: brightness(50%);
 }
+
 .btn-join {
   font-size: larger;
   position: absolute;
@@ -230,13 +243,13 @@ h1 {
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  background-color: #da3743;
+  background-color: #28a745;
   border: none;
 }
 footer {
   padding: 5% 10%;
   color: white;
-  background-color: #203850;
+  background-color: #1d4b3c;
 }
 .row {
   width: 100%;
@@ -244,45 +257,49 @@ footer {
   padding-top: 3%;
 }
 
-.search-sec{
-    padding: 2rem;
+.search-sec {
+  padding: 2rem;
 }
-.search-slt{
-    display: block;
-    width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-.wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-@media (min-width: 992px){
-    .search-sec{
-        position: relative;
-        top: -100px;
-    }
+.search-slt {
+  display: block;
+  width: 98%;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius: 5px;
 }
 
-@media (min-width: 770px){
-    .search-sec{
-        position: relative;
-        top: -80px;
-    }
+.wrn-btn {
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius: 5;
+}
+@media (min-width: 992px) {
+  .search-sec {
+    position: relative;
+    top: -100px;
+  }
 }
 
-@media screen and (max-width: 860px)
-{
-    #restaurateur-heading { display: none; }
-    #restaurateur-subheading { display: none; }
+@media (min-width: 770px) {
+  .search-sec {
+    position: relative;
+    top: -80px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  #restaurateur-heading {
+    display: none;
+  }
+  #restaurateur-subheading {
+    display: none;
+  }
 }
