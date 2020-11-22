@@ -46,7 +46,9 @@ hr {
   padding-right: 2.25%;
   padding-top: 6%;
 }
-
+svg {
+  padding-bottom: 2px;
+}
 .btn {
   margin-right: 10px;
   border-color: black;
