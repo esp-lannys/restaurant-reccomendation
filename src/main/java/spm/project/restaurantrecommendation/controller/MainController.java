@@ -38,6 +38,16 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping({"/contact"})
+    public String getContact(){
+        return "contact";
+    }
+
+    @GetMapping({"/about"})
+    public String getAbout(){
+        return "about";
+    }
+
     ////////////////////////////
     //////////////////////////// 403 PAGE
     ////////////////////////////
