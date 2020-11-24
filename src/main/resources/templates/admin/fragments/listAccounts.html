@@ -13,6 +13,10 @@
             </th>
             <th class="th-sm">Phone Number
             </th>
+            <th class="th-sm">Created At
+            </th>
+            <th class="th-sm">Updated At
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -22,6 +26,8 @@
             <td th:text="${user.email}">Email</td>
             <td th:text="${user.username}">Username</td>
             <td th:text="${user.phone}">Phone Number</td>
+            <td th:text="${user.createdAt}">Created At</td>
+            <td th:text="${user.updatedAt}">Updated At</td>
             <td><a href="#" class="btn btn-outline-info">EDIT</a></td>
             <td><a href="#" class="btn btn-outline-danger">DELETE</a></td>
         </tr>

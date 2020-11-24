@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spm.project.restaurantrecommendation.dto.UserDto;
+import spm.project.restaurantrecommendation.entity.PasswordResetToken;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.repository.PasswordResetTokenRepository;
@@ -56,6 +57,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public PasswordResetToken findByToken(String token) {
+        return tokenRepository.findByToken(token);
     }
 
 

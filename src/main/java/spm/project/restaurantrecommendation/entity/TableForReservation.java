@@ -1,11 +1,15 @@
 package spm.project.restaurantrecommendation.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "table_for_reservation")
 public class TableForReservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,13 +1,19 @@
 package spm.project.restaurantrecommendation.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "rating")
 public class Rating{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
