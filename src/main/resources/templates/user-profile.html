@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>User profile</title>
@@ -24,7 +24,7 @@
             		<nav class="side-menu">
         				<ul class="nav">
         					<li class="active"><a href="#"><span class="fa fa-user"></span> Profile</a></li>
-								<li><a href="user-update-profile.html"><span class="fa fa-cog"></span> Edit Profile</a></li>
+								<li><a th:href="@{/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
 								<li><a href="#"><span class="fa fa-cog"></span> Change Password</a></li>
         				</ul>
         			</nav>
