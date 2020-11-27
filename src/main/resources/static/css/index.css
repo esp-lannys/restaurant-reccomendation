@@ -28,9 +28,7 @@ section {
   background-color: white;
 }
 
-#sign-btn {
-  font-size: 1.5rem;
-}
+
 
 #navbar-header {
   margin-right: 50px;
@@ -67,6 +65,7 @@ svg {
 }
 
 .btn {
+  margin-top: 6px;
   margin-right: 10px;
   border-color: black;
   border: none;
@@ -113,8 +112,13 @@ input {
 }
 
 .btn-light {
+  font-size: 1.5rem;
   color: black;
   background-color: #bfc5c5c5;
+}
+
+.btn-success {
+  font-size: 1.5rem;
 }
 
 .btn-light:hover {

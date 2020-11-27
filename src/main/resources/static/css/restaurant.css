@@ -364,7 +364,7 @@ nav {
   height: 120%;
 }
 
-#logo {
+.logo {
   width: 17%;
 }
 
@@ -374,8 +374,13 @@ input {
 }
 
 .btn-light {
+  font-size: 1.5rem;
   color: black;
   background-color: #bfc5c5c5;
+}
+
+.btn-success {
+  font-size: 1.5rem;
 }
 
 .btn-light:hover {

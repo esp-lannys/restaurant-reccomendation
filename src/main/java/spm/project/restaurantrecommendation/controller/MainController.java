@@ -32,8 +32,8 @@ public class MainController {
     ////////////////////////////
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-    @GetMapping({"/"})
-    public String root(Principal principal, Authentication authentication, ModelMap map){
+    @GetMapping({ "/" })
+    public String root(Principal principal, Authentication authentication, ModelMap map) {
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -47,14 +47,19 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping({"/contact"})
-    public String showContactPage(){
+    @GetMapping({ "/contact" })
+    public String showContactPage() {
         return "contact";
     }
 
-    @GetMapping({"/about"})
-    public String showAboutPage(){
+    @GetMapping({ "/about" })
+    public String showAboutPage() {
         return "about";
+    }
+
+    @GetMapping({ "/restaurant" })
+    public String getRestaurant() {
+        return "restaurant";
     }
 
     ////////////////////////////
@@ -63,7 +68,9 @@ public class MainController {
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
     @GetMapping("/403")
-    public String get403Page() {  return "403"; }
+    public String get403Page() {
+        return "403";
+    }
 
     private String getPrincipal() {
         String userName = null;
