@@ -7,15 +7,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import spm.project.restaurantrecommendation.dto.LocationDto;
-import spm.project.restaurantrecommendation.entity.Location;
 import spm.project.restaurantrecommendation.service.LocationService;
-
 import java.security.Principal;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -54,12 +48,12 @@ public class MainController {
     }
 
     @GetMapping({"/contact"})
-    public String getContact(){
+    public String showContactPage(){
         return "contact";
     }
 
     @GetMapping({"/about"})
-    public String getAbout(){
+    public String showAboutPage(){
         return "about";
     }
 
