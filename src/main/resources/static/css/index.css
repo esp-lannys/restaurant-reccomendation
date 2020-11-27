@@ -117,13 +117,13 @@ input {
 }
 
 .btn-light {
-  font-size: 1.5rem;
+  font-size: 0.8rem;
   color: black;
   background-color: #bfc5c5c5;
 }
 
 .btn-success {
-  font-size: 1.5rem;
+  font-size: 0.8rem;
 }
 
 .btn-light:hover {
