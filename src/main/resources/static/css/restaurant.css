@@ -345,6 +345,10 @@ nav {
   color: black;
 }
 
+#navbar-header {
+  margin-right: 50px;
+}
+
 #navbarResponsive {
   margin-right: 5%;
 }
@@ -405,6 +409,8 @@ input {
 }
 
 .container-fluid {
+  margin-top: 110%;
+  position: sticky;
   color: white;
   padding: 0;
 }
