@@ -43,7 +43,7 @@ public class DataService implements ApplicationListener<ContextRefreshedEvent> {
             admin.setId((long) 1);
             admin.setFirstName("ADMIN");
             admin.setLastName("TEST");
-            admin.setPhone("0886282283");
+            admin.setPhone("099999911");
             admin.setUsername("admin");
             admin.setEmail("nphoangtu@gmail.com");
             admin.setPassword(passwordEncoder.encode("admin"));
@@ -60,10 +60,10 @@ public class DataService implements ApplicationListener<ContextRefreshedEvent> {
 
         if (userRepository.findByUsername("user") == null) {
             User user = new User();
-            user.setId((long) 1);
+            user.setId((long) 2);
             user.setFirstName("USER");
             user.setLastName("TEST");
-            user.setPhone("0886282283");
+            user.setPhone("0099924612");
             user.setUsername("user");
             user.setEmail("user@user.com");
             user.setPassword(passwordEncoder.encode("user"));

@@ -12,7 +12,7 @@ $(document).ready(function(){
                if ($(this).val() == 'Restaurants') {
                    $.ajax({
                            type: "GET",
-                           url: "/fragments/listRestaurants",
+                           url: "/admin/listRestaurants",
                            data: { },
                            success: function(data){
                                console.log(data);
@@ -22,7 +22,7 @@ $(document).ready(function(){
                } else {
                    $.ajax({
                            type: "GET",
-                           url: "/fragments/listAccounts",
+                           url: "/admin/listAccounts",
                            data: { },
                            success: function(data){
                                console.log(data);

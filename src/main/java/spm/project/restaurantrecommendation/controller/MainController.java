@@ -7,15 +7,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import spm.project.restaurantrecommendation.dto.LocationDto;
-import spm.project.restaurantrecommendation.entity.Location;
 import spm.project.restaurantrecommendation.service.LocationService;
-
 import java.security.Principal;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -38,8 +32,8 @@ public class MainController {
     ////////////////////////////
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-    @GetMapping({ "/" })
-    public String root(Principal principal, Authentication authentication, ModelMap map) {
+    @GetMapping({"/"})
+    public String root(Principal principal, Authentication authentication, ModelMap map){
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -53,19 +47,14 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping({ "/contact" })
-    public String getContact() {
+    @GetMapping({"/contact"})
+    public String showContactPage(){
         return "contact";
     }
 
-    @GetMapping({ "/about" })
-    public String getAbout() {
+    @GetMapping({"/about"})
+    public String showAboutPage(){
         return "about";
-    }
-
-    @GetMapping("/restaurant")
-    public String getRestaurantPage() {
-        return "restaurtant";
     }
 
     ////////////////////////////
@@ -74,9 +63,7 @@ public class MainController {
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
     @GetMapping("/403")
-    public String get403Page() {
-        return "403";
-    }
+    public String get403Page() {  return "403"; }
 
     private String getPrincipal() {
         String userName = null;
