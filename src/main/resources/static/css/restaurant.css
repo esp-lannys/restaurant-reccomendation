@@ -1,13 +1,277 @@
 body {
+  width: 100%;
   background-color: #eff1f3;
   font-size: larger;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+#banner,
+#restaurant {
+  position: absolute;
+}
+
+#banner {
+  width: 100%;
+}
+
+#restaurant {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#totalRestaurant {
+  padding: 10%;
+  margin-top: 15%;
+}
+
+#hr {
+  width: auto;
+}
+
+#overview {
+  border-radius: 3px;
+  padding: 2%;
+  background-color: white;
+}
+
+#makeReservation {
+  border-radius: 5px;
+  padding: 5%;
+  background-color: white;
+  transition: 0.4s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(223, 223, 223, 0.19);
+}
+
+#makeReservation:hover {
+  transform: scale(1.1);
+}
+
+#rsvForm {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.inputDate {
+  font-size: 0.9rem;
+  width: 100%;
+  transition: 0.5s;
+}
+
+.inputDate:hover {
+  background-color: rgb(192, 192, 192);
+}
+
+.label {
+  font-size: medium;
+  font-weight: bolder;
+}
+
+#tableSize {
+  font-size: 0.9rem;
+  width: 100%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  transition: 0.5s;
+}
+
+#tableSize:hover {
+  background-color: rgb(192, 192, 192);
+}
+
+#inDate {
+  padding: 0;
+  margin-bottom: 5%;
+}
+
+#date {
+  padding: 0;
+}
+
+#btn-findTable {
+  width: 100%;
+}
+
+#top-tags {
+  position: relative;
+  padding: 0.6%;
+}
+
+#tag-title {
+  color: #24a041;
+  font-size: larger;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#tag {
+  margin: 2%;
+  border-radius: 50px;
+}
+
+#restaurant-overview {
+  font-size: smaller;
+}
+
+#top-overview {
+  padding: 0;
+}
+
+#tags {
+  width: 100%;
+  padding: 0;
+}
+
+#active-link {
+  color: #24a041;
+  border-bottom: #24a041;
+}
+
+#rtrName {
+  padding: 2%;
+}
+
+.nav-link {
+  transition: 0.5s;
+}
+
+.nav-link:hover {
+  transform: scale(1.2);
+}
+
+#description {
+  text-align: justify;
+  text-justify: inter-word;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-size: large;
+}
+
+#overall-rating {
+  margin-top: 2%;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  font-size: small;
+  border: 2px solid rgb(233, 233, 233);
+  border-radius: 2px;
+}
+
+#menu {
+  color: #24a041;
+  padding: 3%;
+  font-size: medium;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
+
+.middle {
+  float: left;
+  width: 70%;
+  margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {
+  width: 60%;
+  height: 18px;
+  background-color: #4caf50;
+}
+
+.bar-4 {
+  width: 30%;
+  height: 18px;
+  background-color: #4caf50;
+}
+
+.bar-3 {
+  width: 10%;
+  height: 18px;
+  background-color: #4caf50;
+}
+
+.bar-2 {
+  width: 4%;
+  height: 18px;
+  background-color: #4caf50;
+}
+
+.bar-1 {
+  width: 15%;
+  height: 18px;
+  background-color: #4caf50;
+}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+
+  .side,
+  .middle {
+    width: 100%;
+  }
+
+  /* Hide the right column on small screens */
+  .right {
+    display: none;
+  }
+}
+
+#review-count {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: larger;
+  font-weight: 600;
+  padding: 2%;
+}
+
+#listTags {
+  width: 100%;
+}
+
+#navbar-overview {
+  font-weight: 500;
+}
 
 
 #body {
+  position: relative;
   margin: 0 auto;
 }
 
@@ -26,14 +290,6 @@ header {
 
 section {
   background-color: white;
-}
-
-#sign-btn {
-  font-size: 1.5rem;
-}
-
-#navbar-header {
-  margin-right: 50px;
 }
 
 hr {
@@ -77,6 +333,7 @@ svg {
 }
 
 .bg-light {
+
   background-color: white !important;
 }
 
@@ -86,6 +343,10 @@ nav {
 
 .navbar-light .navbar-brand {
   color: black;
+}
+
+#navbarResponsive {
+  margin-right: 5%;
 }
 
 .navbar-brand {
@@ -103,7 +364,7 @@ nav {
   height: 120%;
 }
 
-.logo {
+#logo {
   width: 17%;
 }
 
@@ -184,7 +445,7 @@ h1 {
 }
 
 .container {
-  max-width: 1800px;
+  max-width: 100%;
   padding-top: 1.125%;
   padding-left: 10px;
   padding-right: 10px;
@@ -207,8 +468,7 @@ h1 {
   padding: 5px;
 }
 
-.rating {
-  color: orange;
+#rating {
   padding: 0.5625%;
 }
 
@@ -277,12 +537,9 @@ h1 {
   padding-bottom: 2%;
   padding-left: 0;
   padding-right: 0;
-
   overflow: hidden;
-
   margin-right: 3%;
   margin-left: 3%;
-
   position: relative;
 }
 
@@ -370,40 +627,4 @@ footer {
   #restaurateur-subheading {
     display: none;
   }
-}
-
-input[type=text],
-select,
-textarea {
-  width: 100%;
-  /* Full width */
-  padding: 12px;
-  /* Some padding */
-  border: 1px solid #ccc;
-  /* Gray border */
-  border-radius: 4px;
-  /* Rounded borders */
-  box-sizing: border-box;
-  /* Make sure that padding and width stays in place */
-  margin-top: 6px;
-  /* Add a top margin */
-  margin-bottom: 16px;
-  /* Bottom margin */
-  resize: vertical
-    /* Allow the user to vertically resize the textarea (not horizontally) */
-}
-
-/* Style the submit button with a specific background color etc */
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* When moving the mouse over the submit button, add a darker green color */
-input[type=submit]:hover {
-  background-color: #45a049;
 }

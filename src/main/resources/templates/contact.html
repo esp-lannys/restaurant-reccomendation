@@ -23,12 +23,34 @@
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <h3 class="font-weight-bold">Contact</h3>
-                    <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id quam sapiente
-                        molestiae
-                        numquam quas, voluptates omnis nulla ea odio quia similique corrupti magnam, doloremque laborum.</p>
-                    <a class="btn btn-success btn-md ml-0" href="#" role="button">Start now<i class="fa fa-gem ml-2"></i></a>
+                    <div class="container">
+                        <form action="action_page.php">
+                      
+                          <label for="fname">First Name</label>
+                          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                      
+                          <label for="lname">Last Name</label>
+                          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                      
+                          <label for="country">Country</label>
+                          <select id="country" name="country">
+                            <option value="australia">Australia</option>
+                            <option value="canada">Canada</option>
+                            <option value="usa">USA</option>
+                          </select>
+                      
+                          <label for="subject">Subject</label>
+                          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                      
+                          <input type="submit" value="Send to us">
+                      
+                        </form>
+                      </div>
+                    
+                    
                 </div>
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-4" >
+                    <br><br><br><br>
                     <div class="view overlay z-depth-1-half">
                         <img src="https://images.pexels.com/photos/3655916/pexels-photo-3655916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                              class="img-fluid"
