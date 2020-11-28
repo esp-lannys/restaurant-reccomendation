@@ -62,8 +62,8 @@ public class UserUpdateProfileController {
     @GetMapping("/user/user-update-profile")
     public String showUpdatePage() {return "user-update-profile";}
 
-
-    @GetMapping("/change-password")
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/user/change-password")
     public String showChangePasswordPage() {
         return "change-password";
     }
