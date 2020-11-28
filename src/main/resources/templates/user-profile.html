@@ -1,3 +1,6 @@
+<!-- author: @khuetrien -->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="css/user-profile.css">
- 
+
 </head>
 <body>
 <div class="container">
@@ -25,7 +28,7 @@
         				<ul class="nav">
         					<li class="active"><a href="#"><span class="fa fa-user"></span> Profile</a></li>
 								<li><a th:href="@{/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
-								<li><a href="#"><span class="fa fa-cog"></span> Change Password</a></li>
+								<li><a th:href="@{/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
         				</ul>
         			</nav>
                 </div>

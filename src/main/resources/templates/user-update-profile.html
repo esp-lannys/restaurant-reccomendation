@@ -1,3 +1,6 @@
+<!-- author: @khuetrien -->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -23,9 +26,9 @@
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
-        					<li><a href="user-profile.html"><span class="fa fa-user"></span> Profile</a></li>
+        					<li><a th:href="@{/user-profile}"><span class="fa fa-user"></span> Profile</a></li>
         					<li class="active"><a href="#"><span class="fa fa-cog"></span>Edit Profile</a></li>
-							<li><a href="#"><span class="fa fa-cog"></span> Change Password</a></li>
+							<li><a th:href="@{/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
 							</ul>
         			</nav>
                 </div>

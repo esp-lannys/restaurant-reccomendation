@@ -17,4 +17,9 @@ public class UserUpdateProfileController {
 
     @GetMapping("/user-update-profile")
     public String showUpdatePage() {return "user-update-profile";}
+
+    @GetMapping("/change-password")
+    public String showChangePasswordPage() {
+        return "change-password";
+    }
 }
