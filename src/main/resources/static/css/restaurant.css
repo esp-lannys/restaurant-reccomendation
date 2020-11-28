@@ -2,17 +2,26 @@ body {
   width: 100%;
   background-color: #eff1f3;
   font-size: larger;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-#banner,
+#section {
+  position: relative;
+  background-color: white;
+
+}
+
+.banner,
 #restaurant {
   position: absolute;
 }
 
-#banner {
+.banner {
   width: 100%;
+}
+
+#footer {
+  margin-top: 2053px;
 }
 
 #restaurant {
@@ -25,7 +34,7 @@ body {
   margin-top: 15%;
 }
 
-#hr {
+.hr {
   width: auto;
 }
 
@@ -40,8 +49,7 @@ body {
   padding: 5%;
   background-color: white;
   transition: 0.4s;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(223, 223, 223, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(223, 223, 223, 0.19);
 }
 
 #makeReservation:hover {
@@ -86,7 +94,11 @@ body {
   margin-bottom: 5%;
 }
 
-#date {
+#setDate {
+  padding: 0;
+}
+
+#setTime {
   padding: 0;
 }
 
@@ -136,12 +148,20 @@ body {
   padding: 2%;
 }
 
+.rtrImg {
+  width: 100%;
+}
+
 .nav-link {
   transition: 0.5s;
 }
 
 .nav-link:hover {
   transform: scale(1.2);
+}
+
+.nav-item {
+  padding-top: 0px;
 }
 
 #description {
@@ -175,7 +195,9 @@ body {
   color: orange;
 }
 
+
 /* Three column layout */
+
 .side {
   float: left;
   width: 15%;
@@ -188,19 +210,25 @@ body {
   margin-top: 10px;
 }
 
+
 /* Place text to the right */
+
 .right {
   text-align: right;
 }
 
+
 /* Clear floats after the columns */
+
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
+
 /* The bar container */
+
 .bar-container {
   width: 100%;
   background-color: #f1f1f1;
@@ -208,7 +236,9 @@ body {
   color: white;
 }
 
+
 /* Individual bars */
+
 .bar-5 {
   width: 60%;
   height: 18px;
@@ -239,7 +269,9 @@ body {
   background-color: #4caf50;
 }
 
+
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+
 @media (max-width: 400px) {
 
   .side,
@@ -254,8 +286,7 @@ body {
 }
 
 #review-count {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: larger;
   font-weight: 600;
   padding: 2%;
@@ -269,9 +300,7 @@ body {
   font-weight: 500;
 }
 
-
 #body {
-  position: relative;
   margin: 0 auto;
 }
 
@@ -285,10 +314,6 @@ a1:hover {
 
 header {
   font-size: larger;
-  background-color: white;
-}
-
-section {
   background-color: white;
 }
 
@@ -333,7 +358,6 @@ svg {
 }
 
 .bg-light {
-
   background-color: white !important;
 }
 
@@ -354,8 +378,8 @@ nav {
 }
 
 .navbar-brand {
-  margin-left: 2%;
-  font-size: 3rem;
+  margin-left: 8%;
+  font-size: 2rem;
   font-weight: 500;
   transition: 0.5s;
 }
@@ -369,7 +393,7 @@ nav {
 }
 
 .logo {
-  width: 17%;
+  width: 16%;
 }
 
 input {
@@ -378,13 +402,15 @@ input {
 }
 
 .btn-light {
-  font-size: 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
   color: black;
   background-color: #bfc5c5c5;
 }
 
 .btn-success {
-  font-size: 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .btn-light:hover {
@@ -406,13 +432,6 @@ input {
 
 .btn-blue:hover {
   color: rgba(255, 255, 255, 0.493);
-}
-
-.container-fluid {
-  margin-top: 110%;
-  position: sticky;
-  color: white;
-  padding: 0;
 }
 
 h1 {
@@ -515,13 +534,11 @@ h1 {
   margin-right: 0.5625%;
   margin-left: 0.5625%;
   transition: 0.4s;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(223, 223, 223, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(223, 223, 223, 0.19);
 }
 
 .col-sm:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(27, 12, 233, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(27, 12, 233, 0.19);
   transform: scale(1.1);
 }
 
@@ -615,6 +632,8 @@ footer {
   height: calc(3rem + 2px) !important;
   border-radius: 5;
 }
+
+
 
 @media (min-width: 992px) {
   .search-sec {
