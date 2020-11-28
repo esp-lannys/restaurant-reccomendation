@@ -8,6 +8,9 @@ public class UserUpdateInfoDto {
 
     private Long id;
 
+    @NotEmpty
+    private String username;
+
     @Email
     @NotEmpty
     private String email;
@@ -29,6 +32,14 @@ public class UserUpdateInfoDto {
 
     public void setUpdate_date(Timestamp update_date) {
         this.update_date = update_date;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Long getId() {

@@ -32,52 +32,66 @@
 							</ul>
         			</nav>
                 </div>
+                <div th:if="${param.success}">
+                    <script>
+                        window.location.href = "/user/user-profile";
+                        alert("You have successfully updated !!!")
+                    </script>
+                </div>
                 <div class="content-panel">
                     <h2 class="title">Edit Profile</h2>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" th:object="${user}" th:action="@{/user/user-update-profile}" method="post">
+                        <div class="form-group">
+                            <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+                               th:each="error : ${#fields.errors('global')}"
+                               th:text="${error}">Validation error</p>
+                        </div>
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
-                            <div class="form-group avatar">
-                                <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                                    <img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                </figure>
-                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                    <input type="file" class="file-uploader pull-left">
-                                    <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                    <input type="text" class="form-control" th:value="${user.username}" th:field="*{username}" disabled>
                                 </div>
                             </div>
         
-                            <div class="form-group">
+                            <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                    <input type="text" class="form-control" th:value="${user.firstName}" th:field="*{firstName}">
+                                    <p class="error-message"
+                                       th:each="error: ${#fields.errors('firstName')}"
+                                       th:text="${error}">Validation error</p>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Sanders">
+                                    <input type="text" class="form-control" th:value="${user.lastName}" th:field="*{lastName}">
+                                    <p class="error-message"
+                                       th:each="error: ${#fields.errors('lastName')}"
+                                       th:text="${error}">Validation error</p>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Contact Info</h3>
-                            <div class="form-group">
+                            <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
                                 <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="email" class="form-control" value="Rebecca@website.com">
+                                    <input type="email" class="form-control" th:value="${user.email}" th:field="*{email}">
+                                    <p class="error-message"
+                                       th:each="error: ${#fields.errors('email')}"
+                                       th:text="${error}">Validation error</p>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" th:classappend="${#fields.hasErrors('phone')}? 'has-error':''">
                                 <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="0123456789">
+                                    <input type="text" class="form-control" th:value="${user.phone}" th:field="*{phone}">
+                                    <p class="error-message"
+                                       th:each="error: ${#fields.errors('phone')}"
+                                       th:text="${error}">Validation error</p>
                                 </div>
                             </div>
 

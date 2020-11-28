@@ -55,7 +55,7 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
                              aria-labelledby="userProfile"
                              id="user-dropdown"  >
-                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" th:href="@{/user/user-profile}">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/logout}">Log Out</a>
                         </div>

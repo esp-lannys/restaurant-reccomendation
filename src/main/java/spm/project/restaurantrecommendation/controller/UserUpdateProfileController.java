@@ -6,10 +6,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.service.UserService;
+
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,16 +31,16 @@ public class UserUpdateProfileController {
     @Autowired
     private UserService userService;
 
-//    @ModelAttribute("user_update")
-//    public UserUpdateInfoDto updateInfoDto(Principal principal) {
-//        String userName = principal.getName();
-//        User u = userService.findByUsername(userName);
-//        return null;
-//    }
+    @ModelAttribute("user")
+    public UserUpdateInfoDto userUpdateInfoDto(Principal principal) {
+        String username = principal.getName();
+        User user = userService.findByUsername(username);
+        return userService.updateUserInfo(user);
+    }
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user/user-profile")
-    public String showProfilePage(Principal principal, Model model, @ModelAttribute("user") User user,
+    public String showProfilePage(Principal principal, Model model, @ModelAttribute("user1") User user,
                                   Authentication authentication) {
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
@@ -61,6 +66,18 @@ public class UserUpdateProfileController {
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user/user-update-profile")
     public String showUpdatePage() {return "user-update-profile";}
+
+
+    @PreAuthorize("hasRole('USER')")
+    @PostMapping("/user/user-update-profile")
+    public String updateUserInfo(Authentication authentication, @ModelAttribute("user") @Valid UserUpdateInfoDto userUpdateInfoDto,
+                                 BindingResult result, Principal principal) {
+        if (authentication == null) return "redirect:/user";
+        if (result.hasErrors()) return "user-update-profile";
+
+        userService.save(userUpdateInfoDto);
+        return "redirect:/user/user-update-profile?success";
+    }
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user/change-password")

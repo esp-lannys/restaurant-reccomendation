@@ -89,13 +89,14 @@ public class UserServiceImpl implements UserService {
         return uuid;
     }
 
-    @Override
-    public User save(UserUpdateInfoDto userUpdateInfoDto) {
+        @Override
+        public User save(UserUpdateInfoDto userUpdateInfoDto) {
         User user = userRepository.findById((long) userUpdateInfoDto.getId()).get();
         user.setEmail(userUpdateInfoDto.getEmail());
         user.setPhone(userUpdateInfoDto.getPhone());
         user.setFirstName(userUpdateInfoDto.getFirstName());
         user.setLastName(userUpdateInfoDto.getLastName());
+        user.setUpdatedAt(userUpdateInfoDto.getUpdate_date());
         return userRepository.save(user);
     }
 
