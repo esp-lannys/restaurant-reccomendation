@@ -4,19 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.service.UserService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -69,10 +62,17 @@ public class UserUpdateProfileController {
     @GetMapping("/user/user-update-profile")
     public String showUpdatePage() {return "user-update-profile";}
 
+
+    @GetMapping("/change-password")
+    public String showChangePasswordPage() {
+        return "change-password";
+    }
+
     private boolean isUser(List<String> roles) {
         if (roles.contains("USER")) {
             return true;
         }
         return false;
     }
+
 }
