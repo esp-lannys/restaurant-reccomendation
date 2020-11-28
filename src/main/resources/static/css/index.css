@@ -376,6 +376,21 @@ footer {
   }
 }
 
+@media screen and (max-width: 992px) {
+  #user-message {
+    display: none;
+  }
+}
+
+
+
+@media screen and (min-width: 622px) {
+  .navbar-nav .dropdown-menu {
+    position: absolute;
+    float: none;
+  }
+}
+
 input[type=text],
 select,
 textarea {
