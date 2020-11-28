@@ -1,14 +1,17 @@
 package spm.project.restaurantrecommendation.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spm.project.restaurantrecommendation.dto.UserDto;
+import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.PasswordResetToken;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
@@ -62,6 +65,38 @@ public class UserServiceImpl implements UserService {
     @Override
     public PasswordResetToken findByToken(String token) {
         return tokenRepository.findByToken(token);
+    }
+
+    @Override
+    public void autoLogin(String username) {
+        UserDetails userDetails = loadUserByUsername(username);
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+                userDetails, userDetails.getPassword(), userDetails.getAuthorities());
+
+        if (usernamePasswordAuthenticationToken.isAuthenticated()) {
+            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+        }
+    }
+
+    @Override
+    public UserUpdateInfoDto updateUserInfo(User user) {
+        UserUpdateInfoDto uuid = new UserUpdateInfoDto();
+        uuid.setId(user.getId());
+        uuid.setEmail(user.getEmail());
+        uuid.setFirstName(user.getFirstName());
+        uuid.setLastName(user.getLastName());
+        uuid.setPhone(user.getPhone());
+        return uuid;
+    }
+
+    @Override
+    public User save(UserUpdateInfoDto userUpdateInfoDto) {
+        User user = userRepository.findById((long) userUpdateInfoDto.getId()).get();
+        user.setEmail(userUpdateInfoDto.getEmail());
+        user.setPhone(userUpdateInfoDto.getPhone());
+        user.setFirstName(userUpdateInfoDto.getFirstName());
+        user.setLastName(userUpdateInfoDto.getLastName());
+        return userRepository.save(user);
     }
 
 

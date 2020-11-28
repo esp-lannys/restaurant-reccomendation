@@ -56,7 +56,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Update Profile</a>
+                                <a class="dropdown-item" th:href="@{/user/user-profile}">Profile</a>
                                 <a class="dropdown-item" href="#">Display Preference</a>
                                 <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/logout}">Log Out</a>
                             </div>
