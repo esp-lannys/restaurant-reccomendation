@@ -649,3 +649,18 @@ footer {
     display: none;
   }
 }
+
+@media screen and (max-width: 992px) {
+  #user-message {
+    display: none;
+  }
+}
+
+
+
+@media screen and (min-width: 622px) {
+  .navbar-nav .dropdown-menu {
+    position: absolute;
+    float: none;
+  }
+}
