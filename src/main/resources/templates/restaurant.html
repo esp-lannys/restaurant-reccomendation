@@ -68,7 +68,7 @@
                             <div class="row" id="tags">
                                 <div class="col-4" id="top-tags"><b id="tag-title">Top tags:</b></div>
                                 <div class="col-8">
-                                    <div class="container">
+                                    <div class="container" id="container-tags">
                                         <ul class="list-group list-group-horizontal" id="listTags">
                                             <li class="list-group-item" id="tag"><a th:href="@{#}">Buffet</a></li>
                                         </ul>
@@ -248,7 +248,7 @@
                                     </div>
 
                                 </div>
-                                <a class="btn btn-success" id="btn-findTable">Find a table</a>
+                                <a class="btn btn-success" id="btn-findTable" th:href="@{/reservation}">Find a table</a>
                             </form>
                         </div>
                     </div>

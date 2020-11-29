@@ -30,9 +30,6 @@ body {
   margin-top: 15%;
 }
 
-#hr {
-  width: auto;
-}
 
 #overview {
   border-radius: 3px;
@@ -312,7 +309,7 @@ section {
 hr {
   border: 0;
   height: 1px;
-  width: 700px;
+  width: 80%;
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -358,8 +355,8 @@ nav {
   color: black;
 }
 
-#navbar-header {
-  margin-right: 50px;
+#navbarSupportedContent1 {
+  margin-right: 80px;
 }
 
 #navbarResponsive {
@@ -524,6 +521,8 @@ h1 {
   padding-right: 0px;
   padding-left: 0px;
   padding-bottom: 2%;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-right: 0.5625%;
   margin-left: 0.5625%;
   transition: 0.4s;
@@ -531,8 +530,10 @@ h1 {
 }
 
 .col-sm:hover {
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(27, 12, 233, 0.19);
   transform: scale(1.1);
+  z-index: 1;
 }
 
 .centered {
@@ -663,4 +664,34 @@ footer {
     position: absolute;
     float: none;
   }
+}
+
+input[type=text],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+input[type=email],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
 }
