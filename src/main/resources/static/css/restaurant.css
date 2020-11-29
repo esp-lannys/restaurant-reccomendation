@@ -24,9 +24,6 @@ body {
   margin-top: -15%;
 }
 
-.hr {
-  width: auto;
-}
 
 #overview {
   border-radius: 3px;
@@ -116,6 +113,10 @@ body {
 .tag {
   margin: 2%;
   border-radius: 50px;
+}
+
+#container-tags {
+  padding-top: 0;
 }
 
 #restaurant-overview {
@@ -319,7 +320,7 @@ section {
 hr {
   border: 0;
   height: 1px;
-  width: 700px;
+  width: 80%;
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -368,8 +369,8 @@ nav {
   color: black;
 }
 
-#navbar-header {
-  margin-right: 70px;
+#navbarSupportedContent1 {
+  margin-right: 80px;
 }
 
 #navbarResponsive {

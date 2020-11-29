@@ -1,0 +1,256 @@
+html {
+    position: relative;
+}
+
+body {
+    width: 100%;
+    background-color: #eff1f3;
+    font-size: larger;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+header {
+    font-size: larger;
+    background-color: white;
+}
+
+section {
+    background-color: white;
+    padding-bottom: 30px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    width: 80%;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+.header-search {
+    background-image: url(../images/banner.jpg);
+    background-size: 100%;
+    position: relative;
+    background-blend-mode: lighten;
+    width: auto;
+    height: 31.3875%;
+    padding-left: 2.25%;
+    padding-right: 2.25%;
+    padding-top: 6%;
+}
+
+svg {
+    font-size: 2rem;
+    padding-bottom: 5px;
+}
+
+.btn {
+    margin-right: 10px;
+    border-color: black;
+    border: none;
+}
+
+#btn-header {
+    font-size: 1.25rem;
+}
+
+.bg-light {
+    background-color: white !important;
+}
+
+nav {
+    background-color: #203850;
+}
+
+.navbar-light .navbar-brand {
+    color: black;
+}
+
+#navbarSupportedContent1 {
+    margin-right: 80px;
+}
+
+#navbarResponsive {
+    margin-right: 5%;
+}
+
+.navbar-brand {
+    margin-left: 8%;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.navbar-collapse {
+    height: 120%;
+}
+
+.logo {
+    width: 16%;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+.btn-light {
+    font-weight: 500;
+    font-size: 1rem;
+    color: black;
+    background-color: #bfc5c5c5;
+}
+
+.btn-light:hover {
+    color: white;
+    background-color: #1d4b3c;
+}
+
+.btn-success {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+h1 {
+    font-weight: 650;
+}
+
+.container {
+    max-width: 100%;
+    padding-top: 1.125%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#container-header {
+    padding-top: 0px;
+}
+
+.imgrtr {
+    height: 100%;
+    width: 100%;
+    transition: 0.5s;
+}
+
+.imgrtr:hover {
+    transform: scale(1.1);
+}
+
+#btn-footer:hover {
+    background-color: #359474;
+}
+
+footer {
+    padding: 5% 10%;
+    color: white;
+    background-color: #1d4b3c;
+}
+
+.row {
+    width: 100%;
+    margin: 0px;
+    padding-top: 3%;
+}
+
+.col-4 {
+    transition: 0.5s;
+}
+
+.col-4:hover {
+    transform: scale(1.3);
+}
+
+@media (min-width: 992px) {
+    .search-sec {
+        position: relative;
+        top: -100px;
+    }
+}
+
+@media (min-width: 770px) {
+    .search-sec {
+        position: relative;
+        top: -80px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    #restaurateur-heading {
+        display: none;
+    }
+
+    #restaurateur-subheading {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #user-message {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 622px) {
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+        float: none;
+    }
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical
+}
+
+input[type=tel],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical
+}
+
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
