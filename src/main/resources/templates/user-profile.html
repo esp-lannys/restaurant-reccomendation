@@ -16,7 +16,7 @@
         <section class="module">
             <div class="module-inner">
                 <div class="side-bar">
-                    <div class="user-info">
+                    <div class="user-info" style="padding-top: 20px;">
                         <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
                         <ul class="meta list list-unstyled" sec:authorize="isAuthenticated()">
                             <li class="name" style='font-size: 20px' sec:authentication="name">USER</li>
@@ -27,7 +27,8 @@
         					<li class="active"><a th:href="@{/user/user-profile}"><span class="fa fa-user"></span> Profile</a></li>
                             <li><a th:href="@{/user/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
                             <li><a th:href="@{/user/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
-                            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}"><span class="fa fa-cog"></span>Log Out</a></li>
+                            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout" ><span class="fa fa-cog"></span>Log Out</a></li>
+                            <li><a id="returnIndex" th:href="@{/}"><span class="fa fa-cog"></span><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a></li>
         				</ul>
         			</nav>
                 </div>
