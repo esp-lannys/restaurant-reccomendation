@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import spm.project.restaurantrecommendation.dto.UserChangePasswordDto;
 import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.PasswordResetToken;
@@ -29,6 +30,7 @@ import java.util.stream.Collectors;
 // :::::::::::::::::::::::::::::::::::::::::
 
 @Service("userService")
+@Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
@@ -98,6 +100,24 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userUpdateInfoDto.getLastName());
         user.setUpdatedAt(userUpdateInfoDto.getUpdate_date());
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserChangePasswordDto updateUserPassword(User user) {
+        UserChangePasswordDto ucp = new UserChangePasswordDto();
+        ucp.setId(user.getId());
+        ucp.setEmail(user.getEmail());
+        ucp.setFirstName(user.getFirstName());
+        ucp.setLastName(user.getLastName());
+        ucp.setUsername(user.getUsername());
+        ucp.setPassword(user.getPassword());
+        ucp.setConfirmPassword(user.getPassword());
+        return ucp;
+    }
+
+    @Override
+    public void updatePassword(String password, Long id) {
+        userRepository.updatePassword(password, id);
     }
 
 
