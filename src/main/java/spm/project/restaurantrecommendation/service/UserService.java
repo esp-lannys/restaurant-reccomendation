@@ -1,6 +1,7 @@
 package spm.project.restaurantrecommendation.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
+import spm.project.restaurantrecommendation.dto.UserChangePasswordDto;
 import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.PasswordResetToken;
@@ -30,4 +31,8 @@ public interface UserService extends UserDetailsService {
     UserUpdateInfoDto updateUserInfo(User user);
 
     User save (UserUpdateInfoDto userUpdateInfoDto);
+
+    UserChangePasswordDto updateUserPassword(User user);
+
+    void updatePassword(String password, Long id);
 }
