@@ -1,8 +1,9 @@
 package spm.project.restaurantrecommendation.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import spm.project.restaurantrecommendation.entity.Restaurant;
 
-
+@Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 }

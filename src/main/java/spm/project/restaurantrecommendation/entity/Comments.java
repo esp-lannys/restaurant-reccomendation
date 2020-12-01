@@ -1,14 +1,20 @@
 package spm.project.restaurantrecommendation.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 @Entity
-@Data
-@javax.persistence.Table(name = "comments")
+@Getter
+@Setter
+@Table(name = "comments")
 public class Comments{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

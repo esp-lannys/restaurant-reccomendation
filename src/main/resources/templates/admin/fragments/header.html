@@ -5,14 +5,22 @@
     <title>Navbar Fragment</title>
 </head>
 <body>
-<header th:fragment="header" xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-            <a class="navbar-brand" href="#">GOURMETTE</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" th:href="@{/admin}">GOURMETTE</a>
+
+            <button class="navbar-toggler toggler-example"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent1"
+                    aria-controls="navbarSupportedContent1"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/admin/index}">
@@ -24,7 +32,11 @@
                         </a>
                     </li>
 
+<<<<<<< HEAD
                     <li class="nav-item" sec:authorize="isAuthenticated()">
+=======
+                    <li class="nav-item">
+>>>>>>> staging
                         <a class="nav-link" th:href="@{/logout}">Sign Out</a>
                     </li>
                 </ul>

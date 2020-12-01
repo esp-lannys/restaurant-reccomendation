@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 @Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();

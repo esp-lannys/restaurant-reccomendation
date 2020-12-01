@@ -13,6 +13,11 @@ import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.service.UserService;
 import javax.validation.Valid;
+
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
 @Controller
 public class UserRegistrationController {

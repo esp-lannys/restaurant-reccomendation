@@ -20,6 +20,10 @@ import spm.project.restaurantrecommendation.service.UserService;
 
 import javax.sql.DataSource;
 
+// :::::::::::::::::::::::::::::::::::::::::
+// :::::::::: author : @nphoangtu ::::::::::
+// :::::::::::::::::::::::::::::::::::::::::
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
@@ -49,9 +53,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**", "/webjars/**"
                         ,"/assets/**","/css/**","/images/**"
                         ,"/**","/registration**","/resetpass**").permitAll()
-                .antMatchers("/index**").permitAll()
+                .antMatchers("/index**","/restaurant").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/user/**","/user/user-profile","/user/user-update-profile").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
