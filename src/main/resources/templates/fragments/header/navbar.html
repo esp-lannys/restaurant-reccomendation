@@ -9,21 +9,26 @@
         <div class="container" id="container-header">
 
             <a class="navbar-brand" th:href="@{/}"> <img class="logo" th:src="@{/images/logo.png}" alt=""> GOURMETTE</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler toggler-example"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent1"
+                    aria-controls="navbarSupportedContent1"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <div class="collapse navbar-collapse" id="navbar-header">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="btn btn-light" th:href="@{/login}">Sign In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-success" th:href="@{/registration}">Sign Up</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="ml-2 collapse navbar-collapse" id="navbarSupportedContent1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-light" th:href="@{/login}">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-success" th:href="@{/registration}">Sign Up</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -33,41 +38,29 @@
         <div class="container" style="padding-top: 0px;">
 
             <a class="navbar-brand" th:href="@{/}"> <img class="logo" th:src="@{/images/logo.png}" alt=""> GOURMETTE</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse">
-<!--                <ul class="navbar-nav ml-auto">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="btn btn-light"  th:href="@{/login}">Sign In</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="btn btn-success" th:href="@{/registration}">Sign Up</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mr-2">
-                            Hi, <span sec:authentication="principal.username">USER</span>
-                        </li>
-                        <li class="nav-item dropdown">
 
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
-                            </a>
+            <ul class="navbar-nav m-xs-ml-md-auto">
+                    <li class="mr-2" id="user-message">
+                        Hi, <span sec:authentication="principal.username">USER</span>
+                    </li>
+                    <li class="avatar dropdown">
+                        <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                             width="40"
+                             height="40"
+                             class="dropdown-toggle rounded-circle"
+                             data-toggle="dropdown"
+                             aria-haspopup="true"
+                             aria-expanded="false">
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Update Profile</a>
-                                <a class="dropdown-item" href="#">Display Preference</a>
-                                <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/logout}">Log Out</a>
-                            </div>
-                    </ul>
-
-<!--                        <li class="nav-item">-->
-<!--                            <a class="btn btn-sm btn-danger" sec:authorize="isAuthenticated()" th:href="@{/logout}">Log out</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-
-            </div>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
+                             aria-labelledby="userProfile"
+                             id="user-dropdown"  >
+                            <a class="dropdown-item" th:href="@{/user/user-profile}">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/logout}">Log Out</a>
+                        </div>
+                    </li>
+            </ul>
         </div>
     </nav>
 

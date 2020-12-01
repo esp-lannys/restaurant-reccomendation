@@ -68,10 +68,13 @@ public class AdminController {
     }
 
     @GetMapping("/admin/search-user")
-    public String searchUser(@RequestParam String kw, Principal principal){
+    public String searchUser(@RequestParam("keyword") String kw, Principal principal){
         if (principal == null) {
             return "redirect:/";
         }
+
+        if (kw.equals("")) return "redirect:/admin/listAccounts";
+
         List<User> listUser = getUserList(principal);
         List<User> list = new ArrayList<User>();
 
@@ -81,12 +84,12 @@ public class AdminController {
                     || is(a.getEmail(),kw))
                 list.add(a);
         }
-        return "admin/fragments/listAccounts";
+        return "redirect:/admin";
     }
 
     @GetMapping("/admin/delete-user-{id}")
     public String deleteUser(@PathVariable long id, Principal principal, HttpServletRequest request, HttpServletResponse response){
-        if (principal == null) return null;
+        if (principal == null) return "redirect:/admin";
 
         User u = userService.findByUsername(principal.getName());
         if (id == u.getId()) {

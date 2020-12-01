@@ -58,7 +58,10 @@
             <td th:text="${user.createdAt}">Created At</td>
             <td th:text="${user.updatedAt}">Updated At</td>
             <td><a href="#" class="btn btn-outline-info">EDIT</a></td>
-            <td><a th:href="@{'/admin/delete-user-'+ ${user.id}}" class="btn btn-outline-danger">DELETE</a></td>
+
+<!--            <td><a th:href="@{'/admin/delete-user-'+ ${user.id}}" class="btn btn-outline-danger">DELETE</a></td>-->
+
+            <td><a th:id="${user.id}" class="btn btn-outline-danger">DELETE</a></td>
         </tr>
         </tbody>
     </table>

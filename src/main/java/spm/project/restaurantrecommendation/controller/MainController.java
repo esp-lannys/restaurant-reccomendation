@@ -57,6 +57,11 @@ public class MainController {
         return "about";
     }
 
+    @GetMapping({ "/reservation" })
+    public String showReservationPage() {
+        return "reservation";
+    }
+
     @GetMapping({ "/restaurant" })
     public String getRestaurant() {
         return "restaurant";

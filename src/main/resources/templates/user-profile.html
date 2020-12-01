@@ -2,14 +2,13 @@
 
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <title>User profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="css/user-profile.css">
-
+   <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}">
 </head>
 <body>
 <div class="container">
@@ -17,65 +16,63 @@
         <section class="module">
             <div class="module-inner">
                 <div class="side-bar">
-                    <div class="user-info">
+                    <div class="user-info" style="padding-top: 20px;">
                         <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <ul class="meta list list-unstyled">
-                            <li class="name" style='font-size: 20px'>Rebecca Sanders
-                            </li>
+                        <ul class="meta list list-unstyled" sec:authorize="isAuthenticated()">
+                            <li class="name" style='font-size: 20px' sec:authentication="name">USER</li>
                         </ul>
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
-        					<li class="active"><a href="#"><span class="fa fa-user"></span> Profile</a></li>
-								<li><a th:href="@{/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
-								<li><a th:href="@{/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
+        					<li class="active"><a th:href="@{/user/user-profile}"><span class="fa fa-user"></span> Profile</a></li>
+                            <li><a th:href="@{/user/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
+                            <li><a th:href="@{/user/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
+                            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout" ><span class="fa fa-cog"></span>Log Out</a></li>
+                            <li><a id="returnIndex" th:href="@{/}"><span class="fa fa-cog"></span><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a></li>
         				</ul>
         			</nav>
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Profile</h2>
-                    <form class="form-horizontal">
-                        <fieldset class="fieldset">
+                    <div class="form-horizontal">
+                        <div class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
                             <div class="form-group avatar">
                                 <figure class="figure col-md-2 col-sm-3 col-xs-12">
                                 </figure>
                               
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" sec:authorize="isAuthenticated()">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
-									<label class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left'>Rebeca Sanders</label>
-
-
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left' sec:authentication="name"></label>
                             </div>
         
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
-									<label class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left'>Rebeca</label>
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left' th:text="${user_firstName}">First Name</label>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
-									<label class="col-md-2 col-sm-3 col-xs-12 control-label"style='font-weight: 350; text-align: left'>Sanders</label>
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label"style='font-weight: 350; text-align: left' th:text="${user_lastName}"></label>
 
                             </div>
-                        </fieldset>
-                        <fieldset class="fieldset">
+                        </div>
+                        <div class="fieldset">
                             <h3 class="fieldset-title">Contact Info</h3>
                             <div class="form-group">
                                 <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
-									<label class="col-md-2 col-sm-3 col-xs-12 control-label"style='font-weight: 350; text-align: left'>Rebecca@website.com</label>
+                                <p class="col-md-2 col-sm-3 col-xs-12 control-label"style='font-weight: 350; text-align: left' th:text="${user_email}"></p>
 
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
-									<label class="col-md-2 col-sm-3 col-xs-12 control-label"style='font-weight: 350; text-align: left'>0123456789</label>
-
+                                <p class="col-md-2 col-sm-3 col-xs-12 control-label"style='font-weight: 350; text-align: left' th:text="${user_phone}"></p>
                             </div>
 
-                        </fieldset>
+                        </div>
                         <hr>
                         
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>
