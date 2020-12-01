@@ -96,18 +96,12 @@ body {
 }
 
 #top-tags {
-  position: relative;
   padding: 0.6%;
 }
 
 #tag-title {
   color: #24a041;
-  font-size: larger;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  font-size: 1.5rem;
 }
 
 .tag {
@@ -499,7 +493,11 @@ h1 {
 }
 
 #rating {
-  padding: 0.5625%;
+  padding-left: 0;
+}
+
+#tags-coll {
+  padding-left: 0;
 }
 
 .location {
