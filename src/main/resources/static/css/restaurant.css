@@ -626,7 +626,7 @@ footer {
     border-radius: 5px;
 }
 
-#comments {
+.comments {
     border: 2px solid #ccc;
     background-color: rgb(245, 245, 245);
     border-radius: 5px;
@@ -637,7 +637,7 @@ footer {
 
 /* Clear floats after containers */
 
-#comments::after {
+.comments::after {
     content: "";
     clear: both;
     display: table;
@@ -646,7 +646,7 @@ footer {
 
 /* Float images inside the#comments to the left. Add a right margin, and style the image as a circle */
 
-#comments img {
+.comments img {
     float: left;
     margin-right: 20px;
     border-radius: 50%;
@@ -655,7 +655,7 @@ footer {
 
 /* Increase the font-size of a span element */
 
-#comments span {
+.comments span {
     font-size: 20px;
     margin-right: 15px;
 }
@@ -664,10 +664,10 @@ footer {
 /* Add media queries for responsiveness. This will center both the text and the image inside the#comments */
 
 @media (max-width: 500px) {
-    #comments {
+    .comments {
         text-align: center;
     }
-    #comments img {
+    .comments img {
         margin: auto;
         float: none;
         display: block;
