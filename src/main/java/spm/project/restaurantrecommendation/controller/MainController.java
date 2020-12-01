@@ -43,6 +43,9 @@ public class MainController {
             if (isUser(roles)) {
                 map.addAttribute("navbar", "navbar-authenticated");
             }
+            else {
+                map.addAttribute("navbar", "navbar");
+            }
         }
         return "index";
     }
