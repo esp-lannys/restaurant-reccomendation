@@ -62,11 +62,6 @@ public class MainController {
         return "reservation";
     }
 
-    @GetMapping({ "/restaurant" })
-    public String getRestaurant() {
-        return "restaurant";
-    }
-
     ////////////////////////////
     //////////////////////////// 403 PAGE
     ////////////////////////////

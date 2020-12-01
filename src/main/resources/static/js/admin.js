@@ -42,7 +42,7 @@ $(function() {
         e.preventDefault();
         const target = e.target.id;
 
-        if(activeButton == 'Accounts') {
+        if(activeButton === 'Accounts') {
             $.ajax({
                type: "GET",
                url: "/admin/delete-user-" + target,

@@ -80,7 +80,19 @@ public class UserUpdateProfileController {
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user/user-update-profile")
-    public String showUpdatePage() {return "user-update-profile";}
+    public String showUpdatePage(Principal principal, Authentication authentication) {
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
+            }
+            if (!isUser(roles)) {
+                return "/403";
+            }
+        }
+        return "user-update-profile";
+    }
 
 
     @PreAuthorize("hasRole('USER')")

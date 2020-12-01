@@ -20,6 +20,8 @@ INSERT INTO location (id, district) values ('17','Tan Binh District');
 INSERT INTO location (id, district) values ('18','Tan Phu District');
 INSERT INTO location (id, district) values ('19','Binh Tan District');
 
+delete from users;
+
 INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('3','Luan','Bui Hoang','0123456789','luan@test.com','luan','$2a$10$3WQPws9o2zN4E1XAs1nKc.vWKUTtV/uRgvOAJ6foqrHcs/rqmWjLi');
 INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('4','Quang','Vo Ho Nhat Quang','0123456789','quang@test.com','quang','$2a$10$PX0HS/Lbb2M9Kw/yRhaYuOgRXKbA4KGARvdFZHRsAp2.nX6Fzm9je');
 INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('5','Trien','Le Khue','0123456789','trien@test.com','trien','$2a$10$kpUWFMHUOEuwTYX9gZMX1Ow0kEb7doAHJKt3akPEwZeBpuO0eGzRW');

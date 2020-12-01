@@ -3,6 +3,7 @@ package spm.project.restaurantrecommendation.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -36,8 +38,17 @@ public class AdminController {
     private UserService userService;
 
     @GetMapping("/admin")
-    public String showAdminIndex(Model model){
-        model.addAttribute("users", userService.findAll());
+    public String showAdminIndex(Principal principal, Authentication authentication){
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
+            }
+            if (!isAdmin(roles)) {
+                return "/403";
+            }
+        }
         return "admin/index";
     }
 
@@ -133,5 +144,12 @@ public class AdminController {
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("").replaceAll("Đ", "D").replace("đ", "d");
+    }
+
+    private boolean isAdmin(List<String> roles) {
+        if (roles.contains("ADMIN")) {
+            return true;
+        }
+        return false;
     }
 }
