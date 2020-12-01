@@ -70,16 +70,11 @@ public class AdminController {
         return "admin/fragments/listRestaurants";
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/fragments/listAccounts")
-    public String getListAccounts(Model model) {
-=======
+
     //@GetMapping("/fragments/listAccounts")
     @GetMapping("/admin/listAccounts")
     public String getlistAccounts(Model model, Principal principal) {
         if (principal == null) return "redirect:/";
->>>>>>> staging
         model.addAttribute("users", userService.findAll());
         return "admin/fragments/listAccounts";
     }

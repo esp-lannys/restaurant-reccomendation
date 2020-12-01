@@ -9,12 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestMapping;
-
-=======
 import spm.project.restaurantrecommendation.service.LocationService;
->>>>>>> staging
 import java.security.Principal;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -38,10 +34,6 @@ public class MainController {
     ////////////////////////////
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-<<<<<<< HEAD
-    @GetMapping
-    public String root(Principal principal, Authentication auth){
-=======
     @GetMapping({ "/" })
     public String root(Principal principal, Authentication authentication, ModelMap map) {
         if (authentication != null) {
@@ -57,7 +49,6 @@ public class MainController {
                 map.addAttribute("navbar", "navbar");
             }
         }
->>>>>>> staging
         return "index";
     }
 
