@@ -166,6 +166,17 @@ footer {
     transform: scale(1.3);
 }
 
+#rtrName {
+    font-size: 2rem;
+    font-weight: 650;
+    color: black;
+}
+
+.z-depth-1 {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
 @media (min-width: 992px) {
     .search-sec {
         position: relative;
@@ -184,7 +195,6 @@ footer {
     #restaurateur-heading {
         display: none;
     }
-
     #restaurateur-subheading {
         display: none;
     }
@@ -197,6 +207,16 @@ footer {
 }
 
 @media screen and (min-width: 622px) {
+    .z-depth-1 {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+    .dark-grey-text {
+        margin: 0;
+    }
+    #rtrName {
+        font-size: 1.3rem;
+    }
     .navbar-nav .dropdown-menu {
         position: absolute;
         float: none;
