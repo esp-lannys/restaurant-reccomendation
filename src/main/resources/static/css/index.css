@@ -123,6 +123,7 @@ input {
     font-size: 1rem;
     color: black;
     background-color: #bfc5c5c5;
+    transition: 0.2s;
 }
 
 .btn-light:hover {
@@ -133,6 +134,7 @@ input {
 .btn-success {
     font-weight: 500;
     font-size: 1rem;
+    transition: 0.2s;
 }
 
 h1 {
