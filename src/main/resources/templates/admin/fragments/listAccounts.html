@@ -1,7 +1,6 @@
 <div xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
     <div th:fragment="listAccounts" >
-
         <div class="header-search align-self-center justify-content-center mb-5">
             <div class="container-fluid text-center">
                 <h1 id="headtitle">FIND USERS</h1>
@@ -16,9 +15,11 @@
                                         <div class="col-lg-5 col-md-5 col-sm-12 p-0">
                                             <input style="border-left:5px" type="text" class="form-control search-slt" name="keyword">
                                         </div>
+
                                         <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                            <button type="button" class="btn btn-success wrn-btn">Search</button>
+                                            <button type="submit" class="btn btn-success wrn-btn">Search</button>
                                         </div>
+
                                         <div class="col-lg-1 col-md-1"></div>
                                     </div>
                                 </div>
@@ -57,11 +58,14 @@
             <td th:text="${user.phone}">Phone Number</td>
             <td th:text="${user.createdAt}">Created At</td>
             <td th:text="${user.updatedAt}">Updated At</td>
-            <td><a href="#" class="btn btn-outline-info">EDIT</a></td>
+            <td>
+                <a th:href="@{'/admin/edit-user-'+ ${user.id}}" class="btn btn-outline-info">
+                    EDIT
+                </a>
+            </td>
 
-<!--            <td><a th:href="@{'/admin/delete-user-'+ ${user.id}}" class="btn btn-outline-danger">DELETE</a></td>-->
 
-            <td><a th:id="${user.id}" class="btn btn-outline-danger">DELETE</a></td>
+            <td><a th:id="${user.id}" class="btn btn-outline-danger delete">DELETE</a></td>
         </tr>
         </tbody>
     </table>

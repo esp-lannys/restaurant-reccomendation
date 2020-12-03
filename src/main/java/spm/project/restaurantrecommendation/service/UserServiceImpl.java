@@ -23,6 +23,7 @@ import spm.project.restaurantrecommendation.repository.UserRepository;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 // :::::::::::::::::::::::::::::::::::::::::
@@ -53,6 +54,16 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+//    @Override
+//    public Optional<User> findById(Long id) {
+//        return userRepository.findById(id);
+//    }
 
     @Override
     public void deleteById(Long id) {

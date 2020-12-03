@@ -21,6 +21,7 @@ import java.security.Principal;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -41,11 +42,31 @@ public class AdminController {
         return "admin/index";
     }
 
+    @GetMapping("/admin/edit-user-{id}")
+    public String showAdminUpdate(Model model, @PathVariable long id, Principal principal, HttpServletRequest request, HttpServletResponse response){
+        if (principal == null) {
+            return "redirect:/admin";
+        }
+
+        User u = userService.findById(id);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+
+        model.addAttribute("user", u);
+
+        return "admin/update";
+    }
+
+
     @ModelAttribute("userList")
     private List<User> getUserList(Principal principal){
-        if (principal == null){
+        if (principal == null) {
             return null;
         }
+
         String username = principal.getName();
         User user = userService.findByUsername(username);
         List<User> oldList = userService.findAll();
@@ -68,12 +89,12 @@ public class AdminController {
     }
 
     @GetMapping("/admin/search-user")
-    public String searchUser(@RequestParam("keyword") String kw, Principal principal){
+    public String searchUser(@RequestParam("keyword") String kw, Principal principal, Model model, HttpServletRequest request){
         if (principal == null) {
             return "redirect:/";
         }
 
-        if (kw.equals("")) return "redirect:/admin/listAccounts";
+        if (kw.equals("")) return "redirect:/admin";
 
         List<User> listUser = getUserList(principal);
         List<User> list = new ArrayList<User>();
@@ -84,12 +105,18 @@ public class AdminController {
                     || is(a.getEmail(),kw))
                 list.add(a);
         }
-        return "redirect:/admin";
+
+        request.getSession().setAttribute("users", list);
+        model.addAttribute("users", list);
+
+        return "admin/fragments/listAccounts";
     }
 
     @GetMapping("/admin/delete-user-{id}")
     public String deleteUser(@PathVariable long id, Principal principal, HttpServletRequest request, HttpServletResponse response){
-        if (principal == null) return "redirect:/admin";
+        if (principal == null) {
+            return "redirect:/admin";
+        }
 
         User u = userService.findByUsername(principal.getName());
         if (id == u.getId()) {
@@ -98,6 +125,7 @@ public class AdminController {
                 new SecurityContextLogoutHandler().logout(request, response, auth);
             }
         }
+
         userService.deleteById(id);
         return "redirect:/admin/listAccounts";
     }

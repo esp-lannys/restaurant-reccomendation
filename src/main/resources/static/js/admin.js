@@ -12,6 +12,7 @@ $(document).ready(function(){
                activeButton = $(this).val();
 
                if (activeButton == 'Restaurants') {
+               console.log("SHOW LIST RESTAURANT");
                    $.ajax({
                            type: "GET",
                            url: "/admin/listRestaurants",
@@ -23,6 +24,7 @@ $(document).ready(function(){
                }
 
                if (activeButton == 'Accounts') {
+              console.log("SHOW LIST ACCOUNT");
                    $.ajax({
                            type: "GET",
                            url: "/admin/listAccounts",
@@ -37,8 +39,8 @@ $(document).ready(function(){
 });
 
 $(function() {
-    /* Toggle category item - use .on('click') and delegate event */
-    $('#main-content').on('click', '.btn', function(e) {
+
+    $('#main-content').on('click', 'table .delete', function(e) {
         e.preventDefault();
         const target = e.target.id;
 
