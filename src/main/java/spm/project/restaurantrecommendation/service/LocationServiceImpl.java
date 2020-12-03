@@ -27,5 +27,10 @@ public class LocationServiceImpl implements LocationService{
         return locationRepository.findByDistrict(district);
     }
 
+    @Override
+    public Location findById(Long id) {
+        return locationRepository.findById(id).get();
+    }
+
 
 }

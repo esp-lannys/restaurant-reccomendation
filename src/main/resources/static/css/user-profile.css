@@ -72,7 +72,6 @@ body {
     margin-bottom: 0;
     border-bottom: none;
     display: inline-block;
-    float: left;
     margin-right: 15px;
     margin-bottom: 15px
 }
@@ -322,7 +321,7 @@ body {
     width: 130px;
     margin-right: 15px;
     display: inline-block;
-    float: left
+
 }
 
 .drive-wrapper .drive-item:hover {
@@ -445,77 +444,132 @@ body {
 }
 
 @media (max-width:767px) {
+    li {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
     .view-account .content-panel .title {
-        text-align: center
+        text-align: center;
+        padding-left: 20px;
+        padding-right: 20px;
+
     }
 
     .view-account .side-bar .user-info {
-        padding: 0
+        padding: 0;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .side-bar .user-info .img-profile {
         width: 60px;
-        height: 60px
+        height: 60px;
+
     }
 
     .view-account .side-bar .user-info .meta li {
-        margin-bottom: 5px
+        margin-bottom: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .content-panel .content-header-wrapper .actions {
         position: static;
-        margin-bottom: 30px
+        margin-bottom: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .content-panel {
-        padding: 0
+        padding: 0;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .content-panel .content-utilities .page-nav {
         position: static;
-        margin-bottom: 15px
+        margin-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .drive-wrapper .drive-item {
         width: 100px;
         margin-right: 5px;
-        float: none
+        float: none;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .drive-wrapper .drive-item-thumb {
         width: auto;
-        height: 54px
+        height: 54px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .drive-wrapper .drive-item-thumb .fa {
         font-size: 24px;
-        padding-top: 0
+        padding-top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .content-panel .avatar .figure img {
         float: none;
-        margin-bottom: 15px
+        margin-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .file-uploader {
-        margin-bottom: 15px
+        margin-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .mail-subject {
         max-width: 100px;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis
+        text-overflow: ellipsis;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .content-panel .mails-wrapper .mail-item .time-container {
-        position: static
+        position: static;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .view-account .content-panel .mails-wrapper .mail-item .time-container .time {
         width: auto;
-        text-align: left
+        text-align: left;
+        padding-left: 20px;
+        padding-right: 20px;
     }
+
+}
+
+#returnIndex {
+    transition: 0.5s;
+}
+
+#returnIndex:hover {
+    font-size: 2.1rem;
+}
+
+#logout {
+    font-size: 2rem;
+    background-color: green;
+    color: white;
+    transition: 0.5s;
+}
+
+#logout:hover {
+    background-color: rgb(0, 70, 0);
 }
 
 @media (min-width:768px) {
@@ -534,7 +588,7 @@ body {
 
 @media (min-width:992px) {
     .view-account .content-panel {
-        min-height: 800px;
+
         border-left: 1px solid #f3f3f7;
         margin-left: 200px
     }
@@ -558,10 +612,7 @@ body {
         padding: 30px
     }
 
-    .view-account .side-bar .user-info .img-profile {
-        width: 120px;
-        height: 120px
-    }
+
 
     .view-account .side-bar .side-menu {
         text-align: left
@@ -615,5 +666,19 @@ body {
         text-align: center;
         width: 40px;
         display: inline-block
+    }
+
+    .container {
+        margin-top: 10%;
+        width: auto;
+    }
+}
+
+@media (min-width:1200px) {
+
+    .container {
+        transform: scale(1.1);
+        margin-top: 7%;
+        width: 950px;
     }
 }

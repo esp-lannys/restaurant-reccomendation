@@ -39,35 +39,28 @@
         </div>
 
 
-    <table xmlns:th="http://www.thymeleaf.org" id="dtMaterialDesignExample" class="table" cellspacing="0" width="100%">
+    <table xmlns:th="http://www.thymeleaf.org" th:each="restaurant : ${restaurants}" class="table" cellspacing="0" width="100%">
         <thead>
         <tr>
-            <th class="th-sm">Id
+            <th class="th-sm">Restaurant Name
             </th>
-            <th class="th-sm">Name
+            <th class="th-sm">Address
             </th>
-            <th class="th-sm">Location
+            <th class="th-sm">Image
             </th>
-            <th class="th-sm">Cuisine
+            <th class="th-sm">Phone
             </th>
-            <th class="th-sm">Star
+            <th class="th-sm">Description
             </th>
+
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>1</td>
-            <td>Gaxeo</td>
-            <td>District 1</td>
-            <td>Korean</td>
-            <td>4.5</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Tokyo Deli</td>
-            <td>District 2</td>
-            <td>Japan</td>
-            <td>4</td>
+            <td th:text="${restaurant.name}">Restaurant Name</td>
+            <td th:text="${restaurant.address}">Address</td>
+            <td th:text="${restaurant.img}">Image</td>
+            <td th:text="${restaurant.phone}">Phone</td>
         </tr>
         </tbody>
     </table>

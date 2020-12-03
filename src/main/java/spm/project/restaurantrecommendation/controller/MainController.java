@@ -43,6 +43,9 @@ public class MainController {
             if (isUser(roles)) {
                 map.addAttribute("navbar", "navbar-authenticated");
             }
+            else {
+                map.addAttribute("navbar", "navbar");
+            }
         }
         return "index";
     }
@@ -60,11 +63,6 @@ public class MainController {
     @GetMapping({ "/reservation" })
     public String showReservationPage() {
         return "reservation";
-    }
-
-    @GetMapping({ "/restaurant" })
-    public String getRestaurant() {
-        return "restaurant";
     }
 
     ////////////////////////////
