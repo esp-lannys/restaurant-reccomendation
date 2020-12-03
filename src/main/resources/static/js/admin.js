@@ -56,5 +56,22 @@ $(function() {
            });
         }
     });
+
+     $('#main-content').on('submit', '.header-search #searchForm', function(e) {
+	    e.preventDefault();
+
+	    var form = $(this);
+	    var url = form.attr('action');
+
+	    $.ajax({
+	           type: "GET",
+	           url: url,
+	           data: form.serialize(), // serializes the form's elements.
+	           success: function(data) {
+	                list.empty();
+                    list.html(data);
+	           }
+         });
+	});
 });
 

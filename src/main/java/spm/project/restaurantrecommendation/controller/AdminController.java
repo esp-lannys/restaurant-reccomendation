@@ -111,7 +111,7 @@ public class AdminController {
             return "redirect:/";
         }
 
-        if (kw.equals("")) return "redirect:/admin";
+        if (kw.equals("")) return "redirect:/admin/listAccounts";
 
         List<User> listUser = getUserList(principal);
         List<User> list = new ArrayList<User>();
