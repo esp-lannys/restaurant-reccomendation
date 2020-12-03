@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 // :::::::::::::::::::::::::::::::::::::::::
@@ -21,6 +22,9 @@ public class Restaurant {
     private String name;
     private String address;
     private String phone;
+    private String description;
+    private Timestamp created_at;
+    private Timestamp updated_at;
     private String img;
 
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")

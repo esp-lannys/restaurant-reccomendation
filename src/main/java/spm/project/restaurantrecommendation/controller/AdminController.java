@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
+import spm.project.restaurantrecommendation.service.RestaurantService;
 import spm.project.restaurantrecommendation.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RestaurantService restaurantService;
 
     @GetMapping("/admin")
     public String showAdminIndex(Principal principal, Authentication authentication){
@@ -66,25 +70,27 @@ public class AdminController {
 
     //@GetMapping("/fragments/listRestaurants")
     @GetMapping("/admin/listRestaurants")
-    public String getListRestaurants() {
+    public String getListRestaurants(Model model, Principal principal) {
+        if (principal == null) return "redirect:/403";
+        model.addAttribute("restaurants", restaurantService.findAllRestaurants());
         return "admin/fragments/listRestaurants";
     }
 
     //@GetMapping("/fragments/listAccounts")
     @GetMapping("/admin/listAccounts")
     public String getlistAccounts(Model model, Principal principal) {
-        if (principal == null) return "redirect:/";
+        if (principal == null) return "redirect:/403";
         model.addAttribute("users", userService.findAll());
         return "admin/fragments/listAccounts";
     }
 
     @GetMapping("/admin/search-user")
-    public String searchUser(@RequestParam("keyword") String kw, Principal principal){
+    public String searchUser(@RequestParam("keyword") String kw, Principal principal, Model model, HttpServletRequest request){
         if (principal == null) {
             return "redirect:/";
         }
 
-        if (kw.equals("")) return "redirect:/admin/listAccounts";
+        if (kw.equals("")) return "redirect:/admin";
 
         List<User> listUser = getUserList(principal);
         List<User> list = new ArrayList<User>();
@@ -95,7 +101,9 @@ public class AdminController {
                     || is(a.getEmail(),kw))
                 list.add(a);
         }
-        return "redirect:/admin";
+        request.getSession().setAttribute("users", list);
+        model.addAttribute("users", list);
+        return "admin/fragments/listAccounts";
     }
 
     @GetMapping("/admin/delete-user-{id}")

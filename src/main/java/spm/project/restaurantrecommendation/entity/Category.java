@@ -17,6 +17,6 @@ public class Category {
 
     private String categoryName;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "locations")
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "categories")
     private Set<Restaurant> restaurants;
 }

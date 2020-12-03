@@ -38,6 +38,8 @@ public class RestaurantController {
             }
             if (isUser(roles)) {
                 map.addAttribute("navbar", "navbar-authenticated");
+            } else {
+                map.addAttribute("navbar", "navbar");
             }
         }
 
