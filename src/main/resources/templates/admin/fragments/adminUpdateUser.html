@@ -1,7 +1,10 @@
 <div xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
     <div th:fragment="profileAccount" class="container">
+        <div th:if="${param.success}">
+
+        </div>
         <form th:object="${user}"
-              th:action="@{/admin}"
+              th:action="@{'/admin/edit-user/'+ ${user.id}}"
               method="post">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-10 mt-5 pt-5">
