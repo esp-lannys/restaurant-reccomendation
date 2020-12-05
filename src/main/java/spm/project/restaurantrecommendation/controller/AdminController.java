@@ -44,6 +44,9 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String showAdminIndex(Principal principal, Authentication authentication){
+
+        if (principal == null) return "/403";
+
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -51,7 +54,7 @@ public class AdminController {
                 roles.add(a.getAuthority());
             }
             if (!isAdmin(roles)) {
-                return "/403";
+                return "redirect:/403";
             }
         }
         return "admin/index";
@@ -122,10 +125,6 @@ public class AdminController {
                     || is(a.getEmail(),kw))
                 list.add(a);
         }
-
-
-        request.getSession().setAttribute("users", list);
-        model.addAttribute("users", list);
 
 
         request.getSession().setAttribute("users", list);

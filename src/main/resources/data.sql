@@ -64,11 +64,11 @@ INSERT INTO category (id, category_name) VALUES ('21','Japanese');
 
 delete from restaurant ;
 
-INSERT INTO restaurant (id, address, img, name, phone) VALUES ('1','2 Phan Van Chuong St, Tan Phu Ward, District 7, HCM city', '/images/restaurants/red-chilli-seafood/','Red Chilli Seafood Buffet','(028) 3829.5334');
-INSERT INTO restaurant (id, address, img, name, phone) VALUES ('2','148 Hai Ba Trung St, Da Kao Ward, District 1, HCM city', '','Hoang Yen Buffet','');
-INSERT INTO restaurant (id, address, img, name, phone) VALUES ('3','235 Nguyen Van Cu St, Nguyen Cu Trinh Ward, District 1, HCM city', '','Ming Court','(028) 3929 5520');
-INSERT INTO restaurant (id, address, img, name, phone) VALUES ('4','195-197 Phan Xich Long St, Phu Nhuan District, HCM city', '','San Fu Lou','(028) 35176168');
-INSERT INTO restaurant (id, address, img, name, phone) VALUES ('5','52 Mac Dinh Chi St, Da Kao Ward, District 1, HCM city', '','Pachi Pachi','(028) 6295 9294');
+INSERT INTO restaurant (id, address, img, name, phone) VALUES ('1','2 Phan Van Chuong St, Tan Phu Ward, District 7, HCM city', '/images/restaurants/red-chilli-seafood/','Red Chilli Seafood Buffet','(028) 5410 9999');
+INSERT INTO restaurant (id, address, img, name, phone) VALUES ('2','50th floor, 60A Truong Son st, Ward 2, Tan Binh District, HCM city', '/images/restaurants/hoang-yen-buffet/','Hoang Yen Buffet','(028) 2241 7070');
+INSERT INTO restaurant (id, address, img, name, phone) VALUES ('3','235 Nguyen Van Cu St, Nguyen Cu Trinh Ward, District 1, HCM city', '/images/restaurants/ming-court/','Ming Court','(028) 3929 5520');
+INSERT INTO restaurant (id, address, img, name, phone) VALUES ('4','195-197 Phan Xich Long St, Phu Nhuan District, HCM city', '/images/restaurants/san-fu-lou/','San Fu Lou','(028) 35176168');
+INSERT INTO restaurant (id, address, img, name, phone) VALUES ('5','52 Mac Dinh Chi St, Da Kao Ward, District 1, HCM city', '/images/restaurants/pachi-pachi/','Pachi Pachi','(028) 6295 9294');
 
 delete from restaurant_category;
 
@@ -87,3 +87,10 @@ INSERT INTO restaurant_category (restaurant_id, category_id) VALUES ('5','2');
 INSERT INTO restaurant_category (restaurant_id, category_id) VALUES ('5','19');
 INSERT INTO restaurant_category (restaurant_id, category_id) VALUES ('5','21');
 
+delete from restaurant_location;
+
+INSERT INTO restaurant_location (restaurant_id, location_id) VALUES ('1','7');
+INSERT INTO restaurant_location (restaurant_id, location_id) VALUES ('2','17');
+INSERT INTO restaurant_location (restaurant_id, location_id) VALUES ('3','1');
+INSERT INTO restaurant_location (restaurant_id, location_id) VALUES ('4','16');
+INSERT INTO restaurant_location (restaurant_id, location_id) VALUES ('5','1');

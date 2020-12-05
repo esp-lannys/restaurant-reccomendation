@@ -14,4 +14,6 @@ public interface LocationService {
     Location findByDistrict(String district);
 
     Location findById(Long id);
+
+    List<Location> findLocationByRestaurantId(Long id);
 }

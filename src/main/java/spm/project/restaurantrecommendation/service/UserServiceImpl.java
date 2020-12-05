@@ -60,10 +60,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).get();
     }
 
-//    @Override
-//    public Optional<User> findById(Long id) {
-//        return userRepository.findById(id);
-//    }
 
     @Override
     public void deleteById(Long id) {
