@@ -40,7 +40,10 @@
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Edit Profile</h2>
-                    <form class="form-horizontal" th:object="${user}" th:action="@{/user/user-update-profile}" method="post">
+                    <form class="form-horizontal"
+                          th:object="${user}"
+                          th:action="@{/user/user-update-profile}"
+                          method="post">
                         <div class="form-group">
                             <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
                                th:each="error : ${#fields.errors('global')}"

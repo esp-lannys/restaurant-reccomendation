@@ -5,7 +5,8 @@ const list = $("#main-content");
 var activeButton = '';
 
 $(document).ready(function(){
-    $("#list-option-btn").on('click', 'button', function() {
+	//LIST OPTIONS
+    $("#list-option-btn").on('click', 'button', function() { 
        if(!$(this).hasClass("active")) {
                $("button").removeClass("active");
                $(this).addClass("active");
@@ -39,7 +40,7 @@ $(document).ready(function(){
 });
 
 $(function() {
-
+	//DELETE
     $('#main-content').on('click', 'table .delete', function(e) {
         e.preventDefault();
         const target = e.target.id;
@@ -57,6 +58,7 @@ $(function() {
         }
     });
 
+	//SEARCH FORM
      $('#main-content').on('submit', '.header-search #searchForm', function(e) {
 	    e.preventDefault();
 

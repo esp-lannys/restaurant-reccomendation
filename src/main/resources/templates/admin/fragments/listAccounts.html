@@ -63,7 +63,7 @@
                 <td th:text="${user.createdAt}">Created At</td>
                 <td th:text="${user.updatedAt}">Updated At</td>
                 <td>
-                    <a th:href="@{'/admin/edit-user-'+ ${user.id}}" class="btn btn-outline-info">
+                    <a th:href="@{'/admin/edit-user/' + ${user.id}}" class="btn btn-outline-info">
                         EDIT
                     </a>
                 </td>
