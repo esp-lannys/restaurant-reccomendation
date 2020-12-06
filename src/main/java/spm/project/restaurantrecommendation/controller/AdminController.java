@@ -205,7 +205,7 @@ public class AdminController {
         }
 
         if (kw.equals("")) {
-            return "redirect:/admin/listAccounts";
+            return "redirect:/admin/listRestaurants";
         }
 
         List<Restaurant> restaurantList = restaurantService.findAllRestaurants();
