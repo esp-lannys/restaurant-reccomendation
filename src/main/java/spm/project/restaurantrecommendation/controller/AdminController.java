@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
+import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.service.RestaurantService;
@@ -60,6 +61,8 @@ public class AdminController {
         return "admin/index";
     }
 
+    // Admin update user page
+
     @GetMapping("/admin/edit-user/{id}")
     public String showAdminUpdate(Model model,
                                   @PathVariable long id,
@@ -93,6 +96,8 @@ public class AdminController {
         return "admin/update";
     }
 
+    // Admin update user
+
     @PostMapping("/admin/edit-user/{id}")
     public String updateUserInfo(Authentication authentication,
                                  @PathVariable long id,
@@ -110,6 +115,8 @@ public class AdminController {
 
     }
 
+
+    // generate user list (optional)
 
     @ModelAttribute("userList")
     private List<User> getUserList(Principal principal){
@@ -140,6 +147,8 @@ public class AdminController {
         return "admin/fragments/listAccounts";
     }
 
+    // Admin search user
+
     @GetMapping("/admin/search-user")
     public String searchUser(@RequestParam("keyword") String kw, Principal principal, Model model, HttpServletRequest request){
         if (principal == null) {
@@ -165,6 +174,8 @@ public class AdminController {
         return "admin/fragments/listAccounts";
     }
 
+    // Admin delete user
+
     @GetMapping("/admin/delete-user-{id}")
     public String deleteUser(@PathVariable long id, Principal principal, HttpServletRequest request, HttpServletResponse response){
         if (principal == null) {
@@ -181,6 +192,35 @@ public class AdminController {
 
         userService.deleteById(id);
         return "redirect:/admin/listAccounts";
+    }
+
+    // Admin search restaurant
+
+    @GetMapping("/admin/search-restaurant")
+    public String searchRestaurant(@RequestParam("keyword") String kw, Principal principal
+                                    , Model model, HttpServletRequest request) {
+        if (principal == null) {
+            return "redirect:/";
+        }
+
+        if (kw.equals("")) {
+            return "redirect:/admin/listAccounts";
+        }
+
+        List<Restaurant> restaurantList = restaurantService.findAllRestaurants();
+        List<Restaurant> list = new ArrayList<Restaurant>();
+
+        for (Restaurant restaurant : restaurantList) {
+            if (is(restaurant.getName(),kw) || is(restaurant.getId().toString(),kw) || is(restaurant.getAddress(),kw)
+                || is(restaurant.getImg(),kw) || is(restaurant.getPhone(),kw) ) {
+                list.add(restaurant);
+            }
+        }
+
+        request.getSession().setAttribute("restaurants", list);
+        model.addAttribute("restaurants", list);
+
+        return "admin/fragments/listRestaurants";
     }
 
     boolean is(String a, String b) {

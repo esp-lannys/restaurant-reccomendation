@@ -7,22 +7,14 @@
                 <h1 id="headtitle">FIND RESTAURANT FOR ANY LOCATION</h1>
                 <div class="search-sec">
                     <div class="container">
-                        <form action="#" method="post" novalidate="novalidate">
+                        <form th:action="@{/admin/search-restaurant}" method="get" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-1 col-md-1"></div>
 
                                         <div class="col-lg-5 col-md-5 col-sm-12 p-0">
-                                            <input style="border-left:5px" type="text" class="form-control search-slt" placeholder="Enter the restaurant name">
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                            <select class="form-control search-slt" id="locationName" name="locationName">
-                                                <option>Select District</option>
-                                                <option>District 1</option>
-                                                <option>District 2</option>
-                                                <option>District 3</option>
-                                            </select>
+                                            <input style="border-left:5px" type="text" class="form-control search-slt" placeholder="Enter the restaurant name" name="keyword">
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-12 p-0">
                                             <button type="button" class="btn btn-success wrn-btn">Search</button>
@@ -61,6 +53,8 @@
             <td th:text="${restaurant.address}">Address</td>
             <td th:text="${restaurant.img}">Image</td>
             <td th:text="${restaurant.phone}">Phone</td>
+            <td><a href="#" class="btn btn-outline-info">EDIT</a></td>
+            <td><a href="#" class="btn btn-outline-danger delete">DELETE</a></td>
         </tr>
         </tbody>
     </table>
