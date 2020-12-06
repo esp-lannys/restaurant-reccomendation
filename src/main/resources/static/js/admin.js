@@ -2,9 +2,27 @@ console.log('CONNECTED');
 
 const listOptionBtn = $("#list-option-btn button");
 const list = $("#main-content");
+var previousURL = String(document.referrer);
+
+
 var activeButton = '';
 
 $(document).ready(function(){
+
+	if (previousURL.includes("/admin/edit-user")) {
+        activeButton = 'Accounts';
+        $("#list-option-btn #account").addClass("active");
+        $.ajax({
+           type: "GET",
+           url: "/admin/listAccounts",
+           data: { },
+           success: function(data){
+               list.html(data);
+           }
+       });
+    }
+
+
 	//LIST OPTIONS
     $("#list-option-btn").on('click', 'button', function() { 
        if(!$(this).hasClass("active")) {
