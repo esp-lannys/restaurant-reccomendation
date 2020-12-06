@@ -56,7 +56,8 @@ Three tier (three layers) architecture vs MVC pattern.
 1. Clone or download project
 2. start any mysql management system (XAMPP, WARMPP, etc)
 3. mvn clean install
-4. Access application at http://localhost:8080/
-5. Default accounts : 
+4. mvn spring-boot:run
+5. Access application at http://localhost:8080/
+6. Default accounts : 
 	- user user
 	- admin admin
