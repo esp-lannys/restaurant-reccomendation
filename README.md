@@ -50,7 +50,7 @@ Three tier (three layers) architecture vs MVC pattern.
 	- And their repository interfaces. 
 	
 ## 3. Database Implementation
-![Database schema] (https://github.com/nphoangtu/restaurant-reccomendation/blob/master/database_schema.png)
+![Database schema Image] (https://github.com/nphoangtu/restaurant-reccomendation/raw/master/database_schema.png)
 ## 4. Usage
 
 1. Clone or download project
