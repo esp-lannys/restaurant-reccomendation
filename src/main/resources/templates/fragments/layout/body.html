@@ -26,24 +26,11 @@
                 <div class="container">
                     <a class="title mb-2">Book for lunch tomorrow?</a>
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm" th:each="restaurant : ${restaurants}">
                             <div>
-                                <img class="imgrtr" th:src="@{/images/restaurants/buffet-hoang-yen.jpg}" alt="">
+                                <img class="imgrtr" th:src="${restaurant.img} + 'logo.jpg'" alt="">
                             </div>
-                            <a href="#" class="name">Hoang Yen Buffet</a>
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
-                        </div>
-                        <div class="col-sm">
-
-                            <img class="imgrtr" th:src="@{/images/restaurants/ming-court.jpg}" alt="">
-                            <a href="#" class="name">Ming Court</a>
+                            <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -51,45 +38,7 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <a class="location" href="#">District 2 <b>Ho Chi Minh city</b> </a>
-                        </div>
-                        <div class="col-sm">
-
-                            <img class="imgrtr" th:src="@{/images/restaurants/pachi-pachi.jpg}" alt="">
-                            <a href="#" class="name">Pachi Pachi</a>
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <a class="location" href="#">District 3 <b>Ho Chi Minh city</b> </a>
-                        </div>
-                        <div class="col-sm">
-                            <img class="imgrtr" th:src="@{/images/restaurants/red-chilli-seafood.jpg}" alt="">
-                            <a th:href="@{/restaurant}" class="name">Red Chilli Seafood</a>
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <a class="location" href="#">District 4 <b>Ho Chi Minh city</b> </a>
-                        </div>
-                        <div class="col-sm">
-
-                            <img class="imgrtr" th:src="@{/images/restaurants/san-fu-lou.jpg}" alt="">
-                            <a href="#" class="name">San Fu Lou</a>
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <a class="location" href="#">District 5 <b>Ho Chi Minh city</b> </a>
+                            <a class="location" href="#">District 1 </a> <b>Ho Chi Minh city</b>
                         </div>
                     </div>
                 </div>

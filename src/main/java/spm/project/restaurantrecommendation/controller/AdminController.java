@@ -8,21 +8,24 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
+import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
+import spm.project.restaurantrecommendation.service.RestaurantService;
 import spm.project.restaurantrecommendation.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.security.Principal;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -37,8 +40,39 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RestaurantService restaurantService;
+
     @GetMapping("/admin")
     public String showAdminIndex(Principal principal, Authentication authentication){
+
+        if (principal == null) return "/403";
+
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
+            }
+            if (!isAdmin(roles)) {
+                return "redirect:/403";
+            }
+        }
+        return "admin/index";
+    }
+
+    // Admin update user page
+
+    @GetMapping("/admin/edit-user/{id}")
+    public String showAdminUpdate(Model model,
+                                  @PathVariable long id,
+                                  Principal principal,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response, Authentication authentication){
+        if (principal == null) {
+            return "redirect:/admin";
+        }
+
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -49,14 +83,47 @@ public class AdminController {
                 return "/403";
             }
         }
-        return "admin/index";
+
+        User u = userService.findById(id);
+
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (auth != null) {
+//            new SecurityContextLogoutHandler().logout(request, response, auth);
+//        }
+
+        model.addAttribute("user", u);
+
+        return "admin/update";
     }
+
+    // Admin update user
+
+    @PostMapping("/admin/edit-user/{id}")
+    public String updateUserInfo(Authentication authentication,
+                                 @PathVariable long id,
+                                 @ModelAttribute("user") @Valid UserUpdateInfoDto userUpdateInfoDto,
+                                 BindingResult result,
+                                 Principal principal) {
+
+        if (authentication == null) return "redirect:/admin";
+
+        if (result.hasErrors()) return "redirect:/admin";
+
+        userService.save(userUpdateInfoDto);
+        userService.autoLogin(principal.getName());
+        return "redirect:/admin";
+
+    }
+
+
+    // generate user list (optional)
 
     @ModelAttribute("userList")
     private List<User> getUserList(Principal principal){
-        if (principal == null){
+        if (principal == null) {
             return null;
         }
+
         String username = principal.getName();
         User user = userService.findByUsername(username);
         List<User> oldList = userService.findAll();
@@ -66,7 +133,9 @@ public class AdminController {
 
     //@GetMapping("/fragments/listRestaurants")
     @GetMapping("/admin/listRestaurants")
-    public String getListRestaurants() {
+    public String getListRestaurants(Model model, Principal principal) {
+        if (principal == null) return "redirect:/403";
+        model.addAttribute("restaurants", restaurantService.findAllRestaurants());
         return "admin/fragments/listRestaurants";
     }
 
@@ -74,13 +143,15 @@ public class AdminController {
     //@GetMapping("/fragments/listAccounts")
     @GetMapping("/admin/listAccounts")
     public String getlistAccounts(Model model, Principal principal) {
-        if (principal == null) return "redirect:/";
+        if (principal == null) return "redirect:/403";
         model.addAttribute("users", userService.findAll());
         return "admin/fragments/listAccounts";
     }
 
+    // Admin search user
+
     @GetMapping("/admin/search-user")
-    public String searchUser(@RequestParam("keyword") String kw, Principal principal){
+    public String searchUser(@RequestParam("keyword") String kw, Principal principal, Model model, HttpServletRequest request){
         if (principal == null) {
             return "redirect:/";
         }
@@ -96,12 +167,21 @@ public class AdminController {
                     || is(a.getEmail(),kw))
                 list.add(a);
         }
-        return "redirect:/admin";
+
+
+        request.getSession().setAttribute("users", list);
+        model.addAttribute("users", list);
+
+        return "admin/fragments/listAccounts";
     }
+
+    // Admin delete user
 
     @GetMapping("/admin/delete-user-{id}")
     public String deleteUser(@PathVariable long id, Principal principal, HttpServletRequest request, HttpServletResponse response){
-        if (principal == null) return "redirect:/admin";
+        if (principal == null) {
+            return "redirect:/admin";
+        }
 
         User u = userService.findByUsername(principal.getName());
         if (id == u.getId()) {
@@ -110,8 +190,38 @@ public class AdminController {
                 new SecurityContextLogoutHandler().logout(request, response, auth);
             }
         }
+
         userService.deleteById(id);
         return "redirect:/admin/listAccounts";
+    }
+
+    // Admin search restaurant
+
+    @GetMapping("/admin/search-restaurant")
+    public String searchRestaurant(@RequestParam("keyword") String kw, Principal principal
+                                    , Model model, HttpServletRequest request) {
+        if (principal == null) {
+            return "redirect:/";
+        }
+
+        if (kw.equals("")) {
+            return "redirect:/admin/listAccounts";
+        }
+
+        List<Restaurant> restaurantList = restaurantService.findAllRestaurants();
+        List<Restaurant> list = new ArrayList<Restaurant>();
+
+        for (Restaurant restaurant : restaurantList) {
+            if (is(restaurant.getName(),kw) || is(restaurant.getId().toString(),kw) || is(restaurant.getAddress(),kw)
+                || is(restaurant.getImg(),kw) || is(restaurant.getPhone(),kw) ) {
+                list.add(restaurant);
+            }
+        }
+
+        request.getSession().setAttribute("restaurants", list);
+        model.addAttribute("restaurants", list);
+
+        return "admin/fragments/listRestaurants";
     }
 
     boolean is(String a, String b) {

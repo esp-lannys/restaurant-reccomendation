@@ -32,5 +32,10 @@ public class LocationServiceImpl implements LocationService{
         return locationRepository.findById(id).get();
     }
 
+    @Override
+    public List<Location> findLocationByRestaurantId(Long id) {
+        return locationRepository.findLocationByRestaurantId(id);
+    }
+
 
 }

@@ -9,5 +9,5 @@ public interface RestaurantService {
 
     Restaurant findById(Long id);
 
-
+    List<Restaurant> findRestaurantByCategoryId(Long id);
 }

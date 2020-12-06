@@ -12,10 +12,10 @@
 
 <body>
     <!--HEADER-->
-    <div th:replace="fragments/header/navbar :: navbar"></div>
+    <header th:replace="fragments/header/navbar :: ${navbar}"></header>
 
     <!--BODY-->
-    <div class="container my-5 py-5 z-depth-1" style="padding-left: 10%;padding-right: 10%;">
+    <div class="container my-5 py-5 z-depth-1">
         <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
             <div class="row">
                 <div class="col-md-6 mb-4">
@@ -23,11 +23,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-4">
-                                <img class="imgrtr" style="border-radius:5px; margin-bottom: 20px;" th:src="@{/images/restaurants/red-chilli-seafood.jpg}" alt="">
+                                <img class="imgrtr" style="border-radius:5px; margin-bottom: 20px;" th:src="@{/static/images/restaurants/red-chilli-seafood/logo.jpg}" alt="">
                             </div>
                             <div class="col-sm-8">
                                 <div class="row" style="padding-top: 0;">
-                                    <a style="font-size: 2rem; font-weight: 650; color: black;" th:href="@{/restaurant}">RED CHILLI SEAFOOD BUFFET - Ho Chi Minh city</a>
+                                    <a id="rtrName" th:href="@{/restaurant}">RED CHILLI SEAFOOD BUFFET - Ho Chi Minh city</a>
                                 </div>
                             </div>
                         </div>

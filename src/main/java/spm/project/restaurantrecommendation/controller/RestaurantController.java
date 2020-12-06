@@ -8,18 +8,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import spm.project.restaurantrecommendation.entity.Location;
+import spm.project.restaurantrecommendation.entity.Restaurant;
+import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.service.LocationService;
 import spm.project.restaurantrecommendation.service.RestaurantService;
-
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Stream;
 
-@PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+
+
 @Controller
-@RequestMapping("/restaurant")
 public class RestaurantController {
 
     @Autowired
@@ -28,8 +31,9 @@ public class RestaurantController {
     @Autowired
     private RestaurantService restaurantService;
 
-    @GetMapping
-    public String showRestaurantDetailPage(Model model, ModelMap map, Authentication authentication, Principal principal) {
+    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+    @GetMapping("/restaurant")
+    public String showRestaurantDetailPage(Model model, ModelMap map, Authentication authentication, Principal principal, User user) {
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -38,8 +42,58 @@ public class RestaurantController {
             }
             if (isUser(roles)) {
                 map.addAttribute("navbar", "navbar-authenticated");
+            } else {
+                map.addAttribute("navbar", "navbar");
             }
         }
+        List<Restaurant> restaurants = restaurantService.findAllRestaurants();
+        model.addAttribute("restaurants", restaurants);
+        return "restaurant";
+    }
+
+    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+    @GetMapping("/restaurant/{id}")
+    public String showRestaurantDetail(@PathVariable("id") Long id,
+                                       Model model, ModelMap map, Authentication authentication, Principal principal, User user) {
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
+            }
+            if (isUser(roles)) {
+                map.addAttribute("navbar", "navbar-authenticated");
+            } else {
+                map.addAttribute("navbar", "navbar");
+            }
+        }
+        List<Restaurant> restaurants = restaurantService.findAllRestaurants();
+        Restaurant restaurant = restaurantService.findById(id);
+
+        model.addAttribute("restaurants", restaurants);
+        model.addAttribute("restaurant", restaurant);
+
+        return "restaurant";
+    }
+
+    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+    @GetMapping("/user/restaurant/{id}")
+    public String showRestaurantDetailUser(@PathVariable("id") Long id,
+                                       Model model, ModelMap map, Authentication authentication, Principal principal, User user) {
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
+            }
+            if (isUser(roles)) {
+                map.addAttribute("navbar", "navbar-authenticated");
+            } else {
+                map.addAttribute("navbar", "navbar");
+            }
+        }
+        Restaurant restaurant = restaurantService.findById(id);
+        model.addAttribute("restaurant", restaurant);
 
         return "restaurant";
     }

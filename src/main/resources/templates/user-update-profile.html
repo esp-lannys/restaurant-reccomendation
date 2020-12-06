@@ -40,14 +40,19 @@
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Edit Profile</h2>
-                    <form class="form-horizontal" th:object="${user}" th:action="@{/user/user-update-profile}" method="post">
+                    <form class="form-horizontal"
+                          th:object="${user}"
+                          th:action="@{/user/user-update-profile}"
+                          method="post">
                         <div class="form-group">
                             <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
                                th:each="error : ${#fields.errors('global')}"
                                th:text="${error}">Validation error</p>
                         </div>
+
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
+
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
@@ -64,6 +69,7 @@
                                        th:text="${error}">Validation error</p>
                                 </div>
                             </div>
+
                             <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">

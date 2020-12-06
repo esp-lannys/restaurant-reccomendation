@@ -2,16 +2,36 @@ console.log('CONNECTED');
 
 const listOptionBtn = $("#list-option-btn button");
 const list = $("#main-content");
+var previousURL = String(document.referrer);
+
+
 var activeButton = '';
 
 $(document).ready(function(){
-    $("#list-option-btn").on('click', 'button', function() {
+
+	if (previousURL.includes("/admin/edit-user")) {
+        activeButton = 'Accounts';
+        $("#list-option-btn #account").addClass("active");
+        $.ajax({
+           type: "GET",
+           url: "/admin/listAccounts",
+           data: { },
+           success: function(data){
+               list.html(data);
+           }
+       });
+    }
+
+
+	//LIST OPTIONS
+    $("#list-option-btn").on('click', 'button', function() { 
        if(!$(this).hasClass("active")) {
                $("button").removeClass("active");
                $(this).addClass("active");
                activeButton = $(this).val();
 
                if (activeButton == 'Restaurants') {
+               console.log("SHOW LIST RESTAURANT");
                    $.ajax({
                            type: "GET",
                            url: "/admin/listRestaurants",
@@ -23,6 +43,7 @@ $(document).ready(function(){
                }
 
                if (activeButton == 'Accounts') {
+              console.log("SHOW LIST ACCOUNT");
                    $.ajax({
                            type: "GET",
                            url: "/admin/listAccounts",
@@ -37,8 +58,8 @@ $(document).ready(function(){
 });
 
 $(function() {
-    /* Toggle category item - use .on('click') and delegate event */
-    $('#main-content').on('click', '.btn', function(e) {
+	//DELETE
+    $('#main-content').on('click', 'table .delete', function(e) {
         e.preventDefault();
         const target = e.target.id;
 
@@ -54,5 +75,23 @@ $(function() {
            });
         }
     });
+
+	//SEARCH FORM
+     $('#main-content').on('submit', '.header-search #searchForm', function(e) {
+	    e.preventDefault();
+
+	    var form = $(this);
+	    var url = form.attr('action');
+
+	    $.ajax({
+	           type: "GET",
+	           url: url,
+	           data: form.serialize(), // serializes the form's elements.
+	           success: function(data) {
+	                list.empty();
+                    list.html(data);
+	           }
+         });
+	});
 });
 

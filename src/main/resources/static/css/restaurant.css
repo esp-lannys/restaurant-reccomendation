@@ -11,6 +11,7 @@ body {
 }
 
 .banner {
+    height: 30%;
     width: 100%;
 }
 
@@ -99,7 +100,6 @@ body {
 
 #tag-title {
     color: #24a041;
-    font-size: 1.5rem;
 }
 
 .tag {
@@ -674,6 +674,15 @@ footer {
     }
 }
 
+@media (max-width: 589px) {
+    #tag-title {
+        font-size: 1rem;
+    }
+    .col {
+        font-size: 1rem;
+    }
+}
+
 @media (min-width: 992px) {
     .search-sec {
         position: relative;
@@ -694,5 +703,18 @@ footer {
     }
     #restaurateur-subheading {
         display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #user-message {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 622px) {
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+        float: none;
     }
 }
