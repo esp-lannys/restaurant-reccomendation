@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Footer Fragment</title>
+</head>
+
+<body>
+
+    <footer id="footer" th:fragment="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3 mxs-3">
+                    <h3>Become an insider</h3>
+                    <br>
+                    <h4>Register to be a part of us and receive up-to-date information about cuisines around you</h4>
+                    <br>
+                    <a class="btn btn-light" id="btn-footer" th:href="@{/registration}">Sign up</a>
+                    <br>
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <a class="text-white" th:href="@{/about}">
+                        <h3>About Us</h3>
+                    </a>
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <a class="text-white" th:href="@{/contact}">
+                        <h3>Contact</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

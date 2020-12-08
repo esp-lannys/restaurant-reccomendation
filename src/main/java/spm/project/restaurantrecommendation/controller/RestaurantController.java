@@ -9,15 +9,18 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import spm.project.restaurantrecommendation.entity.Category;
 import spm.project.restaurantrecommendation.entity.Location;
 import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.User;
+import spm.project.restaurantrecommendation.service.CategoryService;
 import spm.project.restaurantrecommendation.service.LocationService;
 import spm.project.restaurantrecommendation.service.RestaurantService;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -30,6 +33,9 @@ public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
     @GetMapping("/restaurant")
@@ -69,7 +75,7 @@ public class RestaurantController {
         }
         List<Restaurant> restaurants = restaurantService.findAllRestaurants();
         Restaurant restaurant = restaurantService.findById(id);
-
+        System.out.println(categoryService.findCategoryByIdRestaurant(id).stream().map(Category::getCategoryName).collect(Collectors.toList()) + ",");
         model.addAttribute("restaurants", restaurants);
         model.addAttribute("restaurant", restaurant);
 
@@ -96,6 +102,28 @@ public class RestaurantController {
         model.addAttribute("restaurant", restaurant);
 
         return "restaurant";
+    }
+
+    // reservation page
+
+    @GetMapping({ "/restaurant/{id}/reservation" })
+    public String showReservationPage(@PathVariable("id") Long id ,Authentication authentication, Principal principal, ModelMap map, Model model) {
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
+            }
+            if (isUser(roles)) {
+                map.addAttribute("navbar", "navbar-authenticated");
+            }
+            else {
+                map.addAttribute("navbar", "navbar");
+            }
+        }
+        Restaurant restaurant = restaurantService.findById(id);
+        model.addAttribute("restaurant", restaurant);
+        return "reservation";
     }
 
     private boolean isUser(List<String> roles) {

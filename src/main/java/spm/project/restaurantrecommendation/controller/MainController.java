@@ -110,23 +110,25 @@ public class MainController {
         return "about";
     }
 
-    @GetMapping({ "/reservation" })
-    public String showReservationPage(Authentication authentication, Principal principal, ModelMap map) {
-        if (authentication != null) {
-            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-            List<String> roles = new ArrayList<String>();
-            for (GrantedAuthority a : authorities) {
-                roles.add(a.getAuthority());
-            }
-            if (isUser(roles)) {
-                map.addAttribute("navbar", "navbar-authenticated");
-            }
-            else {
-                map.addAttribute("navbar", "navbar");
-            }
-        }
-        return "reservation";
-    }
+    // reservation test
+
+//    @GetMapping({ "/reservation" })
+//    public String showReservationPage(Authentication authentication, Principal principal, ModelMap map) {
+//        if (authentication != null) {
+//            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+//            List<String> roles = new ArrayList<String>();
+//            for (GrantedAuthority a : authorities) {
+//                roles.add(a.getAuthority());
+//            }
+//            if (isUser(roles)) {
+//                map.addAttribute("navbar", "navbar-authenticated");
+//            }
+//            else {
+//                map.addAttribute("navbar", "navbar");
+//            }
+//        }
+//        return "reservation";
+//    }
 
     ////////////////////////////
     //////////////////////////// 403 PAGE

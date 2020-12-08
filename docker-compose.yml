@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  localhost:
+    image: mysql:5.6
+    environment:
+      - MYSQL_DATABASE:rss
+      - MYSQL_USER:root
+      - MYSQL_ALLOW_EMPTY_PASSWORD:yes
+    volumes:
+      - /data/mysql
+    ports:
+      - 3306:3306
+    container_name: rss-db
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - localhost
+    environment:
+      - PMA_HOST:localhost
+      - PMA_PORT:3306
+    ports:
+      - 8081:80
+  restaurant-recommendation:
+    image: restaurant-recommendation
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - localhost
+    ports:
+      - 8080:8080
+    volumes:
+      - /data/restaurant-recommendation
+    container_name: rss-app
