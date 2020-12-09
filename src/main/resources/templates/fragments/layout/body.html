@@ -38,7 +38,9 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <a class="location" href="#">District 1 </a> <b>Ho Chi Minh city</b>
+                            <div th:each="location : ${restaurant.locations}">
+                            <a class="location" href="#" th:text="${location.district}">District 1 </a> <b>Ho Chi Minh city</b>
+                            </div>
                         </div>
                     </div>
                 </div>

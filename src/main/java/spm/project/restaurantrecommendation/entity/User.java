@@ -55,8 +55,5 @@ public class User implements Serializable {
     private Set<Role> roles;
 
     @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<Rating> ratings;
-
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Reservation> reservations;
 }

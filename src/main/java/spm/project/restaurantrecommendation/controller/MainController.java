@@ -60,17 +60,7 @@ public class MainController {
             }
         }
         List<Restaurant> restaurantList = restaurantService.findAllRestaurants();
-        String locations = "";
-        for (Restaurant restaurant : restaurantList) {
-            List<Location> locationList = locationService.findLocationByRestaurantId(restaurant.getId());
-            for (Location location : locationList){
-                locations = locations + location.getDistrict() + ", ";
-            }
-        }
-        model.addAttribute("location", locations);
-
         model.addAttribute("restaurants", restaurantList);
-
         return "index";
     }
 
