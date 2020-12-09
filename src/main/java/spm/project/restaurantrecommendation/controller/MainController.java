@@ -54,8 +54,7 @@ public class MainController {
             }
             if (isUser(roles)) {
                 map.addAttribute("navbar", "navbar-authenticated");
-            }
-            else {
+            } else {
                 map.addAttribute("navbar", "navbar");
             }
         }
@@ -74,8 +73,7 @@ public class MainController {
             }
             if (isUser(roles)) {
                 map.addAttribute("navbar", "navbar-authenticated");
-            }
-            else {
+            } else {
                 map.addAttribute("navbar", "navbar");
             }
         }
@@ -92,33 +90,50 @@ public class MainController {
             }
             if (isUser(roles)) {
                 map.addAttribute("navbar", "navbar-authenticated");
-            }
-            else {
+            } else {
                 map.addAttribute("navbar", "navbar");
             }
         }
         return "about";
     }
 
+    @GetMapping({ "/result" })
+    public String showResultPage(Authentication authentication, Principal principal, ModelMap map) {
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
+            }
+            if (isUser(roles)) {
+                map.addAttribute("navbar", "navbar-authenticated");
+            } else {
+                map.addAttribute("navbar", "navbar");
+            }
+        }
+        return "result";
+    }
     // reservation test
 
-//    @GetMapping({ "/reservation" })
-//    public String showReservationPage(Authentication authentication, Principal principal, ModelMap map) {
-//        if (authentication != null) {
-//            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-//            List<String> roles = new ArrayList<String>();
-//            for (GrantedAuthority a : authorities) {
-//                roles.add(a.getAuthority());
-//            }
-//            if (isUser(roles)) {
-//                map.addAttribute("navbar", "navbar-authenticated");
-//            }
-//            else {
-//                map.addAttribute("navbar", "navbar");
-//            }
-//        }
-//        return "reservation";
-//    }
+    // @GetMapping({ "/reservation" })
+    // public String showReservationPage(Authentication authentication, Principal
+    // principal, ModelMap map) {
+    // if (authentication != null) {
+    // Collection<? extends GrantedAuthority> authorities =
+    // authentication.getAuthorities();
+    // List<String> roles = new ArrayList<String>();
+    // for (GrantedAuthority a : authorities) {
+    // roles.add(a.getAuthority());
+    // }
+    // if (isUser(roles)) {
+    // map.addAttribute("navbar", "navbar-authenticated");
+    // }
+    // else {
+    // map.addAttribute("navbar", "navbar");
+    // }
+    // }
+    // return "reservation";
+    // }
 
     ////////////////////////////
     //////////////////////////// 403 PAGE

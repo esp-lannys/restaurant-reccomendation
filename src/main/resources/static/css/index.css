@@ -378,3 +378,21 @@ footer {
         float: none;
     }
 }
+
+
+/* Search Result Page */
+
+.row.rtr {
+    padding-left: 10%;
+    padding-right: 10%;
+    border-bottom: #dad9d9 solid 1px;
+}
+
+.search-title {
+    padding-left: 15%;
+    padding-right: 15%;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    pointer-events: none;
+}
