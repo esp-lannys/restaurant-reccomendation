@@ -282,29 +282,31 @@
 
                             <hr class="hr">
                             <div id="rsvForm">
-                                <form action="reservation">
+                                <form   onchange="saveData()"
+                                        action="reservation">
                                     <div id="sizeForm">
                                         <label class="label" id="party-size">Party Size</label>
                                         <select id="tableSize" name="size">
-                                        <option>For 1</option>
-                                        <option> 2</option>
-                                        <option> 3</option>
-                                        <option> 4</option>
-                                        <option> 5</option>
-                                        <option> 6</option>
-                                    </select>
+                                            <option> </option>
+                                            <option> 1 </option>
+                                            <option> 2</option>
+                                            <option> 3</option>
+                                            <option> 4</option>
+                                            <option> 5</option>
+                                            <option> 6</option>
+                                        </select>
                                     </div>
                                     <div class="container" id="inDate">
                                         <div class="row">
 
                                             <div class="col-6" id="setDate">
                                                 <label class="label">Date</label>
-                                                <input class="inputDate" type="date">
+                                                <input id="date" class="inputDate" type="date">
                                             </div>
 
                                             <div class="col-6" id="setTime">
                                                 <label class="label">Time</label>
-                                                <input class="inputDate" type="time">
+                                                <input id="time" class="inputDate" type="time">
                                             </div>
 
                                         </div>
@@ -320,6 +322,9 @@
         </div>
     </section>
     <div th:replace="fragments/layout/footer :: footer"></div>
+
+    <script type="text/javascript" th:src="@{/js/restaurant.js}"></script>
+
 
 </body>
 
