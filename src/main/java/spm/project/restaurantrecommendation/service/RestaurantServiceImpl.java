@@ -29,4 +29,9 @@ public class RestaurantServiceImpl implements RestaurantService{
     public List<Restaurant> findRestaurantByCategoryId(Long id) {
         return restaurantRepository.findRestaurantByCategoryId(id);
     }
+
+    @Override
+    public List<Restaurant> search(String keyword, String location) {
+        return restaurantRepository.search(keyword, location);
+    }
 }

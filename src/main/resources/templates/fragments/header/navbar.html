@@ -44,8 +44,7 @@
                     <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="dropdown-toggle rounded-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="userProfile" id="user-dropdown">
-                        <a class="dropdown-item" th:href="@{/user/user-profile}">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" th:href="@{/user/user-profile}">Update Profile</a>
                         <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/logout}">Log Out</a>
                     </div>
                 </li>

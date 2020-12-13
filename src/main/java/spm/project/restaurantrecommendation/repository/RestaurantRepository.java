@@ -13,4 +13,9 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 
     @Query("SELECT r from Category c inner join c.restaurants r where c.id = :idCategory")
     List<Restaurant> findRestaurantByCategoryId(@RequestParam("idCategory") Long id);
+
+    @Query("SELECT r FROM Restaurant r WHERE r.name LIKE %:keyword%"
+            + " AND r.address LIKE %:location%")
+    public List<Restaurant> search(@RequestParam("keyword") String keyword
+                                , @RequestParam("location") String location);
 }
