@@ -18,4 +18,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
             + " AND r.address LIKE %:location%")
     public List<Restaurant> search(@RequestParam("keyword") String keyword
                                 , @RequestParam("location") String location);
+
+    @Query("SELECT r FROM Restaurant r WHERE r.name LIKE %:keyword%")
+    public List<Restaurant> adminSearchRes(@RequestParam("keyword") String keyword);
 }

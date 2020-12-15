@@ -12,4 +12,6 @@ public interface RestaurantService {
     List<Restaurant> findRestaurantByCategoryId(Long id);
 
     List<Restaurant> search (String keyword, String location);
+
+    List<Restaurant> adminSearchRes (String keyword);
 }

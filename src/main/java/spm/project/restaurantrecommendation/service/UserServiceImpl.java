@@ -14,6 +14,7 @@ import spm.project.restaurantrecommendation.dto.UserChangePasswordDto;
 import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.PasswordResetToken;
+import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.repository.PasswordResetTokenRepository;
@@ -125,6 +126,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updatePassword(String password, Long id) {
         userRepository.updatePassword(password, id);
+    }
+
+    @Override
+    public List<User> adminSearchAcc(String keyword) {
+        return userRepository.adminSearchAcc(keyword);
     }
 
 
