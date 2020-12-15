@@ -1,0 +1,210 @@
+html {
+    position: relative;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background-color: #eff1f3;
+    font-size: larger;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+header {
+    font-size: larger;
+    background-color: white;
+}
+
+.header-search {
+    background-image: url(../images/banner.jpg);
+    background-size: 100%;
+    position: relative;
+    background-blend-mode: lighten;
+    width: auto;
+    height: 31.3875%;
+    padding-left: 2.25%;
+    padding-right: 2.25%;
+    padding-top: 6%;
+}
+
+.btn {
+    margin-right: 10px;
+    border-color: black;
+    border: none;
+}
+
+#btn-header {
+    font-size: 1.25rem;
+}
+
+.bg-light {
+    background-color: white !important;
+}
+
+nav {
+    background-color: #203850;
+}
+
+.navbar-light .navbar-brand {
+    color: black;
+}
+
+#navbarSupportedContent1 {
+    margin-right: 80px;
+}
+
+#navbarResponsive {
+    margin-right: 5%;
+}
+
+.navbar-brand {
+    margin-left: 8%;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.navbar-collapse {
+    height: 120%;
+}
+
+.logo {
+    width: 16%;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+.btn-light {
+    font-weight: 500;
+    font-size: 1rem;
+    color: black;
+    background-color: #bfc5c5c5;
+}
+
+.btn-light:hover {
+    color: white;
+    background-color: #1d4b3c;
+}
+
+.btn-success {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+h1 {
+    font-weight: 650;
+}
+
+.container {
+    max-width: 100%;
+    padding-top: 1.125%;
+    padding: 0 16px;
+}
+
+#container-header {
+    padding-top: 0px;
+}
+
+#btn-footer:hover {
+    background-color: #359474;
+}
+
+footer {
+    padding: 5% 10%;
+    color: white;
+    background-color: #1d4b3c;
+}
+
+.row {
+    width: 100%;
+    margin: 0px;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #1d4b3c;
+    color: white;
+}
+
+.container::after,
+.row::after {
+    content: "";
+    clear: both;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.card {
+    display: block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+button {
+    margin-top: 10px;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #1c4b1e;
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
