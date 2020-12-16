@@ -122,6 +122,11 @@ nav {
     height: 120%;
 }
 
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: transparent;
+}
+
 .logo {
     width: 16%;
 }

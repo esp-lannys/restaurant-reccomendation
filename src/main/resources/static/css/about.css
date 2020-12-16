@@ -98,13 +98,26 @@ input {
 }
 
 h1 {
+    text-transform: uppercase;
     font-weight: 650;
+    line-height: 1;
+    margin-top: 65px;
+    text-align: center;
+    font-size: 40px;
+}
+
+h1 span {
+    color: #4E203C;
+    display: block;
+    font-size: .45em;
+    letter-spacing: 3px;
 }
 
 .container {
     max-width: 100%;
     padding-top: 1.125%;
-    padding: 0 16px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #container-header {
@@ -146,12 +159,6 @@ footer {
     text-align: center;
     background-color: #1d4b3c;
     color: white;
-}
-
-.container::after,
-.row::after {
-    content: "";
-    clear: both;
 }
 
 .title {
