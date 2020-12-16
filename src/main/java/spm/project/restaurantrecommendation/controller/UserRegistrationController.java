@@ -64,18 +64,18 @@ public class UserRegistrationController {
             return "registration";
         }
 
-//        Mail mail = new Mail();
-//        mail.setFrom("practice.project.noreply@gmail.com");
-//        mail.setTo(userDto.getEmail());
-//        mail.setSubject("Welcome to GOURMETTE");
-//
-//        Map<String, Object> model = new HashMap<>();
-//        model.put("user", userDto.getUsername());
-//        model.put("signature","http://localhost:8080");
-//        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
-//        model.put("registrationUrl",url + "/registration?=" + savedUser.getUsername());
-//        mail.setModel(model);
-//        emailService.sendEmail(mail);
+        Mail mail = new Mail();
+        mail.setFrom("practice.project.noreply@gmail.com");
+        mail.setTo(savedUser.getEmail());
+        mail.setSubject("Welcome to GOURMETTE");
+
+        Map<String, Object> mailModel = new HashMap<>();
+        mailModel.put("user", savedUser);
+        mailModel.put("signature","THE FIFTH ORANGE ORGANIZATION");
+        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+        mailModel.put("registrationUrl",url + "/registration?=" + savedUser.getUsername());
+        mail.setModel(mailModel);
+        emailService.sendEmail(mail);
         return "redirect:/registration?success";
     }
 }

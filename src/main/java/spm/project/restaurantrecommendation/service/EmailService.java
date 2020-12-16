@@ -1,6 +1,7 @@
 package spm.project.restaurantrecommendation.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -14,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 public class EmailService {
+    @Qualifier("getJavaMailSender")
     @Autowired
     private JavaMailSender emailSender;
 
@@ -34,17 +36,13 @@ public class EmailService {
             helper.setText(html, true);
             helper.setSubject(mail.getSubject());
             helper.setFrom(mail.getFrom());
-
-            if (mail.getTo().contains("@gmail.com")) {
-                JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-                mailSender.setHost("localhost");
-                mailSender.setPort(587);
-
-                mailSender.setUsername("practice.project.noprely@gmail.com");
-                mailSender.setPassword("Goodboy2020");
-                mailSender.send(message);
-            } else
-                emailSender.send(message);
+//            JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+//            mailSender.setHost("smtp.gmail.com");
+//            mailSender.setPort(587);
+//            mailSender.setUsername("practice.project.noprely@gmail.com");
+//            mailSender.setPassword("lucjkbcflvbnwiby");
+//            mailSender.send(message);
+            emailSender.send(message);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
