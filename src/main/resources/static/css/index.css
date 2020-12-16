@@ -20,10 +20,22 @@ body {
 
 a {
     color: black;
+    transition: 0.5s;
 }
 
 a:hover {
     color: black;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.h3 {
+    transition: 0.5s;
+}
+
+.h3:hover {
+    color: rgb(184, 184, 184);
+    transform: scale(1.1);
 }
 
 a1:hover {
@@ -117,6 +129,17 @@ nav {
 input {
     outline: none;
     border: none;
+    transition: 0.3s !important;
+}
+
+input:focus {
+    outline: none;
+    transform: scale(1.05);
+    z-index: 1 !important;
+}
+
+option {
+    transform: scale(1);
 }
 
 .btn-light {
@@ -128,7 +151,7 @@ input {
 }
 
 .btn-light:hover {
-    color: white;
+    color: white !important;
     background-color: #1d4b3c;
 }
 
@@ -136,6 +159,10 @@ input {
     font-weight: 500;
     font-size: 1rem;
     transition: 0.2s;
+}
+
+.btn-success:hover {
+    color: white !important;
 }
 
 h1 {
@@ -306,6 +333,12 @@ h1 {
     color: white;
     background-color: #28a745;
     border: none;
+    transition: 0.2s;
+}
+
+.btn-join:hover {
+    color: white !important;
+    background-color: #1d4b3c;
 }
 
 #btn-footer:hover {
