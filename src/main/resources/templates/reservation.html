@@ -36,7 +36,7 @@
         <section class="px-md-5 mx-md-5 text-center text-lg-center dark-grey-text">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 mb-4">
-                    <h3 class="font-weight-bold" style="color:#1d4b3c">Confirm your Reservation!</h3>
+                    <h5 class="font-weight-bold" style="color:#979797">Have a look on your reservation</h5>
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
@@ -75,25 +75,25 @@
                                 <hr class="hr">
                                 <div class="row">
                                     <div class="col-6" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
-                                        <label for="fname" style="font-size: large;">First Name</label>
+                                        <label for="fname" style="font-size: large; font-weight:500;">First Name</label>
                                         <input type="text" id="fname" name="firstname" placeholder="Your name.." th:field="*{firstName}">
                                         <p class="error-message" th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
                                     </div>
                                     <div class="col-6" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
-                                        <label for="lname" style="font-size: large;">Last Name</label>
+                                        <label for="lname" style="font-size: large; font-weight:500;">Last Name</label>
                                         <input type="text" id="lname" name="lastname" placeholder="Your last name.." th:field="*{lastName}">
                                         <p class="error-message" th:each="error: ${#fields.errors('lastName')}" th:text="${error}">Validation error</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6" th:classappend="${#fields.hasErrors('phone')}? 'has-error':''">
-                                        <label for="phone" style="font-size: large;">Phone Number</label>
+                                        <label for="phone" style="font-size: large; font-weight:500;">Phone Number</label>
                                         <input type="tel" id="phone" name="phonenumber" placeholder="Your phone number.." th:field="*{phone}">
                                         <p class="error-message" th:each="error: ${#fields.errors('phone')}" th:text="${error}">Validation error</p>
                                         </select>
                                     </div>
                                     <div class="col-6" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-                                        <label for="email" style="font-size: large;">Email</label>
+                                        <label for="email" style="font-size: large; font-weight:500;">Email</label>
                                         <input type="email" id="email" name="emailaddress" placeholder="Your email address.." th:field="*{email}">
                                         <p class="error-message" th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
                                     </div>
@@ -110,7 +110,7 @@
                                         </select>
                                     </div>
                                     <div class="col-6">
-                                        <h5 style="font-size: large;">Request (optional)</h5>
+                                        <h5 style="font-size: large;">Request <br> (optional)</h5>
                                         <input id="request" name="request" placeholder="Add a special request.." style="height: auto;" type="text" th:field="*{additionalRequest}" />
                                     </div>
                                 </div>
