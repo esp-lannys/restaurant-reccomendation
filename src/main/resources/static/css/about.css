@@ -192,14 +192,32 @@ button:hover {
     background-color: #1c4b1e;
 }
 
+.btn-light:hover {
+    color: white !important;
+    background-color: #1d4b3c;
+}
+
+.btn-success:hover {
+    color: white !important;
+}
+
 a {
-    text-decoration: none;
     font-size: 22px;
     color: black;
 }
 
 a:hover {
     opacity: 0.7;
+    text-decoration: none;
+}
+
+.h3 {
+    transition: 0.5s;
+}
+
+.h3:hover {
+    color: rgb(184, 184, 184);
+    transform: scale(1.1);
 }
 
 @media screen and (max-width: 650px) {

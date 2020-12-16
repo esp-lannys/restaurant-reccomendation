@@ -311,6 +311,10 @@ a {
     color: black;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 a1:hover {
     color: white;
 }
@@ -350,10 +354,6 @@ hr {
     padding-left: 2.25%;
     padding-right: 2.25%;
     padding-top: 6%;
-}
-
-svg {
-    padding-bottom: 2px;
 }
 
 .btn {
@@ -423,55 +423,26 @@ input {
 }
 
 .btn-light:hover {
-    color: white;
+    color: white !important;
     background-color: #1d4b3c;
 }
 
-.btn-red {
-    color: white;
-    background-color: #da3743;
-    border: none;
-}
-
-.btn-blue {
-    color: white;
-    background-color: rgb(0, 0, 0);
-    border: none;
-}
-
-.btn-blue:hover {
-    color: rgba(255, 255, 255, 0.493);
+.btn-success:hover {
+    color: white !important;
 }
 
 h1 {
     font-weight: 650;
 }
 
-#checkLocation {
-    font-size: larger;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 0;
-    padding-right: 0;
-    margin-right: 3%;
-    margin-left: 3%;
-    border-bottom: 1px solid;
+.h3 {
+    transition: 0.5s;
+    text-decoration: none;
 }
 
-#getLoc {
-    padding: 0.7875%;
-    color: white;
-    background-color: #205042;
-    margin-right: 0.5625%;
-    margin-left: 0.5625%;
-    border-style: none;
-    border-radius: 7px;
-    transition: 0.2s;
-}
-
-#getLoc:hover {
+.h3:hover {
+    color: rgb(184, 184, 184);
     transform: scale(1.1);
-    background-color: #379c79;
 }
 
 .listrtr {
@@ -571,37 +542,6 @@ h1 {
     width: 100%;
     border-radius: 2px;
     filter: brightness(50%);
-}
-
-.joinUs {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 0;
-    padding-right: 0;
-    overflow: hidden;
-    margin-right: 3%;
-    margin-left: 3%;
-    position: relative;
-}
-
-.imgjoin {
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    filter: brightness(50%);
-}
-
-.btn-join {
-    font-size: larger;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    background-color: #28a745;
-    border: none;
 }
 
 #btn-footer:hover {
