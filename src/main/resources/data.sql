@@ -24,11 +24,11 @@ INSERT INTO location (id, district) values ('19','Binh Tan District');
 
 delete from users;
 
-INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('1','Luan','Bui Hoang','0123456789','luan@test.com','luan','$2a$10$3WQPws9o2zN4E1XAs1nKc.vWKUTtV/uRgvOAJ6foqrHcs/rqmWjLi');
-INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('2','Quang','Vo Ho Nhat Quang','0123456789','quang@test.com','quang','$2a$10$PX0HS/Lbb2M9Kw/yRhaYuOgRXKbA4KGARvdFZHRsAp2.nX6Fzm9je');
-INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('3','Trien','Le Khue','0123456789','trien@test.com','trien','$2a$10$kpUWFMHUOEuwTYX9gZMX1Ow0kEb7doAHJKt3akPEwZeBpuO0eGzRW');
-INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('4','USER_TEST_1','','','user1@test.com','user1','$2a$10$l8AUEdN0kyAdiuRuUbVT7OkC7WXDBIR.ClAPSH5CjYrnm4da5DfxC');
-INSERT INTO users (id, first_name, last_name, phone, email, username, password) VALUES ('5','USER_TEST_2','','','user2@test.com','user2','$2a$10$QssIrlqAkbXohRrWBcWPMOZwSIxWZTwX8ztc5vyN/NUmBfLEmwE.y');
+INSERT INTO users (id, uuid, first_name, last_name, phone, email, username, password) VALUES ('1','70ad97f8-f761-43d3-b803-aa99de7fbd94','Luan','Bui Hoang','0123456789','luan@test.com','luan','$2a$10$3WQPws9o2zN4E1XAs1nKc.vWKUTtV/uRgvOAJ6foqrHcs/rqmWjLi');
+INSERT INTO users (id, uuid, first_name, last_name, phone, email, username, password) VALUES ('2','31e1b309-303e-4589-b220-dc0966ed92eb','Quang','Vo Ho Nhat Quang','0123456789','quang@test.com','quang','$2a$10$PX0HS/Lbb2M9Kw/yRhaYuOgRXKbA4KGARvdFZHRsAp2.nX6Fzm9je');
+INSERT INTO users (id, uuid, first_name, last_name, phone, email, username, password) VALUES ('3','bbb2d64a-e284-45b0-ac9b-fe51ea78f073','Trien','Le Khue','0123456789','trien@test.com','trien','$2a$10$kpUWFMHUOEuwTYX9gZMX1Ow0kEb7doAHJKt3akPEwZeBpuO0eGzRW');
+INSERT INTO users (id, uuid, first_name, last_name, phone, email, username, password) VALUES ('4','e3a3d763-9ec7-4dac-8828-073541c0c5ac','USER_TEST_1','','','user1@test.com','user1','$2a$10$l8AUEdN0kyAdiuRuUbVT7OkC7WXDBIR.ClAPSH5CjYrnm4da5DfxC');
+INSERT INTO users (id, uuid, first_name, last_name, phone, email, username, password) VALUES ('5','46139b9c-f025-4f1a-824e-3108ec6b5dee','USER_TEST_2','','','user2@test.com','user2','$2a$10$QssIrlqAkbXohRrWBcWPMOZwSIxWZTwX8ztc5vyN/NUmBfLEmwE.y');
 
 delete from user_role;
 

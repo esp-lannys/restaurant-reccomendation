@@ -13,6 +13,7 @@ import spm.project.restaurantrecommendation.repository.UserRepository;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.UUID;
 
 // :::::::::::::::::::::::::::::::::::::::::
 // :::::::::: author : @nphoangtu ::::::::::
@@ -47,6 +48,7 @@ public class DataService implements ApplicationListener<ContextRefreshedEvent> {
             admin.setUsername("admin");
             admin.setEmail("nphoangtu@gmail.com");
             admin.setPassword(passwordEncoder.encode("admin"));
+            admin.setUuid(UUID.randomUUID().toString());
             Date date1 = new Date();
             long time = date1.getTime();
             Timestamp ts = new Timestamp(time);
@@ -67,6 +69,7 @@ public class DataService implements ApplicationListener<ContextRefreshedEvent> {
             user.setUsername("user");
             user.setEmail("user@user.com");
             user.setPassword(passwordEncoder.encode("user"));
+            user.setUuid(UUID.randomUUID().toString());
             Date date = new Date();
             long time1 = date.getTime();
             Timestamp ts = new Timestamp(time1);

@@ -50,4 +50,7 @@ public class Restaurant {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories;
+
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")
+    private Set<ReservationDetail> reservationDetails;
 }

@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/logo.ico">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" th:href="@{/css/user-profile.css}">
 </head>
 
@@ -39,7 +40,11 @@
                     <div th:if="${param.success}">
                         <script>
                             window.location.href = "/user/user-profile";
-                            alert("You have successfully updated !!!")
+                            Swal.fire(
+                                'Nice !!!',
+                                'You have successfully updated your profile',
+                                'success'
+                            )
                         </script>
                     </div>
                     <div class="content-panel">

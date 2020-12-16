@@ -23,7 +23,7 @@
     <header th:replace="fragments/header/navbar :: ${navbar}"></header>
 
     <section id="section">
-        <div class="wrapper" th:object="${restaurant}">
+        <div class="wrapper">
             <img class="banner" th:src="${restaurant.img} + 'banner.jpg'">
 
             <div class="container" id="restaurant" th:object="${restaurant}">
@@ -282,7 +282,7 @@
 
                             <hr class="hr">
                             <div id="rsvForm">
-                                <form onchange="saveData()" action="reservation">
+                                <form onsubmit="saveData()" method="get" th:action="@{'/restaurant/'+ ${restaurant.id} + '/reservation'}">
                                     <div id="sizeForm">
                                         <label class="label" id="party-size">Party Size</label>
                                         <select id="tableSize" name="size">
@@ -300,18 +300,19 @@
 
                                             <div class="col-6" id="setDate">
                                                 <label class="label">Date</label>
-                                                <input id="date" class="inputDate" type="date">
+                                                <input name="date" id="date" class="inputDate" type="date">
                                             </div>
 
                                             <div class="col-6" id="setTime">
                                                 <label class="label">Time</label>
-                                                <input id="time" class="inputDate" type="time">
+                                                <input name="time" id="time" class="inputDate" type="time">
                                             </div>
 
                                         </div>
 
                                     </div>
-                                    <a class="btn btn-success" id="btn-findTable" th:href="@{'/restaurant/' + ${restaurant.id} + '/reservation'}">Find a table</a>
+<!--                                    <a class="btn btn-success" id="btn-findTable" th:href="@{'/restaurant/' + ${restaurant.id} + '/reservation'}">Find a table</a>-->
+                                    <button class="btn btn-success" id="btn-findTable">Find a table</button>
                                 </form>
                             </div>
                         </div>

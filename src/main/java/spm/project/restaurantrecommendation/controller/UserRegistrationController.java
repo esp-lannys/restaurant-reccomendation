@@ -10,9 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import spm.project.restaurantrecommendation.dto.UserDto;
+import spm.project.restaurantrecommendation.entity.Mail;
 import spm.project.restaurantrecommendation.entity.User;
+import spm.project.restaurantrecommendation.service.EmailService;
 import spm.project.restaurantrecommendation.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 // :::::::::::::::::::::::::::::::::::::::::
 // :::::::::: author : @nphoangtu ::::::::::
@@ -21,6 +27,9 @@ import javax.validation.Valid;
 @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
 @Controller
 public class UserRegistrationController {
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private UserService userService;
@@ -37,22 +46,36 @@ public class UserRegistrationController {
 
     @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("user") @Valid UserDto userDto
-            , BindingResult result, Model model) throws Exception{
-//        System.out.println(userDto.getUsername() + "head");
-//        User existingUsername = userService.findByUsername(userDto.getUsername());
-//        System.out.println(existingUsername);
-//        User existingEmail = userService.findByEmail(userDto.getEmail());
-//        System.out.println(existingEmail);
-//        System.out.println(userDto.getUsername() + "after checking");
-//        if (existingEmail != null || existingUsername != null) {
-//            result.rejectValue("email", null, "There is email or username already an account registered");
-//        }
-//        System.out.println(userDto.getUsername() + "mid");
+            , BindingResult result, HttpServletRequest request) throws Exception{
+        User existingUsername = userService.findByUsername(userDto.getUsername());
+        User existingEmail = userService.findByEmail(userDto.getEmail());
+        if (existingEmail != null || existingUsername != null) {
+            result.rejectValue("email", null, "There is email or username already an account registered");
+        }
         if (result.hasErrors()){
             return "registration";
         }
         userService.save(userDto);
-        //System.out.println(userDto.getUsername() + "tail");
+
+        User savedUser = userService.findByEmail(userDto.getEmail());
+
+        if (savedUser == null) {
+            result.rejectValue("email","We could not find an account for that e-mail address");
+            return "registration";
+        }
+
+//        Mail mail = new Mail();
+//        mail.setFrom("practice.project.noreply@gmail.com");
+//        mail.setTo(userDto.getEmail());
+//        mail.setSubject("Welcome to GOURMETTE");
+//
+//        Map<String, Object> model = new HashMap<>();
+//        model.put("user", userDto.getUsername());
+//        model.put("signature","http://localhost:8080");
+//        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+//        model.put("registrationUrl",url + "/registration?=" + savedUser.getUsername());
+//        mail.setModel(model);
+//        emailService.sendEmail(mail);
         return "redirect:/registration?success";
     }
 }
