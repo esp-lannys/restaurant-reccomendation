@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     width: 100%;
     height: 100%;
@@ -163,8 +167,17 @@ div#makeReservation {
     transform: scale(1.2);
 }
 
+.nav-link:focus {
+    transform: scale(1.2);
+}
+
 .nav-item {
     padding-top: 0px;
+}
+
+.nav-link.active,
+.nav-item.active {
+    color: white !important;
 }
 
 #description {
@@ -305,6 +318,10 @@ div#makeReservation {
 
 #body {
     margin: 0 auto;
+}
+
+div li a.current {
+    background-color: black;
 }
 
 a {
@@ -586,7 +603,7 @@ footer {
 }
 
 .comments {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 16px;
     margin: 16px 0;
