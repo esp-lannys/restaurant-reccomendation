@@ -288,10 +288,13 @@
 
                         <div id="makeReservation">
                             <center>Make a reservation</center>
+                            <center id="notification" class="text-danger"></center>
 
                             <hr class="hr">
                             <div id="rsvForm">
-                                <form onsubmit="saveData()" method="get" th:action="@{'/restaurant/'+ ${restaurant.id} + '/reservation'}">
+                                <form id="form"
+                                      method="get"
+                                      th:action="@{'/restaurant/'+ ${restaurant.id} + '/reservation'}">
                                     <div id="sizeForm">
                                         <label class="label" id="party-size">Party Size</label>
                                         <select id="tableSize" name="size">
