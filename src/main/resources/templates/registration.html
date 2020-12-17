@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="/images/logo.ico">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
@@ -22,7 +23,12 @@
 				<div th:if="${param.success}">
 					<script>
 						window.location.href = "/login";
-						alert("Successfully registration !!")
+						Swal.fire({
+							icon: 'success',
+							title: 'Check your email',
+							showConfirmButton: false,
+							timer: 7000
+						})
 					</script>
 				</div>
 				<form class="login100-form validate-form" th:action="@{/registration}" method="post" th:object="${user}">

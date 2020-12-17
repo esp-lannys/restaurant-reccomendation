@@ -22,13 +22,13 @@
 
     <div th:if="${param.success}">
         <script>
+            window.location.href = "/";
             Swal.fire({
                 icon: 'success',
-                title: 'Your reservation has been saved',
-                showConfirmButton: true,
+                title: 'A table has been reserved',
+                showConfirmButton: false,
                 timer: 7000
             })
-            window.location.href = "/";
         </script>
     </div>
 
