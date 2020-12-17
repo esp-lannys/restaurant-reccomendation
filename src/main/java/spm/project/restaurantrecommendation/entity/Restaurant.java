@@ -26,6 +26,7 @@ public class Restaurant {
     private Timestamp created_at;
     private Timestamp updated_at;
     private String img;
+    private float rating;
 
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")
     private Set<TableForReservation> tableForReservations;
@@ -33,8 +34,6 @@ public class Restaurant {
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")
     private Set<Comments> comments;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "restaurant")
-    private Rating rating;
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinTable(
@@ -51,4 +50,7 @@ public class Restaurant {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories;
+
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")
+    private Set<ReservationDetail> reservationDetails;
 }

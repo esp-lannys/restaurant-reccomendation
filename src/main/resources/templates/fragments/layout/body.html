@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Body Fragment</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.ico">
 </head>
 
 <body>
@@ -26,19 +27,23 @@
                 <div class="container">
                     <a class="title mb-2">Book for lunch tomorrow?</a>
                     <div class="row">
-                        <div class="col-sm" th:each="restaurant : ${restaurants}">
+                        <div class="col-sm suggest" th:each="restaurant : ${restaurants}">
                             <div>
                                 <img class="imgrtr" th:src="${restaurant.img} + 'logo.jpg'" alt="">
                             </div>
-                            <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
+                            <div>
+                                <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <div th:each="location : ${restaurant.locations}">
+                                    <a class="location" href="#" th:text="${location.district}"></a> <b>Ho Chi Minh city</b>
+                                </div>
                             </div>
-                            <a class="location" href="#">District 1 </a> <b>Ho Chi Minh city</b>
                         </div>
                     </div>
                 </div>
@@ -65,7 +70,9 @@
                             <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
                         </div>
                         <div class="col-sm">
-                            <img class="imgrtr" th:src="@{/images/restaurants/pizza-4p.jpg}" alt="">
+                            <div>
+                                <img class="imgrtr" th:src="@{/images/restaurants/pizza-4p.jpg}" alt="">
+                            </div>
                             <a href="#" class="name">Pizza 4 P's</a>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
@@ -77,8 +84,9 @@
                             <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
                         </div>
                         <div class="col-sm">
-
-                            <img class="imgrtr" th:src="@{/images/restaurants/poke-saigon.jpg}" alt="">
+                            <div>
+                                <img class="imgrtr" th:src="@{/images/restaurants/poke-saigon.jpg}" alt="">
+                            </div>
                             <a href="#" class="name">Poke Saigon</a>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
@@ -90,8 +98,9 @@
                             <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
                         </div>
                         <div class="col-sm">
-
-                            <img class="imgrtr" th:src="@{/images/restaurants/the-hungry-pig.jpg}" alt="">
+                            <div>
+                                <img class="imgrtr" th:src="@{/images/restaurants/the-hungry-pig.jpg}" alt="">
+                            </div>
                             <a href="#" class="name">The Hungry Pig</a>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
@@ -103,8 +112,9 @@
                             <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
                         </div>
                         <div class="col-sm">
-
-                            <img class="imgrtr" th:src="@{/images/restaurants/shri-restaurant-and-lounge.jpg}" alt="">
+                            <div>
+                                <img class="imgrtr" th:src="@{/images/restaurants/shri-restaurant-and-lounge.jpg}" alt="">
+                            </div>
                             <a href="#" class="name">Shri Restaurant</a>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>

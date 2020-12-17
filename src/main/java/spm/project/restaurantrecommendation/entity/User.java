@@ -32,6 +32,9 @@ public class User implements Serializable {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "uuid")
+    private String uuid;
+
     @Column(name = "email")
     private String email;
 
@@ -53,10 +56,4 @@ public class User implements Serializable {
             joinColumns=@JoinColumn(name="user_id",nullable = false),
             inverseJoinColumns=@JoinColumn(name="role_id",nullable = false))
     private Set<Role> roles;
-
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<Rating> ratings;
-
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<Reservation> reservations;
 }

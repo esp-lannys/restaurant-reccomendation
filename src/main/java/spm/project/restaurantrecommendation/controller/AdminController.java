@@ -158,19 +158,12 @@ public class AdminController {
 
         if (kw.equals("")) return "redirect:/admin/listAccounts";
 
-        List<User> listUser = getUserList(principal);
-        List<User> list = new ArrayList<User>();
-
-        for (User a : listUser) {
-            if (is(a.getId().toString(),kw) || is(a.getUsername(),kw)
-                    || is(a.getFirstName(), kw) || is(a.getLastName(), kw) || is(a.getPhone(), kw)
-                    || is(a.getEmail(),kw))
-                list.add(a);
-        }
+        List<User> userList = userService.adminSearchAcc(kw);
 
 
-        request.getSession().setAttribute("users", list);
-        model.addAttribute("users", list);
+
+        request.getSession().setAttribute("users", userList);
+        model.addAttribute("users", userList);
 
         return "admin/fragments/listAccounts";
     }
@@ -208,18 +201,10 @@ public class AdminController {
             return "redirect:/admin/listRestaurants";
         }
 
-        List<Restaurant> restaurantList = restaurantService.findAllRestaurants();
-        List<Restaurant> list = new ArrayList<Restaurant>();
+        List<Restaurant> restaurantList = restaurantService.adminSearchRes(kw);
 
-        for (Restaurant restaurant : restaurantList) {
-            if (is(restaurant.getName(),kw) || is(restaurant.getId().toString(),kw) || is(restaurant.getAddress(),kw)
-                || is(restaurant.getImg(),kw) || is(restaurant.getPhone(),kw) ) {
-                list.add(restaurant);
-            }
-        }
-
-        request.getSession().setAttribute("restaurants", list);
-        model.addAttribute("restaurants", list);
+        request.getSession().setAttribute("restaurants", restaurantList);
+        model.addAttribute("restaurants", restaurantList);
 
         return "admin/fragments/listRestaurants";
     }

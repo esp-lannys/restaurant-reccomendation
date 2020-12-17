@@ -9,6 +9,8 @@
     <title>Update profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/logo.ico">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" th:href="@{/css/user-profile.css}">
 </head>
 
@@ -27,8 +29,8 @@
                         </div>
                         <nav class="side-menu">
                             <ul class="nav">
-                                <li class="active"><a th:href="@{/user/user-profile}"><span class="fa fa-user"></span> Profile</a></li>
-                                <li><a th:href="@{/user/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
+                                <li><a th:href="@{/user/user-profile}"><span class="fa fa-user"></span> Profile</a></li>
+                                <li class="active"><a th:href="@{/user/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
                                 <li><a th:href="@{/user/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
                                 <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout"><span class="fa fa-cog"></span>Log Out</a></li>
                                 <li><a id="returnIndex" th:href="@{/}"><span class="fa fa-cog"></span><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a></li>
@@ -38,7 +40,11 @@
                     <div th:if="${param.success}">
                         <script>
                             window.location.href = "/user/user-profile";
-                            alert("You have successfully updated !!!")
+                            Swal.fire(
+                                'Nice !!!',
+                                'You have successfully updated your profile',
+                                'success'
+                            )
                         </script>
                     </div>
                     <div class="content-panel">

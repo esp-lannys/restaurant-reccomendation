@@ -19,7 +19,4 @@ public class TableForReservation {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Restaurant restaurant;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Reservation reservation;
 }

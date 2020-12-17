@@ -14,16 +14,14 @@ import spm.project.restaurantrecommendation.dto.UserChangePasswordDto;
 import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.PasswordResetToken;
+import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.Role;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.repository.PasswordResetTokenRepository;
 import spm.project.restaurantrecommendation.repository.RoleRepository;
 import spm.project.restaurantrecommendation.repository.UserRepository;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 // :::::::::::::::::::::::::::::::::::::::::
@@ -106,6 +104,7 @@ public class UserServiceImpl implements UserService {
         user.setFirstName(userUpdateInfoDto.getFirstName());
         user.setLastName(userUpdateInfoDto.getLastName());
         user.setUpdatedAt(userUpdateInfoDto.getUpdate_date());
+        user.setUuid(UUID.randomUUID().toString());
         return userRepository.save(user);
     }
 
@@ -125,6 +124,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updatePassword(String password, Long id) {
         userRepository.updatePassword(password, id);
+    }
+
+    @Override
+    public List<User> adminSearchAcc(String keyword) {
+        return userRepository.adminSearchAcc(keyword);
     }
 
 

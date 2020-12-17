@@ -5,6 +5,7 @@ import spm.project.restaurantrecommendation.dto.UserChangePasswordDto;
 import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.dto.UserUpdateInfoDto;
 import spm.project.restaurantrecommendation.entity.PasswordResetToken;
+import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.User;
 
 import java.util.List;
@@ -40,4 +41,6 @@ public interface UserService extends UserDetailsService {
     UserChangePasswordDto updateUserPassword(User user);
 
     void updatePassword(String password, Long id);
+
+    List<User> adminSearchAcc (String keyword);
 }

@@ -4,21 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import spm.project.restaurantrecommendation.service.UserService;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 // :::::::::::::::::::::::::::::::::::::::::
 // :::::::::: author : @nphoangtu ::::::::::
@@ -51,11 +50,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/webjars/**"
-                        ,"/assets/**","/css/**","/images/**"
+                        ,"/assets/**","/css/**","/images/**","/js/**"
                         ,"/**","/registration**","/resetpass**").permitAll()
-                .antMatchers("/index**","/restaurant**").permitAll()
+                .antMatchers("/index**","/restaurant**","/reservation**").permitAll()
                 .antMatchers("/admin/**", "admin/edit-user/**").hasRole("ADMIN")
-                .antMatchers("/user/**","/user/user-profile","/user/user-update-profile").hasAnyRole("ADMIN","USER")
+                .antMatchers("/user/**","/user/user-profile**","/user/user-update-profile**").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
@@ -87,5 +86,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
+    }
+
+    @Bean
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+
+        mailSender.setUsername("practice.project.noreply@gmail.com");
+        mailSender.setPassword("lucjkbcflvbnwiby");
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.smtp.starttls.enable", "true");
+        return mailSender;
     }
 }

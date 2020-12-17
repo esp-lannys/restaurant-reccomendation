@@ -10,4 +10,8 @@ public interface RestaurantService {
     Restaurant findById(Long id);
 
     List<Restaurant> findRestaurantByCategoryId(Long id);
+
+    List<Restaurant> search (String keyword, String location);
+
+    List<Restaurant> adminSearchRes (String keyword);
 }

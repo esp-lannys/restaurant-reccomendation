@@ -568,6 +568,7 @@ body {
 
 @media (min-width:992px) {
     .view-account .content-panel {
+        padding-bottom: 200px;
         border-left: 1px solid #f3f3f7;
         margin-left: 200px;
         padding-bottom: 200px;

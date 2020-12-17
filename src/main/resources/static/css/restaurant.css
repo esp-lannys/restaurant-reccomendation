@@ -24,12 +24,26 @@ body {
     margin-top: -15%;
 }
 
+div#navne {
+    background-color: white;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 #overview {
     border-radius: 3px;
     padding: 2%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(223, 223, 223, 0.19);
     margin-bottom: 50px;
+}
+
+div#makeReservation {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 #makeReservation {
@@ -98,6 +112,10 @@ body {
     padding: 0.6%;
 }
 
+.tag-title {
+    color: #24a041;
+}
+
 #tag-title {
     color: #24a041;
 }
@@ -154,6 +172,8 @@ body {
     text-justify: inter-word;
     padding-top: 2%;
     padding-bottom: 2%;
+    padding-left: 15px;
+    padding-right: 15px;
     font-size: large;
 }
 
@@ -291,6 +311,10 @@ a {
     color: black;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 a1:hover {
     color: white;
 }
@@ -330,10 +354,6 @@ hr {
     padding-left: 2.25%;
     padding-right: 2.25%;
     padding-top: 6%;
-}
-
-svg {
-    padding-bottom: 2px;
 }
 
 .btn {
@@ -403,55 +423,26 @@ input {
 }
 
 .btn-light:hover {
-    color: white;
+    color: white !important;
     background-color: #1d4b3c;
 }
 
-.btn-red {
-    color: white;
-    background-color: #da3743;
-    border: none;
-}
-
-.btn-blue {
-    color: white;
-    background-color: rgb(0, 0, 0);
-    border: none;
-}
-
-.btn-blue:hover {
-    color: rgba(255, 255, 255, 0.493);
+.btn-success:hover {
+    color: white !important;
 }
 
 h1 {
     font-weight: 650;
 }
 
-#checkLocation {
-    font-size: larger;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 0;
-    padding-right: 0;
-    margin-right: 3%;
-    margin-left: 3%;
-    border-bottom: 1px solid;
+.h3 {
+    transition: 0.5s;
+    text-decoration: none;
 }
 
-#getLoc {
-    padding: 0.7875%;
-    color: white;
-    background-color: #205042;
-    margin-right: 0.5625%;
-    margin-left: 0.5625%;
-    border-style: none;
-    border-radius: 7px;
-    transition: 0.2s;
-}
-
-#getLoc:hover {
+.h3:hover {
+    color: rgb(184, 184, 184);
     transform: scale(1.1);
-    background-color: #379c79;
 }
 
 .listrtr {
@@ -553,37 +544,6 @@ h1 {
     filter: brightness(50%);
 }
 
-.joinUs {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 0;
-    padding-right: 0;
-    overflow: hidden;
-    margin-right: 3%;
-    margin-left: 3%;
-    position: relative;
-}
-
-.imgjoin {
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    filter: brightness(50%);
-}
-
-.btn-join {
-    font-size: larger;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    background-color: #28a745;
-    border: none;
-}
-
 #btn-footer:hover {
     background-color: #359474;
 }
@@ -597,7 +557,6 @@ footer {
 .row {
     width: 100%;
     margin: 0px;
-    padding-top: 3%;
 }
 
 .search-sec {
@@ -627,11 +586,11 @@ footer {
 }
 
 .comments {
-    border: 2px solid #ccc;
     background-color: rgb(245, 245, 245);
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 16px;
     margin: 16px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(223, 223, 223, 0.19);
 }
 
 

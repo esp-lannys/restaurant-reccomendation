@@ -7,7 +7,8 @@
 	<title>Sign Up</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="icon" type="image/x-icon" href="/images/logo.ico">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
@@ -22,7 +23,12 @@
 				<div th:if="${param.success}">
 					<script>
 						window.location.href = "/login";
-						alert("Successfully registration !!")
+						Swal.fire({
+							icon: 'success',
+							title: 'Check your email',
+							showConfirmButton: false,
+							timer: 7000
+						})
 					</script>
 				</div>
 				<form class="login100-form validate-form" th:action="@{/registration}" method="post" th:object="${user}">
@@ -33,8 +39,8 @@
 					   th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
 						error</p>
 					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
-						<label for="firstName"></label>
 						<input class="input100" type="text" name="firstName" placeholder="First Name" th:field="*{firstName}"/>
+						<p class="error-message" th:each="error : ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -42,8 +48,8 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
-						<label for="lastName"></label>
 						<input class="input100" type="text" name="lname" placeholder="Last name" th:field="*{lastName}">
+						<p class="error-message" th:each="error : ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -51,8 +57,8 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('phone')}? 'has-error':''">
-						<label for="phone"></label>
 						<input class="input100" type="tel" name="phone" placeholder="Phone" th:field="*{phone}">
+						<p class="error-message" th:each="error : ${#fields.errors('phone')}" th:text="${error}">Validation error</p>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -60,8 +66,8 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-						<label for="email"></label>
 						<input class="input100" type="email" name="email" placeholder="Email" th:field="*{email}">
+						<p class="error-message" th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation error</p>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -69,8 +75,8 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
-						<label for="username"></label>
 						<input class="input100" type="text" name="username" placeholder="Username" required th:field="*{username}">
+						<p class="error-message" th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation error</p>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -78,8 +84,8 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-						<label for="password"></label>
 						<input class="input100" type="password" name="pass" placeholder="Password" required th:field="*{password}">
+						<p class="error-message" th:each="error : ${#fields.errors('password')}" th:text="${error}">Validation error</p>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -87,8 +93,8 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input" th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-						<label for="confirmPassword"></label>
 						<input class="input100" type="password" name="cfpass" placeholder="Confirm password" th:field="*{confirmPassword}">
+						<p class="error-message" th:each="error : ${#fields.errors('confirmPassword')}" th:text="${error}">Validation error</p>
 						<span class="focus-input100"> </span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
