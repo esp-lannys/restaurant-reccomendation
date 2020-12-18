@@ -129,10 +129,14 @@ public class RestaurantController {
     private String size = "";
 
     // reservation page
-    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+    @PreAuthorize("!(hasRole('USER'))")
     @GetMapping("/restaurant/{id}/reservation")
     public String showReservationPage(@PathVariable("id") Long id, HttpServletRequest request,
             Authentication authentication, Principal principal, ModelMap map, Model model) {
+        if (principal == null) {
+            return ("redirect:/login");
+        }
+
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -146,6 +150,7 @@ public class RestaurantController {
                 map.addAttribute("navbar", "navbar");
             }
         }
+
         this.date = request.getParameter("date");
         this.time = request.getParameter("time");
         this.size = request.getParameter("size");
