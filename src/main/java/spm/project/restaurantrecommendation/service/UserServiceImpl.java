@@ -24,9 +24,6 @@ import spm.project.restaurantrecommendation.repository.UserRepository;
 import java.util.*;
 import java.util.stream.Collectors;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 @Service("userService")
 @Transactional

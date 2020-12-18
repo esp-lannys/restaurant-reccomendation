@@ -9,9 +9,6 @@ import java.sql.Timestamp;
 import java.util.Set;
 import javax.persistence.Table;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 @Entity
 @Getter

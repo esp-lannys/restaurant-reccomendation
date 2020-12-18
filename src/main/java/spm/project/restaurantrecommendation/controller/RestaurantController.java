@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import spm.project.restaurantrecommendation.dto.ReservationDetailDto;
-import spm.project.restaurantrecommendation.entity.Category;
-import spm.project.restaurantrecommendation.entity.Location;
 import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.service.CategoryService;
@@ -26,11 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 

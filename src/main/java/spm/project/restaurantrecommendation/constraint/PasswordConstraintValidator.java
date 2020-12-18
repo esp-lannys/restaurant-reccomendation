@@ -1,9 +1,6 @@
 package spm.project.restaurantrecommendation.constraint;
 
-import org.passay.PasswordData;
-import org.passay.PasswordValidator;
-import org.passay.RuleResult;
-import org.passay.WhitespaceRule;
+import org.passay.*;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -11,9 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
     @Override
@@ -24,13 +18,10 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
         PasswordValidator validator = new PasswordValidator(Arrays.asList(
-                //new LengthRule(8, 70),
-                //new UppercaseCharacterRule(1),
-                //new DigitCharacterRule(1),
-                //new SpecialCharacterRule(1),
-                //new NumericalSequenceRule(3, false),
-                //new AlphabeticalSequenceRule(3, false),
-                //new QwertySequenceRule(3, false),
+                new LengthRule(6),
+                new HistoryRule(),
+                new UsernameRule(),
+                new CharacterRule(EnglishCharacterData.UpperCase,1),
                 new WhitespaceRule()));
 
         RuleResult result = validator.validate(new PasswordData(s));

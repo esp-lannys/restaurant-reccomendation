@@ -10,10 +10,6 @@ import spm.project.restaurantrecommendation.entity.Restaurant;
 import java.util.Collection;
 import java.util.List;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
-
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Long> {
     Location findByDistrict(String district);

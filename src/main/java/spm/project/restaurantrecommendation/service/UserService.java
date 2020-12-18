@@ -11,9 +11,6 @@ import spm.project.restaurantrecommendation.entity.User;
 import java.util.List;
 import java.util.Optional;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 public interface UserService extends UserDetailsService {
     User findByEmail(String email);

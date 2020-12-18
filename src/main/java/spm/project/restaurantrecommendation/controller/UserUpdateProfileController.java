@@ -22,10 +22,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
-
 
 @Controller
 public class UserUpdateProfileController {

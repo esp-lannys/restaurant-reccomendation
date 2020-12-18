@@ -10,11 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
-import spm.project.restaurantrecommendation.entity.Location;
 import spm.project.restaurantrecommendation.entity.Restaurant;
-import spm.project.restaurantrecommendation.entity.User;
 import spm.project.restaurantrecommendation.service.LocationService;
 import spm.project.restaurantrecommendation.service.RestaurantService;
 
@@ -24,13 +21,8 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 @Controller
 public class MainController {

@@ -15,9 +15,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.UUID;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 @Component
 public class DataService implements ApplicationListener<ContextRefreshedEvent> {
