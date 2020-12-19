@@ -44,5 +44,10 @@ public class ReservationDetailServiceImpl implements ReservationDetailService{
         return reservationDetailRepository.save(reservationDetail);
     }
 
+    @Override
+    public ReservationDetail findByEmail(String email) {
+        return reservationDetailRepository.findByEmail(email);
+    }
+
 
 }

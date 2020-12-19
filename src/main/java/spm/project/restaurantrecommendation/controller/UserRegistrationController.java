@@ -65,11 +65,11 @@ public class UserRegistrationController {
 
         Map<String, Object> mailModel = new HashMap<>();
         mailModel.put("user", savedUser);
-        mailModel.put("signature","THE FIFTH ORANGE ORGANIZATION");
+        mailModel.put("signature","THE FIFTH ORANGE ORGANIZATION - Together we make differences");
         String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
         mailModel.put("registrationUrl",url + "/registration?=" + savedUser.getUsername());
         mail.setModel(mailModel);
-        emailService.sendEmail(mail);
+        emailService.sendEmail(mail, "email/email-template");
         return "redirect:/registration?success";
     }
 }

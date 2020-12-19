@@ -21,7 +21,7 @@ public class EmailService {
     @Autowired
     private SpringTemplateEngine templateEngine;
 
-    public void sendEmail(Mail mail) {
+    public void sendEmail(Mail mail, String template) {
         try {
             MimeMessage message = emailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
@@ -29,7 +29,7 @@ public class EmailService {
 
             Context context = new Context();
             context.setVariables(mail.getModel());
-            String html = templateEngine.process("email/email-template", context);
+            String html = templateEngine.process(template, context);
 
             helper.setTo(mail.getTo());
             helper.setText(html, true);
