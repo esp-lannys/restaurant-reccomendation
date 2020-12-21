@@ -64,11 +64,11 @@ INSERT INTO category (id, category_name) VALUES ('21','Japanese');
 
 delete from restaurant ;
 
-INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('1','2 Phan Van Chuong St, Tan Phu Ward, District 7, HCM city', '/images/restaurants/red-chilli-seafood/','Red Chilli Seafood Buffet','(028) 5410 9999','4.5');
-INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('2','50th floor, 60A Truong Son st, Ward 2, Tan Binh District, HCM city', '/images/restaurants/hoang-yen-buffet/','Hoang Yen Buffet','(028) 2241 7070','4.3');
-INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('3','235 Nguyen Van Cu St, Nguyen Cu Trinh Ward, District 1, HCM city', '/images/restaurants/ming-court/','Ming Court','(028) 3929 5520','4.0');
-INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('4','195-197 Phan Xich Long St, Phu Nhuan District, HCM city', '/images/restaurants/san-fu-lou/','San Fu Lou','(028) 35176168','4.5');
-INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('5','52 Mac Dinh Chi St, Da Kao Ward, District 1, HCM city', '/images/restaurants/pachi-pachi/','Pachi Pachi','(028) 6295 9294','4.2');
+INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('1','2 Phan Van Chuong St, Tan Phu Ward, District 7, HCM city', '/images/restaurants/red-chilli-seafood/','Red Chilli Seafood Buffet','(028) 5410 9999','5');
+INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('2','50th floor, 60A Truong Son st, Ward 2, Tan Binh District, HCM city', '/images/restaurants/hoang-yen-buffet/','Hoang Yen Buffet','(028) 2241 7070','4');
+INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('3','235 Nguyen Van Cu St, Nguyen Cu Trinh Ward, District 1, HCM city', '/images/restaurants/ming-court/','Ming Court','(028) 3929 5520','5');
+INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('4','195-197 Phan Xich Long St, Phu Nhuan District, HCM city', '/images/restaurants/san-fu-lou/','San Fu Lou','(028) 35176168','5');
+INSERT INTO restaurant (id, address, img, name, phone, rating) VALUES ('5','52 Mac Dinh Chi St, Da Kao Ward, District 1, HCM city', '/images/restaurants/pachi-pachi/','Pachi Pachi','(028) 6295 9294','4');
 
 delete from restaurant_category;
 

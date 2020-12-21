@@ -36,11 +36,13 @@
                                     <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
                                 </div>
                                 <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
+                                    <span th:each="rating : ${#numbers.sequence(1, restaurant.rating, 1)}" class="fa fa-star checked"></span>
+                                    <span  th:each="rating : ${#numbers.sequence(1, 5 - restaurant.rating, 1)}" class="fa fa-star"></span>
+<!--                                    <span class="fa fa-star checked"></span>-->
+<!--                                    <span class="fa fa-star checked"></span>-->
+<!--                                    <span class="fa fa-star checked"></span>-->
+<!--                                    <span class="fa fa-star checked"></span>-->
+<!--                                    <span class="fa fa-star"></span>-->
                                 </div>
                                 <div class="address" th:each="location : ${restaurant.locations}">
                                     <a class="location" href="#" th:text="${location.district}"></a> <b>Ho Chi Minh city</b>
