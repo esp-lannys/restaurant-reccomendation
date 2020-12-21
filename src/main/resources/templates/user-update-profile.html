@@ -6,22 +6,23 @@
     <title>Update profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}">
     <link rel="icon" type="image/x-icon" href="/images/logo.ico">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <link rel="stylesheet" th:href="@{/css/user-profile.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <div class="view-account">
             <section class="module">
-                <div class="module-inner">
+                <div class="module-inner" style="height: 650px;">
                     <div class="side-bar">
                         <div class="user-info">
                             <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                            <ul class="meta list list-unstyled">
-                                <li class="name" style='font-size: 20px'>Rebecca Sanders
-                                </li>
+                            <ul class="meta list list-unstyled" sec:authorize="isAuthenticated()">
+                                <li class="name" style='font-size: 20px' sec:authentication="name"></li>
                             </ul>
                         </div>
                         <nav class="side-menu">
@@ -29,8 +30,11 @@
                                 <li><a th:href="@{/user/user-profile}"><span class="fa fa-user"></span> Profile</a></li>
                                 <li class="active"><a th:href="@{/user/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
                                 <li><a th:href="@{/user/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
-                                <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout"><span class="fa fa-cog"></span>Log Out</a></li>
-                                <li><a id="returnIndex" th:href="@{/}"><span class="fa fa-cog"></span><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a></li>
+                                <li><a th:href="@{/user/reservation-history}"><span class="fa fa-book"></span> Reservation History</a></li>
+                                <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout">Log Out</a></li>
+                                <li>
+                                    <a id="returnIndex" th:href="@{/}"><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -44,7 +48,7 @@
                             )
                         </script>
                     </div>
-                    <div class="content-panel">
+                    <div class="content-panel" style="height: 648px;">
                         <h2 class="title">Edit Profile</h2>
                         <form class="form-horizontal" th:object="${user}" th:action="@{/user/user-update-profile}" method="post">
                             <div class="form-group">

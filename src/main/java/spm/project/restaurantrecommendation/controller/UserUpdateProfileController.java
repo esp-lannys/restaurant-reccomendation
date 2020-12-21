@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
 @Controller
 public class UserUpdateProfileController {
 
@@ -51,7 +50,7 @@ public class UserUpdateProfileController {
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user/user-profile")
     public String showProfilePage(Principal principal, Model model, @ModelAttribute("user1") User user,
-                                  Authentication authentication) {
+            Authentication authentication) {
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -90,17 +89,26 @@ public class UserUpdateProfileController {
         return "user-update-profile";
     }
 
-
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/user/user-update-profile")
     public String updateUserInfo(Authentication authentication,
-                                 @ModelAttribute("user") @Valid UserUpdateInfoDto userUpdateInfoDto,
-                                 BindingResult result, Principal principal) {
-        if (authentication == null) return "redirect:/user";
-        if (result.hasErrors()) return "user-update-profile";
+            @ModelAttribute("user") @Valid UserUpdateInfoDto userUpdateInfoDto, BindingResult result,
+            Principal principal) {
+        if (authentication == null)
+            return "redirect:/user";
+        if (result.hasErrors())
+            return "user-update-profile";
 
         userService.save(userUpdateInfoDto);
         return "redirect:/user/user-update-profile?success";
+    }
+
+    // User Reservation History
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/user/reservation-history")
+    public String showReservationHistoryPage() {
+        return "reservation-history";
     }
 
     // User Change Password Page
@@ -114,12 +122,14 @@ public class UserUpdateProfileController {
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/user/change-password")
     public String changeUserPassword(Authentication authentication,
-                                     @ModelAttribute("user2") @Valid UserChangePasswordDto userChangePasswordDto,
-                                     BindingResult result, Principal principal,Model model) {
+            @ModelAttribute("user2") @Valid UserChangePasswordDto userChangePasswordDto, BindingResult result,
+            Principal principal, Model model) {
 
-        if (authentication == null) return "redirect:/user";
+        if (authentication == null)
+            return "redirect:/user";
 
-        if (result.hasErrors()) return "change-password";
+        if (result.hasErrors())
+            return "change-password";
 
         User user = userService.findByUsername(principal.getName());
 

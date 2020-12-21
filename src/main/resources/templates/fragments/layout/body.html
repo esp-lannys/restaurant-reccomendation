@@ -32,7 +32,9 @@
                                 <img class="imgrtr" th:src="${restaurant.img} + 'logo.jpg'" alt="">
                             </div>
                             <div>
-                                <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
+                                <div class="name">
+                                    <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
+                                </div>
                                 <div class="rating">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -40,7 +42,7 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
-                                <div th:each="location : ${restaurant.locations}">
+                                <div class="address" th:each="location : ${restaurant.locations}">
                                     <a class="location" href="#" th:text="${location.district}"></a> <b>Ho Chi Minh city</b>
                                 </div>
                             </div>
@@ -59,7 +61,9 @@
                             <div>
                                 <img class="imgrtr" th:src="@{/images/restaurants/five-oysters.jpg}" alt="">
                             </div>
-                            <a href="#" class="name">Five Oysters</a>
+                            <div class="name">
+                                <a href="#" class="name">Five Oysters</a>
+                            </div>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -67,13 +71,17 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
                             </div>
-                            <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            <div class="address">
+                                <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            </div>
                         </div>
                         <div class="col-sm">
                             <div>
                                 <img class="imgrtr" th:src="@{/images/restaurants/pizza-4p.jpg}" alt="">
                             </div>
-                            <a href="#" class="name">Pizza 4 P's</a>
+                            <div class="name">
+                                <a href="#" class="name">Pizza 4 P's</a>
+                            </div>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -81,13 +89,17 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            <div class="address">
+                                <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            </div>
                         </div>
                         <div class="col-sm">
                             <div>
                                 <img class="imgrtr" th:src="@{/images/restaurants/poke-saigon.jpg}" alt="">
                             </div>
-                            <a href="#" class="name">Poke Saigon</a>
+                            <div class="name">
+                                <a href="#" class="name">Poke Saigon</a>
+                            </div>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -95,13 +107,17 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            <div class="address">
+                                <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            </div>
                         </div>
                         <div class="col-sm">
                             <div>
                                 <img class="imgrtr" th:src="@{/images/restaurants/the-hungry-pig.jpg}" alt="">
                             </div>
-                            <a href="#" class="name">The Hungry Pig</a>
+                            <div class="name">
+                                <a href="#" class="name">The Hungry Pig</a>
+                            </div>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -109,13 +125,17 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
                             </div>
-                            <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            <div class="address">
+                                <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            </div>
                         </div>
                         <div class="col-sm">
                             <div>
                                 <img class="imgrtr" th:src="@{/images/restaurants/shri-restaurant-and-lounge.jpg}" alt="">
                             </div>
-                            <a href="#" class="name">Shri Restaurant</a>
+                            <div class="name">
+                                <a href="#" class="name">Shri Restaurant</a>
+                            </div>
                             <div class="rating">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -123,7 +143,9 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            <div class="address">
+                                <a class="location" href="#">District 1 <b>Ho Chi Minh city</b> </a>
+                            </div>
                         </div>
                     </div>
                 </div>

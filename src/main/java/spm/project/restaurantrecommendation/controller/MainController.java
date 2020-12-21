@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
-
 @Controller
 public class MainController {
 
@@ -91,63 +90,63 @@ public class MainController {
         return "about";
     }
 
-//    @GetMapping({ "/result" })
-//    public String showResultPage(Authentication authentication, Principal principal, ModelMap map) {
-//        if (authentication != null) {
-//            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-//            List<String> roles = new ArrayList<String>();
-//            for (GrantedAuthority a : authorities) {
-//                roles.add(a.getAuthority());
-//            }
-//            if (isUser(roles)) {
-//                map.addAttribute("navbar", "navbar-authenticated");
-//            } else {
-//                map.addAttribute("navbar", "navbar");
-//            }
-//        }
-//        return "result";
-//    }
-        @GetMapping("/result")
-        public String showResultPage(Authentication authentication
-                                    , @RequestParam("keyword") String keyword
-                                    , @RequestParam("location") String location
-                                    , Principal principal
-                                    , Model model
-                                    , HttpServletRequest request
-                                    , ModelMap map) {
+    // @GetMapping({ "/result" })
+    // public String showResultPage(Authentication authentication, Principal
+    // principal, ModelMap map) {
+    // if (authentication != null) {
+    // Collection<? extends GrantedAuthority> authorities =
+    // authentication.getAuthorities();
+    // List<String> roles = new ArrayList<String>();
+    // for (GrantedAuthority a : authorities) {
+    // roles.add(a.getAuthority());
+    // }
+    // if (isUser(roles)) {
+    // map.addAttribute("navbar", "navbar-authenticated");
+    // } else {
+    // map.addAttribute("navbar", "navbar");
+    // }
+    // }
+    // return "result";
+    // }
+    @GetMapping("/result")
+    public String showResultPage(Authentication authentication, @RequestParam("keyword") String keyword,
+            @RequestParam("location") String location, Principal principal, Model model, HttpServletRequest request,
+            ModelMap map) {
 
-            if (authentication != null) {
-                Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-                List<String> roles = new ArrayList<String>();
-                for (GrantedAuthority a : authorities) {
-                    roles.add(a.getAuthority());
-                }
-                if (isUser(roles)) {
-                    map.addAttribute("navbar", "navbar-authenticated");
-                } else {
-                    map.addAttribute("navbar", "navbar");
-                }
+        if (authentication != null) {
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            List<String> roles = new ArrayList<String>();
+            for (GrantedAuthority a : authorities) {
+                roles.add(a.getAuthority());
             }
-
-            if (keyword.equals("") && location.equals("")) {
-                return "redirect:/";
+            if (isUser(roles)) {
+                map.addAttribute("navbar", "navbar-authenticated");
+            } else {
+                map.addAttribute("navbar", "navbar");
             }
-
-            List<Restaurant> restaurantList = restaurantService.search(keyword, location);
-//            List<Restaurant> list = new ArrayList<Restaurant>();
-//
-//            for (Restaurant restaurant : restaurantList) {
-//                if (is(restaurant.getName(),keyword) || is(restaurant.getId().toString(),keyword) || is(restaurant.getAddress(),keyword)
-//                        || is(restaurant.getImg(),keyword) || is(restaurant.getPhone(),keyword) ) {
-//                    list.add(restaurant);
-//                }
-//            }
-
-            request.getSession().setAttribute("restaurants", restaurantList);
-            model.addAttribute("restaurants", restaurantList);
-
-            return "result";
         }
+
+        if (keyword.equals("") && location.equals("")) {
+            return "redirect:/";
+        }
+
+        List<Restaurant> restaurantList = restaurantService.search(keyword, location);
+        // List<Restaurant> list = new ArrayList<Restaurant>();
+        //
+        // for (Restaurant restaurant : restaurantList) {
+        // if (is(restaurant.getName(),keyword) ||
+        // is(restaurant.getId().toString(),keyword) ||
+        // is(restaurant.getAddress(),keyword)
+        // || is(restaurant.getImg(),keyword) || is(restaurant.getPhone(),keyword) ) {
+        // list.add(restaurant);
+        // }
+        // }
+
+        request.getSession().setAttribute("restaurants", restaurantList);
+        model.addAttribute("restaurants", restaurantList);
+
+        return "result";
+    }
     // reservation test
 
     // @GetMapping({ "/reservation" })
