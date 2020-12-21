@@ -34,7 +34,7 @@
         </div>
 
 
-    <table xmlns:th="http://www.thymeleaf.org" th:each="restaurant : ${restaurants}" class="table" cellspacing="0" width="100%">
+    <table class="table" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th class="th-sm">Restaurant Name
@@ -45,17 +45,15 @@
             </th>
             <th class="th-sm">Phone
             </th>
-            <th class="th-sm">Description
-            </th>
 
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td th:text="${restaurant.name}">Restaurant Name</td>
-            <td th:text="${restaurant.address}">Address</td>
-            <td th:text="${restaurant.img}">Image</td>
-            <td th:text="${restaurant.phone}">Phone</td>
+        <tr th:each="restaurant : ${restaurants}">
+            <td th:text="${restaurant.name}"></td>
+            <td th:text="${restaurant.address}"></td>
+            <td th:text="${restaurant.img}"></td>
+            <td th:text="${restaurant.phone}"></td>
             <td><a href="#" class="btn btn-outline-info">EDIT</a></td>
             <td><a href="#" class="btn btn-outline-danger delete">DELETE</a></td>
         </tr>

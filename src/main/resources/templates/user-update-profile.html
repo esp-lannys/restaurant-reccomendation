@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Reservation History</title>
+    <title>User Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}">
@@ -37,7 +37,7 @@
                                 <li><a class="openTab" onclick="openTab(event, 'reservation-history')"><span class="fa fa-book"></span> Reservation History</a></li>
                                 <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout">Log Out</a></li>
                                 <li>
-                                    <a id="returnIndex" th:href="@{/}"><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a>
+                                    <a id="returnIndex" target="_blank" th:href="@{/}"><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a>
                                 </li>
                             </ul>
                         </nav>
@@ -207,13 +207,13 @@
                                         </div>
                                         <div class="row" style="padding-bottom: 20px; font-size: 3rem;">
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date" id="date"> 06/10/2020</span>
+                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date"> 06/10/2020</span>
                                             </div>
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time" id="time"> 11:11 PM</span>
+                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time"> 11:11 PM</span>
                                             </div>
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size" id="tableSize"> 2</span>
+                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size"> 2</span>
                                             </div>
                                         </div>
                                     </div>
@@ -236,13 +236,13 @@
                                         </div>
                                         <div class="row" style="padding-bottom: 20px; font-size: 3rem;">
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date" id="date"> 06/10/2020</span>
+                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date"> 06/10/2020</span>
                                             </div>
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time" id="time"> 11:11 PM</span>
+                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time"> 11:11 PM</span>
                                             </div>
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size" id="tableSize"> 2</span>
+                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size"> 2</span>
                                             </div>
                                         </div>
                                     </div>
@@ -265,13 +265,13 @@
                                         </div>
                                         <div class="row" style="padding-bottom: 20px; font-size: 3rem;">
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date" id="date"> 06/10/2020</span>
+                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date"> 06/10/2020</span>
                                             </div>
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time" id="time"> 11:11 PM</span>
+                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time"> 11:11 PM</span>
                                             </div>
                                             <div class="col-4" style=" font-weight: 500;">
-                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size" id="tableSize"> 2</span>
+                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size"> 2</span>
                                             </div>
                                         </div>
                                     </div>
