@@ -23,7 +23,7 @@ public class Restaurant {
     private Timestamp created_at;
     private Timestamp updated_at;
     private String img;
-    private float rating;
+    private int rating;
 
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "restaurant")
     private Set<TableForReservation> tableForReservations;
