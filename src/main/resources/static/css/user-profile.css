@@ -5,7 +5,7 @@ body {
 
 .view-account {
     background: #FFFFFF;
-    margin: 60px;
+    margin: 46px;
     border-radius: 15px;
 }
 
@@ -667,12 +667,13 @@ label.col-md-2 {
 }
 
 .row.rtr {
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     border-bottom: rgb(233, 233, 233) 1px solid;
 }
 
 .btn-primary {
+    transform: scale(1.4);
     background-color: #214b1d;
     border: #1d4b3c;
     transition: 0.2s;
@@ -680,4 +681,29 @@ label.col-md-2 {
 
 .btn-primary:hover {
     background-color: black;
+}
+
+input.form-control {
+    height: 35px;
+    font-size: 1.2rem;
+}
+
+.tabcontent#update-profile,
+#reservation-history,
+#change-password {
+    display: none;
+}
+
+.nav li a {
+    transition: 0.5s;
+}
+
+.openTab:hover {
+    background-color: #ccc !important;
+}
+
+.nav li a.active {
+    border-right: #1d4b3c solid 3px;
+    color: black;
+    background-color: #ccc;
 }

@@ -47,29 +47,31 @@ public class UserUpdateProfileController {
 
     // User Profile Page
 
-    @PreAuthorize("hasRole('USER')")
-    @GetMapping("/user/user-profile")
-    public String showProfilePage(Principal principal, Model model, @ModelAttribute("user1") User user,
-            Authentication authentication) {
-        if (authentication != null) {
-            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-            List<String> roles = new ArrayList<String>();
-            for (GrantedAuthority a : authorities) {
-                roles.add(a.getAuthority());
-            }
-            if (isUser(roles)) {
-                user = userService.findByUsername(principal.getName());
-                model.addAttribute("user_firstName", user.getFirstName());
-                model.addAttribute("user_lastName", user.getLastName());
-                model.addAttribute("user_email", user.getEmail());
-                model.addAttribute("user_phone", user.getPhone());
-            }
-        }
-        System.out.println("Username: " + principal.getName());
-        System.out.println("Authentication: " + authentication.getPrincipal());
-        System.out.println("User ID: " + user.getId());
-        return "user-profile";
-    }
+    // @PreAuthorize("hasRole('USER')")
+    // @GetMapping("/user/user-profile")
+    // public String showProfilePage(Principal principal, Model model,
+    // @ModelAttribute("user1") User user,
+    // Authentication authentication) {
+    // if (authentication != null) {
+    // Collection<? extends GrantedAuthority> authorities =
+    // authentication.getAuthorities();
+    // List<String> roles = new ArrayList<String>();
+    // for (GrantedAuthority a : authorities) {
+    // roles.add(a.getAuthority());
+    // }
+    // if (isUser(roles)) {
+    // user = userService.findByUsername(principal.getName());
+    // model.addAttribute("user_firstName", user.getFirstName());
+    // model.addAttribute("user_lastName", user.getLastName());
+    // model.addAttribute("user_email", user.getEmail());
+    // model.addAttribute("user_phone", user.getPhone());
+    // }
+    // }
+    // System.out.println("Username: " + principal.getName());
+    // System.out.println("Authentication: " + authentication.getPrincipal());
+    // System.out.println("User ID: " + user.getId());
+    // return "user-profile";
+    // }
 
     // User Update Profile Page
 
@@ -137,7 +139,7 @@ public class UserUpdateProfileController {
         userService.updatePassword(updated_password, user.getId());
         userService.loadUserByUsername(userChangePasswordDto.getUsername());
         System.out.println(userChangePasswordDto.getUsername());
-        return "redirect:/user/change-password?success";
+        return "redirect:/user/user-update-profile?success_pass";
     }
 
     private boolean isUser(List<String> roles) {

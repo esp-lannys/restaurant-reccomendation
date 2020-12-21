@@ -226,6 +226,14 @@ h1 {
     border-radius: 2px;
 }
 
+.imgrtr.result {
+    height: 118px;
+    width: 178px;
+    border-radius: 5px;
+    margin-left: 130px;
+    margin-bottom: 25px;
+}
+
 div.name {
     padding-left: 5px;
     transition: 0.5s;

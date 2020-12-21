@@ -213,7 +213,8 @@ iframe {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 5%;
+    padding: 4%;
+    margin: 3%;
 }
 
 
@@ -367,4 +368,8 @@ iframe {
 .alert {
     font-weight: 500;
     margin-bottom: 20px;
+}
+
+.p-t-136 {
+    padding-top: 63px !important;
 }
