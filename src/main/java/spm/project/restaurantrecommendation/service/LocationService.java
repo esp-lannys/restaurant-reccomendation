@@ -4,9 +4,6 @@ import spm.project.restaurantrecommendation.entity.Location;
 
 import java.util.List;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 public interface LocationService {
     List<Location> findAll();

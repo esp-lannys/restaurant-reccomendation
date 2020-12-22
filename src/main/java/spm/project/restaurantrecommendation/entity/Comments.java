@@ -7,10 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
-
 @Entity
 @Getter
 @Setter

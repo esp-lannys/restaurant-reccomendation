@@ -7,9 +7,6 @@ import spm.project.restaurantrecommendation.repository.LocationRepository;
 
 import java.util.List;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 @Service("locationService")
 public class LocationServiceImpl implements LocationService{

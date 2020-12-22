@@ -8,5 +8,5 @@ import java.util.List;
 public interface ReservationDetailService {
     List<ReservationDetail> findAll();
     ReservationDetail save(ReservationDetailDto reservationDetailDto, Restaurant restaurant);
-
+    ReservationDetail findByEmail(String email);
 }

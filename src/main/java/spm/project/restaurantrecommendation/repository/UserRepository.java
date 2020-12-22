@@ -12,9 +12,6 @@ import spm.project.restaurantrecommendation.entity.User;
 import java.util.List;
 import java.util.Optional;
 
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{

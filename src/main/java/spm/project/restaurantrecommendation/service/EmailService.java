@@ -3,7 +3,6 @@ package spm.project.restaurantrecommendation.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
@@ -22,7 +21,7 @@ public class EmailService {
     @Autowired
     private SpringTemplateEngine templateEngine;
 
-    public void sendEmail(Mail mail) {
+    public void sendEmail(Mail mail, String template) {
         try {
             MimeMessage message = emailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
@@ -30,18 +29,12 @@ public class EmailService {
 
             Context context = new Context();
             context.setVariables(mail.getModel());
-            String html = templateEngine.process("email/email-template", context);
+            String html = templateEngine.process(template, context);
 
             helper.setTo(mail.getTo());
             helper.setText(html, true);
             helper.setSubject(mail.getSubject());
             helper.setFrom(mail.getFrom());
-//            JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-//            mailSender.setHost("smtp.gmail.com");
-//            mailSender.setPort(587);
-//            mailSender.setUsername("practice.project.noprely@gmail.com");
-//            mailSender.setPassword("lucjkbcflvbnwiby");
-//            mailSender.send(message);
             emailSender.send(message);
         } catch (Exception e) {
             throw new RuntimeException(e);

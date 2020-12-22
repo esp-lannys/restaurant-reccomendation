@@ -3,12 +3,10 @@ package spm.project.restaurantrecommendation.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import spm.project.restaurantrecommendation.dto.UserDto;
 import spm.project.restaurantrecommendation.entity.Mail;
 import spm.project.restaurantrecommendation.entity.User;
@@ -19,10 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
-
-// :::::::::::::::::::::::::::::::::::::::::
-// :::::::::: author : @nphoangtu ::::::::::
-// :::::::::::::::::::::::::::::::::::::::::
 
 @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
 @Controller
@@ -71,11 +65,11 @@ public class UserRegistrationController {
 
         Map<String, Object> mailModel = new HashMap<>();
         mailModel.put("user", savedUser);
-        mailModel.put("signature","THE FIFTH ORANGE ORGANIZATION");
+        mailModel.put("signature","THE FIFTH ORANGE ORGANIZATION - Together we make differences");
         String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
         mailModel.put("registrationUrl",url + "/registration?=" + savedUser.getUsername());
         mail.setModel(mailModel);
-        emailService.sendEmail(mail);
+        emailService.sendEmail(mail, "email/email-template");
         return "redirect:/registration?success";
     }
 }

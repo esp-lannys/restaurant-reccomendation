@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,29 +14,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import spm.project.restaurantrecommendation.dto.ReservationDetailDto;
-import spm.project.restaurantrecommendation.entity.Category;
-import spm.project.restaurantrecommendation.entity.Location;
+import spm.project.restaurantrecommendation.entity.Mail;
+import spm.project.restaurantrecommendation.entity.ReservationDetail;
 import spm.project.restaurantrecommendation.entity.Restaurant;
 import spm.project.restaurantrecommendation.entity.User;
-import spm.project.restaurantrecommendation.service.CategoryService;
-import spm.project.restaurantrecommendation.service.LocationService;
-import spm.project.restaurantrecommendation.service.ReservationDetailService;
-import spm.project.restaurantrecommendation.service.RestaurantService;
+import spm.project.restaurantrecommendation.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import java.util.*;
 
 
 @Controller
 public class RestaurantController {
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private LocationService locationService;
@@ -54,27 +49,6 @@ public class RestaurantController {
         return new ReservationDetailDto();
     }
 
-
-
-    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-    @GetMapping("/restaurant")
-    public String showRestaurantDetailPage(Model model, ModelMap map, Authentication authentication, Principal principal) {
-        if (authentication != null) {
-            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-            List<String> roles = new ArrayList<String>();
-            for (GrantedAuthority a : authorities) {
-                roles.add(a.getAuthority());
-            }
-            if (isUser(roles)) {
-                map.addAttribute("navbar", "navbar-authenticated");
-            } else {
-                map.addAttribute("navbar", "navbar");
-            }
-        }
-        List<Restaurant> restaurants = restaurantService.findAllRestaurants();
-        model.addAttribute("restaurants", restaurants);
-        return "restaurant";
-    }
 
     @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
     @GetMapping("/restaurant/{id}")
@@ -102,37 +76,19 @@ public class RestaurantController {
         return "restaurant";
     }
 
-    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
-    @GetMapping("/user/restaurant/{id}")
-    public String showRestaurantDetailUser(@PathVariable("id") Long id,
-                                       Model model, ModelMap map, Authentication authentication, Principal principal) {
-        if (authentication != null) {
-            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-            List<String> roles = new ArrayList<String>();
-            for (GrantedAuthority a : authorities) {
-                roles.add(a.getAuthority());
-            }
-            if (isUser(roles)) {
-                map.addAttribute("navbar", "navbar-authenticated");
-            } else {
-                map.addAttribute("navbar", "navbar");
-            }
-        }
-        Restaurant restaurant = restaurantService.findById(id);
-        model.addAttribute("restaurant", restaurant);
-
-        return "restaurant";
-    }
-
     private String date = "";
     private String time = "";
     private String size = "";
 
     // reservation page
-    @PreAuthorize("!(hasRole('USER') OR hasRole('ADMIN'))")
+    @PreAuthorize("!(hasRole('USER'))")
     @GetMapping("/restaurant/{id}/reservation")
-    public String showReservationPage(@PathVariable("id") Long id, HttpServletRequest request,
+    public String showReservationPage(@PathVariable("id") Long id, HttpServletRequest request, @AuthenticationPrincipal User user,
             Authentication authentication, Principal principal, ModelMap map, Model model) {
+        if (principal == null) {
+            return ("redirect:/login");
+        }
+
         if (authentication != null) {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             List<String> roles = new ArrayList<String>();
@@ -146,6 +102,7 @@ public class RestaurantController {
                 map.addAttribute("navbar", "navbar");
             }
         }
+
         this.date = request.getParameter("date");
         this.time = request.getParameter("time");
         this.size = request.getParameter("size");
@@ -185,8 +142,28 @@ public class RestaurantController {
             return "reservation";
         }
         reservationDetailService.save(reservationDetailDto,restaurant);
-        String url = "redirect:/restaurant/" + restaurant.getId() + "/reservation?success";
-        return url;
+
+        ReservationDetail savedReservation = reservationDetailService.findByEmail(reservationDetailDto.getEmail());
+
+        if( savedReservation == null) {
+            result.rejectValue("email","We could not find an account for that e-mail address");
+            return "/restaurant/" + restaurant.getId() + "/reservation";
+        }
+
+        Mail mail = new Mail();
+        mail.setFrom("practice.project.noreply@gmail.com");
+        mail.setTo(savedReservation.getEmail());
+        mail.setSubject("RESERVATION SUCCESSFUL");
+
+        Map<String, Object> mailModel = new HashMap<>();
+        mailModel.put("reservation", savedReservation);
+        mailModel.put("restaurant", restaurant);
+        mailModel.put("signature","THE FIFTH ORANGE ORGANIZATION - Together we make differences");
+        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+        //mailModel.put("registrationUrl",url + "/registration?=" + savedReservation.getUsername());
+        mail.setModel(mailModel);
+        emailService.sendEmail(mail, "email/email-confirmReservation");
+        return "redirect:/restaurant/" + restaurant.getId() + "/reservation?success";
     }
 
     private boolean isUser(List<String> roles) {

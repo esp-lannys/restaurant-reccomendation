@@ -1,45 +1,50 @@
-<!-- author: @khuetrien -->
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="utf-8">
-    <title>Update profile</title>
+    <title>User Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}">
     <link rel="icon" type="image/x-icon" href="/images/logo.ico">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <link rel="stylesheet" th:href="@{/css/user-profile.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <div class="view-account">
             <section class="module">
-                <div class="module-inner">
+                <div class="module-inner" style="height: 570px;">
                     <div class="side-bar">
                         <div class="user-info">
                             <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                            <ul class="meta list list-unstyled">
-                                <li class="name" style='font-size: 20px'>Rebecca Sanders
-                                </li>
+                            <ul class="meta list list-unstyled" sec:authorize="isAuthenticated()">
+                                <li class="name" style='font-size: 20px' sec:authentication="name"></li>
                             </ul>
                         </div>
                         <nav class="side-menu">
                             <ul class="nav">
-                                <li><a th:href="@{/user/user-profile}"><span class="fa fa-user"></span> Profile</a></li>
-                                <li class="active"><a th:href="@{/user/user-update-profile}"><span class="fa fa-cog"></span> Edit Profile</a></li>
-                                <li><a th:href="@{/user/change-password}"><span class="fa fa-cog"></span> Change Password</a></li>
-                                <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout"><span class="fa fa-cog"></span>Log Out</a></li>
-                                <li><a id="returnIndex" th:href="@{/}"><span class="fa fa-cog"></span><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a></li>
+                                <li><a class="openTab active" onclick="openTab(event, 'user-profile')"><span class="fa fa-user"></span> Profile</a></li>
+                                <li><a class="openTab" onclick="openTab(event, 'update-profile')"><span class="fa fa-cog"></span> Edit Profile</a></li>
+                                <li><a class="openTab" onclick="openTab(event, 'change-password')"><span class="fa fa-cog"></span> Change Password</a></li>
+                                <li><a class="openTab" onclick="openTab(event, 'reservation-history')"><span class="fa fa-book"></span> Reservation History</a></li>
+                                <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="logout">Log Out</a></li>
+                                <li>
+                                    <a id="returnIndex" target="_blank" th:href="@{/}"><img class="logo" th:src="@{/images/logo.png}" style="width: 20px;">GOURMETTE</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
                     <div th:if="${param.success}">
                         <script>
-                            window.location.href = "/user/user-profile";
+                            window.location.href = "/user/user-update-profile";
                             Swal.fire(
                                 'Nice !!!',
                                 'You have successfully updated your profile',
@@ -47,71 +52,260 @@
                             )
                         </script>
                     </div>
-                    <div class="content-panel">
-                        <h2 class="title">Edit Profile</h2>
-                        <form class="form-horizontal" th:object="${user}" th:action="@{/user/user-update-profile}" method="post">
-                            <div class="form-group">
-                                <p class="error-message" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation error</p>
+                    <div class="content-panel" style="height: 563px;">
+                        <div id="user-profile" class="tabcontent" style="font-size: 1.5rem !important;">
+                            <h2 class="title">Profile</h2>
+                            <div class="form-horizontal">
+                                <div class="fieldset">
+                                    <h3 class="fieldset-title">Personal Info</h3>
+                                    <div class="form-group" style="margin-bottom: 17px;" sec:authorize="isAuthenticated()">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left' sec:authentication="name"></label>
+                                    </div>
+
+                                    <div class="form-group" style="margin-bottom: 17px;">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left' th:text="${user.firstName}">First Name</label>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 17px;">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left' th:text="${user.lastName}"></label>
+
+                                    </div>
+                                </div>
+                                <div class="fieldset">
+                                    <h3 class="fieldset-title">Contact Info</h3>
+                                    <div class="form-group" style="margin-bottom: 17px;">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                        <p class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left' th:text="${user.email}"></p>
+
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 17px;">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                        <p class="col-md-2 col-sm-3 col-xs-12 control-label" style='font-weight: 350; text-align: left' th:text="${user.phone}"></p>
+                                    </div>
+
+                                </div>
+                                <hr>
+
                             </div>
+                        </div>
+                        <div id="update-profile" class="tabcontent" style="font-size: 1.5rem !important;">
+                            <h2 class="title">Edit Profile</h2>
+                            <form class="form-horizontal" th:object="${user}" th:action="@{/user/user-update-profile}" method="post">
+                                <div class="form-group" style="margin-bottom: 0px;">
+                                    <p class="error-message" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation error</p>
+                                </div>
 
-                            <fieldset class="fieldset">
-                                <h3 class="fieldset-title">Personal Info</h3>
+                                <fieldset class="fieldset">
+                                    <h3 class="fieldset-title">Personal Info</h3>
 
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control" th:value="${user.username}" th:field="*{username}" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control" th:value="${user.firstName}" th:field="*{firstName}">
+                                            <p class="error-message" th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control" th:value="${user.lastName}" th:field="*{lastName}">
+                                            <p class="error-message" th:each="error: ${#fields.errors('lastName')}" th:text="${error}">Validation error</p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <h3 class="fieldset-title">Contact Info</h3>
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="email" class="form-control" th:value="${user.email}" th:field="*{email}">
+                                            <p class="error-message" th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('phone')}? 'has-error':''">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control" th:value="${user.phone}" th:field="*{phone}">
+                                            <p class="error-message" th:each="error: ${#fields.errors('phone')}" th:text="${error}">Validation error</p>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                <hr>
                                 <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" th:value="${user.username}" th:field="*{username}" disabled>
+                                    <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                        <input class="btn btn-primary" type="submit" value="Update Profile">
                                     </div>
                                 </div>
+                            </form>
+                        </div>
+                        <div id="change-password" class="tabcontent" style="font-size: 1.5rem !important;">
+                            <h2 class="title">Change Password</h2>
+                            <form class="form-horizontal" th:action="@{/user/change-password}" method="post" th:object="${user2}">
 
-                                <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" th:value="${user.firstName}" th:field="*{firstName}">
-                                        <p class="error-message" th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
-                                    </div>
-                                </div>
+                                <p class="error-message" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation error
+                                </p>
 
-                                <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" th:value="${user.lastName}" th:field="*{lastName}">
-                                        <p class="error-message" th:each="error: ${#fields.errors('lastName')}" th:text="${error}">Validation error</p>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset class="fieldset">
-                                <h3 class="fieldset-title">Contact Info</h3>
-                                <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <input type="email" class="form-control" th:value="${user.email}" th:field="*{email}">
-                                        <p class="error-message" th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
-                                    </div>
-                                </div>
-                                <div class="form-group" th:classappend="${#fields.hasErrors('phone')}? 'has-error':''">
-                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" th:value="${user.phone}" th:field="*{phone}">
-                                        <p class="error-message" th:each="error: ${#fields.errors('phone')}" th:text="${error}">Validation error</p>
-                                    </div>
-                                </div>
+                                <fieldset class="fieldset">
+                                    <h3 class="fieldset-title">Password</h3>
 
-                            </fieldset>
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">New</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="password" class="form-control" value="" style="width: 50%" th:field="*{password}">
+                                        </div>
+                                        <p class="error-message" th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
+                                    </div>
+
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Re-type </label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="password" class="form-control" value="" style="width: 50%" th:field="*{confirmPassword}">
+                                        </div>
+                                        <p class="error-message" th:each="error: ${#fields.errors('confirmPassword')}" th:text="${error}">Validation error</p>
+                                    </div>
+
+                                </fieldset>
+
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                        <input class="btn btn-primary" type="submit" value="Save Changes">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="reservation-history" class="tabcontent" style="font-size: 1.5rem;">
+                            <h2 class="title">Reservation History</h2>
                             <hr>
-                            <div class="form-group">
-                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                    <input class="btn btn-primary" type="submit" value="Update Profile">
+                            <div class="container">
+                                <div class="row rtr">
+                                    <div class="col-4" style="padding-left: 37px; padding-right:37px">
+                                        <img class="imgrtr" th:src="@{/images/restaurants/pachi-pachi/logo.jpg}">
+                                    </div>
+                                    <div class="col-8">
+                                        <a href="#" class="name">Pachi Pachi</a>
+                                        <div class="rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                        <div>
+                                            <a class="location" href="#"></a> <b>Ho Chi Minh city</b>
+                                        </div>
+                                        <div class="row" style="padding-bottom: 20px; font-size: 3rem;">
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date"> 06/10/2020</span>
+                                            </div>
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time"> 11:11 PM</span>
+                                            </div>
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size"> 2</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="row rtr">
+                                    <div class="col-4" style="padding-left: 37px; padding-right:37px">
+                                        <img class="imgrtr" th:src="@{/images/restaurants/ming-court/logo.jpg}">
+                                    </div>
+                                    <div class="col-8">
+                                        <a href="#" class="name">Min Court</a>
+                                        <div class="rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                        <div>
+                                            <a class="location" href="#"></a> <b>Ho Chi Minh city</b>
+                                        </div>
+                                        <div class="row" style="padding-bottom: 20px; font-size: 3rem;">
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date"> 06/10/2020</span>
+                                            </div>
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time"> 11:11 PM</span>
+                                            </div>
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size"> 2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row rtr">
+                                    <div class="col-4" style="padding-left: 37px; padding-right:37px">
+                                        <img class="imgrtr" th:src="@{/images/restaurants/red-chilli-seafood/logo.jpg}">
+                                    </div>
+                                    <div class="col-8">
+                                        <a href="#" class="name">Red Chilli Seafood</a>
+                                        <div class="rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                        <div>
+                                            <a class="location" href="#"></a> <b>Ho Chi Minh city</b>
+                                        </div>
+                                        <div class="row" style="padding-bottom: 20px; font-size: 3rem;">
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-calendar-minus"></i><span style="font-size:1.8rem" name="date"> 06/10/2020</span>
+                                            </div>
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-clock"></i><span style="font-size:1.8rem" name="time"> 11:11 PM</span>
+                                            </div>
+                                            <div class="col-4" style=" font-weight: 500;">
+                                                <i class="far fa-user"></i><span style="font-size:1.8rem" name="size"> 2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                        </form>
+                        </div>
+                    </div>
+                    <div th:if="${param.success_pass}">
+                        <script>
+                            window.location.href = "/user/user-update-profile";
+                            alert("You have successfully updated your password !!!")
+                        </script>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
-
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, openTab;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            openTab = document.getElementsByClassName("openTab");
+            for (i = 0; i < openTab.length; i++) {
+                openTab[i].className = openTab[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </body>
 
 </html>
