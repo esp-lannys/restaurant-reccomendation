@@ -86,7 +86,7 @@
                                     <div class="col">
                                         <div>
                                             <ul class="list-group list-group-horizontal" id="listTags">
-                                                <li class="list-group-item" id="tag"><a th:href="@{#}">Buffet</a></li>
+                                                <li class="list-group-item" id="tag" th:each="category : ${restaurant.categories}"><a th:href="@{#}" th:text="${category.categoryName}"></a></li>
                                             </ul>
                                         </div>
                                     </div>
