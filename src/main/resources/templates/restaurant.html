@@ -294,7 +294,7 @@
 
                             <hr class="hr">
                             <div id="rsvForm">
-                                <form id="form" method="get" th:action="@{'/restaurant/'+ ${restaurant.id} + '/reservation'}">
+                                <form target="_blank" id="form" method="get" th:action="@{'/restaurant/'+ ${restaurant.id} + '/reservation'}">
                                     <div id="sizeForm">
                                         <label class="label" id="party-size">Party Size</label>
                                         <select id="tableSize" name="size">

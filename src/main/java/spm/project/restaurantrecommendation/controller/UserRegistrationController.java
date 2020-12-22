@@ -43,9 +43,13 @@ public class UserRegistrationController {
             , BindingResult result, HttpServletRequest request) throws Exception{
         User existingUsername = userService.findByUsername(userDto.getUsername());
         User existingEmail = userService.findByEmail(userDto.getEmail());
-        if (existingEmail != null || existingUsername != null) {
-            result.rejectValue("email", null, "There is email or username already an account registered");
+        if (existingUsername != null) {
+            result.rejectValue("username", null, "Username is already been taken");
+            if (existingEmail != null) {
+                result.rejectValue("email", null, "Email is invalid or already been taken");
+            }
         }
+
         if (result.hasErrors()){
             return "registration";
         }

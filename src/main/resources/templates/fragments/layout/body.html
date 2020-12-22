@@ -33,7 +33,7 @@
                             </div>
                             <div>
                                 <div class="name">
-                                    <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
+                                    <a target="_blank" th:href="@{'/restaurant/' + ${restaurant.id}}" class="name" th:text="${restaurant.name}"></a>
                                 </div>
                                 <div class="rating">
                                     <span th:each="rating : ${#numbers.sequence(1, restaurant.rating, 1)}" class="fa fa-star checked"></span>
